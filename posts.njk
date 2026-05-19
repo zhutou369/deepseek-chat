@@ -2,21 +2,20 @@
 layout: base.njk
 title: "DeepSeek 教程与文章中心"
 description: "浏览所有关于 DeepSeek 的安装、部署、API集成以及日常使用技巧的文章列表。"
-# 🌟 核心分頁機制注入：10 篇一頁
+# 🌟 核心分页机制注入：10 篇一页
 pagination:
   data: collections.posts
   size: 10
   alias: posts
-  reverse: true # 讓最新生成的文章永遠排在第一頁的最上面
-# 🌟 完美的路由過渡：第一頁保持 /posts/index.html，後續頁面自動變為 /posts/page-2/index.html
-permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber | plus: 1 }}/{% endif %}index.html"
+  reverse: true # 让最新生成的文章永远排在第一页的最上面
+# 🌟 完美的路由过渡：第一页保持 /posts/index.html，后续页面自动变为 /posts/page-2/index.html
+permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 ---
 
 <h1>DeepSeek 核心文章归档</h1>
 <p>在这里，您可以找到所有关于 DeepSeek 深度调优与实战的最新内容。</p>
 
 <ul class="post-list" style="margin-top: 20px;">
-  {# 🌟 核心修正：將原本的 collections.posts 替換為分頁塊消費的 posts 數據集 #}
   {% for post in posts %}
     <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
       <span class="post-meta">发布时间：{{ post.date | dateFilter }}</span>
