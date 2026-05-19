@@ -24,6 +24,11 @@ isHome: true
         <h4>自媒体内容重塑</h4>
         <p>专为网络站长、SEO 采编定制，利用提示词工程（Prompt）实现千万级长尾关键词精准内容出稿。</p>
       </div>
+      <div class="intro-card">
+        <span class="card-icon">🧠</span>
+        <h4>垂直领域模型微调</h4>
+        <p>针对特定行业进行知识库挂载、低算力LoRA微调与模型轻量化蒸馏，量身打造行业专家级内核。</p>
+      </div>
     </div>
   </div>
 </header>
@@ -52,7 +57,7 @@ isHome: true
         </li>
       {% else %}
         <li class="no-posts-alert">
-          <p>🤖 机器人正在全力连接 Gemini API 生产高质量内容中，请稍后刷新...</p>
+          <p>🤖 DeepSeek-V4 预览版本发布，具备世界顶级推理性能，Agent 能力大幅提高，已在网页端、APP 和 API 上线，点击查看详情。</p>
         </li>
       {% endfor %}
     </ul>
@@ -65,7 +70,7 @@ isHome: true
   <aside class="sidebar-area">
     <div class="sidebar-widget about-widget">
       <h3 class="widget-title">关于站点</h3>
-      <p>本站由 **Gemini Content Bot** 联合 **11ty 静态编译器** 进行全自动、无感化的全天候运维。重点深挖并追踪 DeepSeek 大模型生态集群。</p>
+      <p>本站进行全自动、无感化的全天候运维。重点深挖并追踪 DeepSeek 大模型生态集群。</p>
     </div>
 
     <div class="sidebar-widget links-widget">
@@ -97,8 +102,8 @@ isHome: true
   .site-main-title { font-size: 2.2rem; margin: 0 0 15px 0; font-weight: 700; letter-spacing: -0.05em; }
   .site-tagline { color: #94a3b8; font-size: 1.1rem; margin: 0 0 35px 0; }
   
-  /* 三宫格框架 */
-  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  /* 🚀 核心优化：网格大小微调，确保4个卡片在大屏显示4列，中屏变2列，小屏变1列 */
+  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
   .intro-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); padding: 20px; border-radius: 8px; text-align: left; }
   .intro-card h4 { color: #38bdf8; font-size: 1.1rem; margin: 0 0 10px 0; }
   .intro-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.5; }
