@@ -18,7 +18,7 @@ async function runAutoBot() {
     // 2. 初始化 Gemini 客户端
     const ai = new GoogleGenAI({ apiKey: apiKey });
 
-    // 文件路径切回标准的 .json 格式
+    // 🌟 维持你原本的路径设计，绝对不加 src/
     const jsonPath = path.join(__dirname, 'keywords.json');   
     const imagesPath = path.join(__dirname, 'images.txt'); 
     
@@ -47,7 +47,7 @@ async function runAutoBot() {
         maxPosts = keywords.length;
     }
 
-    // 🌟 将文章生成的“核心步骤”打包塞入 for 循环，实现批量生成
+    // 将文章生成的“核心步骤”打包塞入 for 循环，实现批量生成
     for (let currentLoop = 0; currentLoop < maxPosts; currentLoop++) {
         console.log(`\n------------------ 正在处理第 ${currentLoop + 1} / ${maxPosts} 篇 ------------------`);
 
@@ -118,23 +118,65 @@ async function runAutoBot() {
     这里开始写文章正文。请多用二级标题（##）、三级标题（###）对内容进行多层级切分，保证极佳的SEO可读性与结构性。
         `;
 
-        try {
-            console.log('正在连接 Gemini API 生产高质量内容...');
-            const response = await ai.models.generateContent({
-                model: 'gemini-2.5-flash',
-                contents: prompt,
-            });
+        // ==========================================
+        // 🌟 核心增设：智能防拥堵自动重试机制（防禦 503 与 429 错误）
+        // ==========================================
+        let response;
+        let retryCount = 0;
+        const maxRetries = 3;
+        const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
-            let articleContent = response.text;
-            if (!articleContent) {
-                throw new Error("Gemini 返回内容为空");
+        while (retryCount < maxRetries) {
+            try {
+                console.log(`正在连接 Gemini API 生产高质量内容... (尝试第 ${retryCount + 1} 次)`);
+                
+                response = await ai.models.generateContent({
+                    model: 'gemini-2.5-flash',
+                    contents: prompt,
+                });
+
+                if (response && response.text) {
+                    console.log("🎉 Gemini API 响应成功！已顺利拿到正文内容。");
+                    break; // 顺利拿到内容，立刻跳出重试循环
+                } else {
+                    throw new Error("Gemini 返回内容为空");
+                }
+            } catch (error) {
+                retryCount++;
+                const errMsg = error.message.toLowerCase();
+                
+                // 捕获 503 (Unavailable) 或是 429 (Too Many Requests)
+                if (errMsg.includes('503') || errMsg.includes('unavailable') || errMsg.includes('429')) {
+                    if (retryCount < maxRetries) {
+                        console.warn(`⚠️ Google 伺服器忙碌或限流 (503/429)。原地静默等待 5 秒后自动重试...`);
+                        await delay(5000); // 原地静默等待 5000 毫秒（5秒）
+                    }
+                } else {
+                    // 其他致命错误（如 API key 错误）直接抛出，不进行无意义重试
+                    throw error;
+                }
             }
+        }
 
-            // 🌟 安全增强：清洗可能由于 AI 理解偏差导致的 permalink 语法残留（例如多余的引号或中括号）
+        // 连续 3 次失败的保底退回机制
+        if (!response || !response.text) {
+            console.error(`❌ 连续尝试 ${maxRetries} 次后 Gemini API 依然拥堵，本次将选题塞回词库，跳过本篇。`);
+            keywords.unshift(currentTopic);
+            continue; 
+        }
+
+        // ==========================================
+
+        try {
+            let articleContent = response.text;
+
+            // 安全增强：清洗可能由于 AI 理解偏差导致的 permalink 语法残留（例如多余的引号或中括号）
             articleContent = articleContent.replace(/permalink:\s*["']?\/posts\/([^"'\n]+)["']?/g, 'permalink: "/posts/$1"');
 
             // 为了防止同秒内生成的 randomId 撞车，加上 currentLoop 索引增加唯一性
             const fileName = `${todayStr}-post-${randomId}-${currentLoop}.md`;
+            
+            // 🌟 维持你原汁原味的 posts 导出路径
             const outputDir = path.join(__dirname, 'posts'); 
             if (!fs.existsSync(outputDir)) {
                 fs.mkdirSync(outputDir, { recursive: true });
