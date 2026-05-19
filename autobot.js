@@ -112,14 +112,14 @@ async function runAutoBot() {
     permalink: "/posts/${todayStr}-你的纯英文短语-${randomId}/index.html"
     ---
 
-    【注意】：请务必将上面 permalink 里面的 "你的纯英文短语" 替换为你真正翻译出来的英文 Slug。不要保留任何多余的引号或括号。
+    【注意】：请务必将上面 permalink 里面的 "你的纯英文短语" 替换为你真正翻译出来的英文 Slug。不要保留 any 多余的引号或括号。
     ${imagePromptInstruction}
 
     这里开始写文章正文。请多用二级标题（##）、三级标题（###）对内容进行多层级切分，保证极佳的SEO可读性与结构性。
         `;
 
         // ==========================================
-        // 🌟 核心增设：智能防拥堵自动重试机制（防禦 503 与 429 错误）
+        // 🌟 核心增设：智能防拥堵自动重试机制（防御 503 与 429 错误）
         // ==========================================
         let response;
         let retryCount = 0;
@@ -137,7 +137,7 @@ async function runAutoBot() {
 
                 if (response && response.text) {
                     console.log("🎉 Gemini API 响应成功！已顺利拿到正文内容。");
-                    break; // 顺利拿到内容，立刻跳出重试循环
+                    break; 
                 } else {
                     throw new Error("Gemini 返回内容为空");
                 }
@@ -145,20 +145,17 @@ async function runAutoBot() {
                 retryCount++;
                 const errMsg = error.message.toLowerCase();
                 
-                // 捕获 503 (Unavailable) 或是 429 (Too Many Requests)
                 if (errMsg.includes('503') || errMsg.includes('unavailable') || errMsg.includes('429')) {
                     if (retryCount < maxRetries) {
-                        console.warn(`⚠️ Google 伺服器忙碌或限流 (503/429)。原地静默等待 5 秒后自动重试...`);
-                        await delay(5000); // 原地静默等待 5000 毫秒（5秒）
+                        console.warn(`⚠️ Google 伺服器忙碌或限流 (503/429)。原地静刻等待 5 秒后自动重试...`);
+                        await delay(5000); 
                     }
                 } else {
-                    // 其他致命错误（如 API key 错误）直接抛出，不进行无意义重试
                     throw error;
                 }
             }
         }
 
-        // 连续 3 次失败的保底退回机制
         if (!response || !response.text) {
             console.error(`❌ 连续尝试 ${maxRetries} 次后 Gemini API 依然拥堵，本次将选题塞回词库，跳过本篇。`);
             keywords.unshift(currentTopic);
@@ -170,29 +167,26 @@ async function runAutoBot() {
         try {
             let articleContent = response.text;
 
-            // 安全增强：清洗可能由于 AI 理解偏差导致的 permalink 语法残留（例如多余的引号或中括号）
             articleContent = articleContent.replace(/permalink:\s*["']?\/posts\/([^"'\n]+)["']?/g, 'permalink: "/posts/$1"');
 
-            // 为了防止同秒内生成的 randomId 撞车，加上 currentLoop 索引增加唯一性
             const fileName = `${todayStr}-post-${randomId}-${currentLoop}.md`;
             
-            // 🌟 维持你原汁原味的 posts 导出路径
             const outputDir = path.join(__dirname, 'posts'); 
             if (!fs.existsSync(outputDir)) {
                 fs.mkdirSync(outputDir, { recursive: true });
             }
             
+            // 🌟 物理補齊先前被截斷的所有閉合區塊
             fs.writeFileSync(path.join(outputDir, fileName), articleContent, 'utf-8');
             console.log(`✅ 第 ${currentLoop + 1} 篇文章已成功写入本地磁盘: posts/${fileName}`);
 
         } catch (error) {
             console.error(`❌ 第 ${currentLoop + 1} 篇文章生成遭遇错误:`, error.message);
-            // 如果某一篇失败了，把当前错过的词塞回去，防止词库无故丢失
             keywords.unshift(currentTopic);
         }
     }
 
-    // 当所有的循环全部执行完毕完毕后，再一次性回写成标准的 JSON 数组格式
+    // 🌟 物理補齊：當所有的迴圈執行完畢後，再一次性回寫更新後的 JSON 陣列詞庫
     try {
         fs.writeFileSync(jsonPath, JSON.stringify(keywords, null, 2), 'utf-8');
         console.log(`\n📉 词库整体更新完毕！剩余可用关键词数: ${keywords.length}`);
