@@ -2,15 +2,22 @@
 layout: base.njk
 title: "DeepSeek 教程与文章中心"
 description: "浏览所有关于 DeepSeek 的安装、部署、API集成以及日常使用技巧的文章列表。"
-permalink: /posts/index.html
+# 🌟 核心分頁機制注入：10 篇一頁
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
+  reverse: true # 讓最新生成的文章永遠排在第一頁的最上面
+# 🌟 完美的路由過渡：第一頁保持 /posts/index.html，後續頁面自動變為 /posts/page-2/index.html
+permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber | plus: 1 }}/{% endif %}index.html"
 ---
 
-<!-- 列表页唯一的 h1 -->
 <h1>DeepSeek 核心文章归档</h1>
 <p>在这里，您可以找到所有关于 DeepSeek 深度调优与实战的最新内容。</p>
 
 <ul class="post-list" style="margin-top: 20px;">
-  {% for post in collections.posts | reverse %}
+  {# 🌟 核心修正：將原本的 collections.posts 替換為分頁塊消費的 posts 數據集 #}
+  {% for post in posts %}
     <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
       <span class="post-meta">发布时间：{{ post.date | dateFilter }}</span>
 
@@ -19,5 +26,41 @@ permalink: /posts/index.html
     </li>
   {% endfor %}
 </ul>
+
+{% if pagination.pages.length > 1 %}
+<nav class="pagination-nav" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+  <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 10px; justify-content: center; align-items: center;">
+    
+    <li>
+      {% if pagination.href.previous %}
+        <a href="{{ pagination.href.previous }}" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">&laquo; 上一页</a>
+      {% else %}
+        <span style="padding: 6px 12px; border: 1px solid #eee; color: #ccc; border-radius: 4px; font-size: 14px;">&laquo; 上一页</span>
+      {% endif %}
+    </li>
+
+    {%- for pageEntry in pagination.pages %}
+      {% set pageNumber = loop.index0 %}
+      {% set pageHref = pagination.hrefs[pageNumber] %}
+      <li>
+        {% if page.url == pageHref %}
+          <span style="padding: 6px 12px; background: #333; color: #fff; border: 1px solid #333; font-weight: bold; border-radius: 4px; font-size: 14px;">{{ loop.index }}</span>
+        {% else %}
+          <a href="{{ pageHref }}" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">{{ loop.index }}</a>
+        {% endif %}
+      </li>
+    {%- endfor %}
+
+    <li>
+      {% if pagination.href.next %}
+        <a href="{{ pagination.href.next }}" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">下一页 &raquo;</a>
+      {% else %}
+        <span style="padding: 6px 12px; border: 1px solid #eee; color: #ccc; border-radius: 4px; font-size: 14px;">下一页 &raquo;</span>
+      {% endif %}
+    </li>
+
+  </ul>
+</nav>
+{% endif %}
 
 <p style="margin-top: 30px;"><a href="/">&larr; 返回首页</a></p>
