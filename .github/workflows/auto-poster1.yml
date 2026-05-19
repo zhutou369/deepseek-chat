@@ -9,16 +9,16 @@ on:
   workflow_dispatch:
     inputs:
       post_count:
-        description: '本次手动测试生成的文章数量（如输入 3 或 5）'
+        description: '本次手动测试生成的文章数量（可选 1-9 篇，不填写默认更新 1 篇）'
         required: true
-        default: '5' # 手动测试时默认是一次更新 5 篇
+        default: '1' # 🌟 核心修改：手动测试默认发文量切切底底改为 1 篇
 
 # 🚀 2026 规范：在全局显式注入强制使用 Node 24 的环境变量
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-  TZ: 'Asia/Shanghai' # 🌟 新增：强制服务器时区为中国标准时间，防止 11ty 编译时出现日期跨天对不上
+  TZ: 'Asia/Shanghai' # 强制服务器时区为中国标准时间，防止 11ty 编译时出现日期跨天对不上
 
-# 🌟 显式在代码层面死死锁住“允许机器人反向写入仓库”的最高权限
+# 显式在代码层面死死锁住“允许机器人反向写入仓库”的最高权限
 permissions:
   contents: write
 
@@ -51,13 +51,13 @@ jobs:
         fi
         npm install @google/genai @11ty/eleventy --save-dev
 
-    # 4. 运行 Node 脚本：如果是定时运行，默认传入 5；如果是手动运行，则传入你填写的数字
+    # 4. 运行 Node 脚本：如果是定时运行，默认传入 5；如果是手动运行，则传入你填写的数字（默认是 1）
     - name: Run Gemini Content Generator
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: node autobot.js ${{ github.event.inputs.post_count || '5' }}
+      run: node autobot.js ${{ github.event.inputs.post_count || '1' }}
 
-    # 5. 🌟 权限修复重构版：强制解锁 node_modules 可执行特权，阻断 Exit code 127 碎版错误
+    # 5. 权限修复重构版：强制解锁 node_modules 可执行特权，阻断 Exit code 127 碎版错误
     - name: Build Eleventy Site
       run: |
         chmod -R +x ./node_modules/.bin/
@@ -76,8 +76,8 @@ jobs:
         # 检查是否有代码改变（包括 keywords.json 的减少、posts 内新 md 的增加以及 _site 网页的更新）
         if ! git diff --cached --quiet; then
           git commit -m "🤖 [Bot] 自动同步/手动测试：批量更新文章、修复权限并重新编译全站同步词库"
-          # 带着特权临时 Token 强制安全推回 main 分支
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          # 🌟 结合你新倉庫的特权需求：在这里顺手加上了 -f 特权锁，暴力打通 Rejected 历史断层
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main -f
           echo "✅ 成功反向将新文章、编译后的静态网页与更新后的词库同步回 GitHub 仓库！"
         else
           echo "⚠️ 检查发现本地文件无任何变化，本次自动跳过推送。"
