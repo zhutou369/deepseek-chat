@@ -1,14 +1,12 @@
 ---
 layout: base.njk
 title: "DeepSeek 教程与文章中心"
-description: "浏览所有关于 DeepSeek 的安装、部署、API集成以及日常使用技巧的文章列表。"
-# 🌟 核心分页机制注入：10 篇一页
+description: "欢迎来到 DeepSeek 核心文章归档中心。这里系统性收录了关于 DeepSeek 大模型的全场景应用教程，涵盖 Ollama 本地全离线断网部署、行业私有化微调、微信及业务系统 API 接口调用开发等高价值深度实战内容。"
 pagination:
   data: collections.posts
   size: 10
   alias: posts
-  reverse: true # 让最新生成的文章永远排在第一页的最上面
-# 🌟 完美的路由过渡：第一页保持 /posts/index.html，后续页面自动变为 /posts/page-2/index.html
+  reverse: true
 permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 ---
 
