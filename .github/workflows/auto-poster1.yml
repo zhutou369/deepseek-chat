@@ -75,7 +75,7 @@ jobs:
         git config --global user.name "Gemini-Content-Bot"
         git config --global user.email "bot@yourdomain.com"
         
-        git add posts/ src/keywords.json
+        git add posts/ keywords.json
         
         if ! git diff --cached --quiet; then
           git commit -m "🤖 [Bot] 自動同步/手動測試：更新文章並同步詞庫"
