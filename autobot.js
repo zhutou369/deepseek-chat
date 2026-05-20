@@ -83,7 +83,7 @@ async function runAutoBot() {
         let imagePromptInstruction = '';
         if (selectedImages.length === 2) {
             imagePromptInstruction = `
-    4. 【插图嵌入要求】：
+    5. 【插图嵌入要求】：
        请在撰写文章正文时，将以下两个图片链接【严格、自然地】嵌入到不同的二级标题（##）或段落之间，提升排版丰富度。
        必须使用标准的 Markdown 图片格式，且必须补充具有 SEO 价值的 alt 描述（严禁包含中文百分号或特殊字符）。
        
@@ -94,28 +94,35 @@ async function runAutoBot() {
             `;
         }
 
-        // 7. 构造终极 SEO Prompt 模板（已完全适配新版 11ty 模板布局与标签）
+        // 7. 构造终极 SEO Prompt 模板（🔥 已经完美限制 H1 与 Description 字数）
         const prompt = `
-    你是一个精通技术SEO和前沿网络技术的专家博主。请针对主题 "${currentTopic}" 撰写一篇深入、对用户有极高价值的原创文章。
+    你是一个精通技术SEO和前沿网络技术的专家博主。请针对主题 "${currentTopic}" 撰写一篇深入、对用户有极高价值的原创技术实操文章。
     
     【重要核心要求】：
     1. 请将本次的主题 "${currentTopic}" 翻译为一个干净、地道、用连字符隔开的【纯英文短语】，作为 URL 的别名（Slug）。
-    2. 字数严格控制在 1200 - 2000 字之间，多用结构化列表、二级标题（##）、三级标题（###）。
+    2. 字数严格控制在 1200 - 2000 字之间。
     3. 严格按以下 Markdown 格式输出头部元数据，禁止在最外层包含 \`\`\`markdown 包裹外壳，必须直接以 --- 开头：
 
     ---
     title: "${currentTopic}"
-    description: "针对${currentTopic}的专业技术解析与实操指南。"
+    description: "为你带来针对${currentTopic}的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。"
     date: ${todayStr}
     tags: ["posts"]
     layout: "post.njk"
     permalink: "/posts/${todayStr}-你的纯英文短语-${randomId}/index.html"
     ---
 
-    【注意】：请务必将上面 permalink 里面的 "你的纯英文短语" 替换为你真正翻译出来的英文 Slug。不要保留 any 多余的引号或括号。
+    【注意】：
+    * 请务必将上面 permalink 里面的 "你的纯英文短语" 替换为你真正翻译出来的英文 Slug。不要保留 any 多余的引号或括号。
+    * 头部元数据的 description 请保持上面模板中给出的长句描述（控制在 80-120 个汉字之间），严禁自行缩短或过度拉长。
+
+    4. 【🚫 关键排版硬性死命令 🚫】：
+       * 严禁在正文（Header元数据下方）的任何地方使用单独一个井号（如 \`# 标题\`）的一级标题！
+       * 正文第一行绝对不要再重复输出文章大标题！
+       * 你的正文结构中，【最高级别标题只能是二级标题 \`##\`】，其下属子节使用三级标题 \`###\`。请多用结构化列表（- 或 1.）切分逻辑，确保极佳的 SEO 结构表现。
     ${imagePromptInstruction}
 
-    这里开始写文章正文。请多用二级标题（##）、三级标题（###）对内容进行多层级切分，保证极佳的SEO可读性与结构性。
+    这里开始写文章正文。请牢记死命令：直接从首段引入段落开始，或者直接以二级标题（##）开始，绝对不准出现单个井号 \`#\`。
         `;
 
         // ==========================================
@@ -186,7 +193,7 @@ async function runAutoBot() {
         }
     }
 
-    // 🌟 物理補齊：當所有的迴圈執行完畢後，再一次性回寫更新後的 JSON 陣列詞庫
+    // 🌟 物理補齊：當所有的迴圈執行完畢後，再一次性回寫更新後的 JSON 陣列词库
     try {
         fs.writeFileSync(jsonPath, JSON.stringify(keywords, null, 2), 'utf-8');
         console.log(`\n📉 词库整体更新完毕！剩余可用关键词数: ${keywords.length}`);
@@ -194,5 +201,7 @@ async function runAutoBot() {
         console.error("❌ 回写 keywords.json 失败:", e.message);
     }
 }
+
+runAutoBot();
 
 runAutoBot();
