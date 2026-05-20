@@ -60,23 +60,14 @@ jobs:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: node autobot.js ${{ github.event.inputs.post_count || '1' }}
 
-    # 5. 強制解鎖 node_modules 可執行特權并编译网站
-    # (同時在 src 源码目录和 _site 编译目录双重塞入验证文件，确保跟着源码一起被推回 GitHub)
+    # 5. 🌟【安全优化】移除危险的文件创建，让 11ty 专注于纯净网站编译 🌟
     - name: Build Eleventy Site
-      env:
-        INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       run: |
         chmod -R +x ./node_modules/.bin/
-        if [ -n "$INDEXNOW_KEY" ]; then
-          echo "$INDEXNOW_KEY" > ./src/$INDEXNOW_KEY.txt
-        fi
         npx @11ty/eleventy
-        if [ -n "$INDEXNOW_KEY" ]; then
-          echo "$INDEXNOW_KEY" > ./_site/$INDEXNOW_KEY.txt
-          echo "✅ 成功在内存源码与发布目录创建必应物理校验文件"
-        fi
+        echo "✅ Eleventy 静态网站编译成功！"
 
-    # 6. 檢查是否有新文章和驗證文件誕生，第一時間暴力推回 GitHub 主網触发线上托管商编译
+    # 6. 檢查是否有新文章誕生，第一時間暴力推回 GitHub 主網触发线上托管商编译
     - name: Commit and Push Changes back to Repo
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -84,44 +75,22 @@ jobs:
         git config --global user.name "Gemini-Content-Bot"
         git config --global user.email "bot@yourdomain.com"
         
-        # 除了文章和词库，把必应的校验 txt 文件也一起打包强推上去！
-        git add src/posts/ src/keywords.json src/*.txt
+        git add src/posts/ src/keywords.json
         
         if ! git diff --cached --quiet; then
-          git commit -m "🤖 [Bot] 自動同步/手動測試：更新文章、驗證文件並同步詞庫"
+          git commit -m "🤖 [Bot] 自動同步/手動測試：更新文章並同步詞庫"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main -f
-          echo "✅ 成功將新文章與更新後的詞庫、驗證文件同步回 GitHub 遠端倉庫！"
+          echo "✅ 成功將新文章與更新後的詞庫同步回 GitHub 遠端倉庫！"
         else
-          echo "⚠️ 檢查發現本地文件無任何变化，本次自動跳過源碼推送。"
+          echo "⚠️ 檢查發現本地文件無任何変化，本次自動跳過源碼推送。"
         fi
 
-    # 7. 🌟【智能化决胜步骤】线上文件不生效不推送，开启主动网络探测 🌟
+    # 7. 🌟【核心推送逻辑】直接通过标准网关全量推送 🌟
     - name: Execute Instant SEO Push to Bing
       env:
         INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       run: |
-        DOMAIN="deepseek-chat.com"
-        VALIDATION_URL="https://${DOMAIN}/${INDEXNOW_KEY}.txt"
-        
-        echo "📡 开始智能探测线上验证文件状态: ${VALIDATION_URL}"
-        
-        # 用一个最大循环 30 次的死循环，每 5 秒用 cURL 检测一次线上文件状态
-        for i in {1..30}; do
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${VALIDATION_URL}")
-          if [ "$STATUS_CODE" = "200" ]; then
-            echo "🎉 极佳！检测到线上验证文件已 100% 同步生效 (HTTP 200)。准备发射 API..."
-            break
-          else
-            echo "⏳ 线上服务仍在构建中/CDN尚未刷新 (当前状态: ${STATUS_CODE})，等待 5 秒 (尝试 ${i}/30)..."
-            sleep 5
-          fi
-          
-          if [ $i -eq 30 ]; then
-            echo "⚠️ 警告：等待线上托管同步超时，将尝试强行推送。"
-          fi
-        done
-        
-        # 🌟 通过极简无冲突的脚本创建方式，严格满足官方 POST 标准规范 🌟
+        # 🌟 终极纯原生写入：利用极其安全的 Echo 机制生成无冲突脚本 🌟
         echo 'const fs = require("fs");' > bing-instant-push.js
         echo 'const path = require("path");' >> bing-instant-push.js
         echo 'const https = require("https");' >> bing-instant-push.js
@@ -191,5 +160,5 @@ jobs:
         echo '  console.error("❌ 自动化推送运行出错:", err);' >> bing-instant-push.js
         echo '}' >> bing-instant-push.js
         
-        # 完美无阻碍执行推送
+        # 完美执行
         node bing-instant-push.js
