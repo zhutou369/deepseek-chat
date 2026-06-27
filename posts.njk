@@ -1,7 +1,9 @@
 ---
 layout: base.njk
-title: "DeepSeek 教程与文章中心"
-description: "欢迎来到 DeepSeek 核心文章归档中心。这里系统性收录了关于 DeepSeek 大模型的全场景应用教程，涵盖 Ollama 本地全离线断网部署、行业私有化微调、微信及业务系统 API 接口调用开发等高价值深度实战内容。"
+title: "DeepSeek 技术文章与使用教程"
+description: "浏览 DeepSeek 网页版登录、API 接入、提示词技巧、错误排查与本地部署等简体中文教程。"
+eleventyComputed:
+  noindex: "{{ pagination.pageNumber > 0 }}"
 pagination:
   data: collections.posts
   size: 10
@@ -10,8 +12,8 @@ pagination:
 permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 ---
 
-<h1>DeepSeek 核心文章归档</h1>
-<p>在这里，您可以找到所有关于 DeepSeek 深度调优与实战的最新内容。</p>
+<h1>DeepSeek 技术文章列表</h1>
+<p>优先收录可直接照做的入门教程；部分早期自动生成内容已从搜索索引中排除，但仍保留供参考。</p>
 
 <ul class="post-list" style="margin-top: 20px;">
   {% for post in posts %}

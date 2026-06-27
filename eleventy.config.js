@@ -1,35 +1,65 @@
+function isPostIndexable(data) {
+  if (data.noindex === true || data.generated === true) return false;
+  if (data.featured === true) return true;
+
+  const desc = data.description || "";
+  const title = data.title || "";
+
+  if (desc.includes("深度专业技术解析") || desc.includes("的专业技术解析与实操指南")) {
+    return false;
+  }
+  if (/官方|SEO长尾霸屏|站群|爆款文案|免翻墙|权威入口/.test(title)) {
+    return false;
+  }
+
+  return true;
+}
+
 module.exports = function (eleventyConfig) {
-  // 1. 强制拷贝静态资源（保证你站群的样式和公共图片不丢失）
   eleventyConfig.addPassthroughCopy("static");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images.txt");
-  
-  // 🌟【核心修复】强制 11ty 必须将整个 ai1 文件夹原封不动拷贝到发布目录！
-  // 只有加了这一行，你内嵌了纯 JS 变量的全新后台页面才能在云端存活，彻底消灭 404 YAML 报错！
   eleventyConfig.addPassthroughCopy("ai1");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy({ "*.txt": "/" });
 
-  // 2. 核心修复：注册 posts 文章集合（与模板中 collections.posts 完全对齐），并增加极致的时区与未来发布容错
-  eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("posts/*.md").filter((item) => {
-      // 如果文章没有写日期，直接放行
-      if (!item.date) return true;
-      
-      // 获取当前时间的本地时间戳
-      const now = new Date();
-      
-      // 时区安全锁：即使 Gemini 生成的 UTC 日期跨天变成了“明天”
-      // 只要该文章日期不比当前时间晚 24 小时以上，就强制判定为“已发布”，绝不让它在前台失踪！
-      return item.date.getTime() <= now.getTime() + 24 * 60 * 60 * 1000;
-    });
+  eleventyConfig.addGlobalData("eleventyComputed", {
+    noindex: (data) => {
+      if (data.noindex === true) return true;
+      const inputPath = data.page?.inputPath || "";
+      if (!inputPath.includes("posts")) return false;
+      return !isPostIndexable(data);
+    }
   });
 
-  // 3. 新增：注册首页专用的 limit 过滤器
+  eleventyConfig.addCollection("posts", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("posts/*.md")
+      .filter((item) => {
+        if (!item.date) return true;
+        const now = new Date();
+        return item.date.getTime() <= now.getTime() + 24 * 60 * 60 * 1000;
+      })
+      .sort((a, b) => b.date - a.date);
+  });
+
+  eleventyConfig.addCollection("indexablePosts", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("posts/*.md")
+      .filter((item) => {
+        if (!item.date) return isPostIndexable(item.data);
+        const now = new Date();
+        if (item.date.getTime() > now.getTime() + 24 * 60 * 60 * 1000) return false;
+        return isPostIndexable(item.data);
+      })
+      .sort((a, b) => b.date - a.date);
+  });
+
   eleventyConfig.addFilter("limit", function (arr, limit) {
     if (!Array.isArray(arr)) return [];
     return arr.slice(0, limit);
   });
 
-  // 4. 注册标准的时间格式化过滤器（用于列表页和详情页优雅显示 yyyy-mm-dd）
   eleventyConfig.addFilter("dateFilter", function (dateValue) {
     if (!dateValue) return "";
     const d = new Date(dateValue);
@@ -39,15 +69,19 @@ module.exports = function (eleventyConfig) {
     return `${year}-${month}-${day}`;
   });
 
-  // 5. 配置输入输出目录
+  eleventyConfig.addFilter("htmlDate", function (dateValue) {
+    if (!dateValue) return "";
+    return new Date(dateValue).toISOString().slice(0, 10);
+  });
+
   return {
     dir: {
       input: ".",
-      includes: "_includes", // 对应根目录下的 _includes 文件夹
-      output: "_site",
+      includes: "_includes",
+      output: "_site"
     },
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: "njk"
   };
 };
