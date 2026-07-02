@@ -1,87 +1,109 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% set docTitle = title or site.title %}
-  {% set metaDescription = description or site.description %}
-  {% set canonicalPath = canonicalUrl or page.url or "/" %}
-  {% set canonical = site.url + canonicalPath %}
-  <title>{% if page.url != "/" %}{{ docTitle }} | {{ site.brand }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ metaDescription }}">
-  <meta name="keywords" content="{{ pageKeywords or site.keywords }}">
-  {% if noindex %}
-  <meta name="robots" content="noindex,follow">
-  {% else %}
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  {% endif %}
-  <link rel="canonical" href="{{ canonical }}">
-  <meta property="og:type" content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}">
-  <meta property="og:title" content="{{ docTitle }}">
-  <meta property="og:description" content="{{ metaDescription }}">
-  <meta property="og:url" content="{{ canonical }}">
-  <meta property="og:site_name" content="{{ site.brand }}">
-  <meta property="og:locale" content="{{ site.locale }}">
-  <meta name="twitter:card" content="summary">
-  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
-  <script type="application/ld+json">
-{{ {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": site.brand,
-  "url": site.url,
-  "description": site.description
-} | dump | safe }}
-  </script>
-  <style>
-    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
-    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
-    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
-    nav { margin-top: 10px; }
-    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
-    main { padding: 20px 0; }
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
-    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
-    .friend-links a:hover { text-decoration: underline; }
-    .post-list { list-style: none; padding: 0; }
-    .post-list li { margin-bottom: 15px; }
-    .post-meta { color: #888; font-size: 14px; }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="header-hd">
-      {% if page.url == "/" %}
-        <h1 style="margin:0;font-size:24px;"><a href="/" class="site-logo">{{ site.brand }}</a></h1>
-      {% else %}
-        <a href="/" class="site-logo">{{ site.brand }}</a>
-      {% endif %}
-    </div>
-    <nav>
-      <a href="/">首页</a>
-      <a href="/posts/">技术文章</a>
-    </nav>
-  </header>
-
-  <main>
-    {{ content | safe }}
-  </main>
-
-  <footer>
-    <div class="friend-links">
-      <strong>相关站点：</strong>
-      {% for link in site.friendLinks %}
-        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}</a>
-      {% endfor %}
-    </div>
-    <p>&copy; 2026 {{ site.brand }} · 本站为第三方使用说明整理，非 DeepSeek 官方网站。</p>
-  </footer>
-
-  {% if site.laTrack.enabled %}
-  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
-  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"{{ site.laTrack.id }}",ck:"{{ site.laTrack.ck }}"})}})</script>
-  {% endif %}
-
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+  {% if site.googleSiteVerification %}
+  <meta name="google-site-verification" content="{{ site.googleSiteVerification }}">
+  {% endif %}
+  {% set docTitle = title or site.title %}
+  {% set metaDescription = description or site.description %}
+  {% set canonicalPath = canonicalUrl or page.url or "/" %}
+  {% set canonical = site.url + canonicalPath %}
+  {% set rawImage = ogImage or coverImage or site.ogImage or "/static/og-default.png" %}
+  {% set shareImage = (rawImage if not rawImage.endsWith('.svg') else site.ogImage) | assetUrl %}
+  {% set shareImageAbs = site.url + shareImage %}
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.brand }}" href="/feed.xml">
+  <title>{% if page.url != "/" %}{{ docTitle }} | {{ site.brand }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <meta name="keywords" content="{{ pageKeywords or site.keywords }}">
+  {% if noindex %}
+  <meta name="robots" content="noindex,follow">
+  {% else %}
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:type" content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ docTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:site_name" content="{{ site.brand }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta property="og:image" content="{{ shareImageAbs }}">
+  <meta property="og:image:alt" content="{{ docTitle }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ shareImageAbs }}">
+  <script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": site.brand,
+  "url": site.url,
+  "description": site.description
+} | dump | safe }}
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    main { padding: 20px 0; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
+    .friend-links a:hover { text-decoration: underline; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 15px; }
+    .post-meta { color: #888; font-size: 14px; }
+  </style>
+  {% if site.gaId %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.gaId }}');
+  </script>
+  {% endif %}
+</head>
+<body>
+
+  <header>
+    <div class="header-hd">
+      {% if page.url == "/" %}
+        <h1 style="margin:0;font-size:24px;"><a href="/" class="site-logo">{{ site.brand }}</a></h1>
+      {% else %}
+        <a href="/" class="site-logo">{{ site.brand }}</a>
+      {% endif %}
+    </div>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/posts/">技术文章</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <div class="friend-links">
+      <strong>相关站点：</strong>
+      {% for link in site.friendLinks %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}</a>
+      {% endfor %}
+    </div>
+    <p>&copy; 2026 {{ site.brand }} · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+  </footer>
+
+  {% if site.laTrack.enabled %}
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"{{ site.laTrack.id }}",ck:"{{ site.laTrack.ck }}"})}})</script>
+  {% endif %}
+
+</body>
+</html>
+
