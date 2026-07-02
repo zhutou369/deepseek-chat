@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-04-deepseek-meeting-minutes-template/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 会议结束后最耗时的是从杂乱记录里提炼行动项。用模板让模型只做结构化整理，不要发挥。

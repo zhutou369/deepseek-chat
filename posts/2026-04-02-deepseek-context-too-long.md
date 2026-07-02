@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-02-deepseek-context-too-long/index.html"
 coverImage: "/static/posts/covers/multi-turn.svg"
-generated: true
 ---
 
 多轮聊天会把历史都塞进上下文。窗口接近上限时，模型会「忘记」早期的硬约束，或把旧结论和新区混在一块。

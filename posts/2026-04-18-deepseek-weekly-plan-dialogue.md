@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-18-deepseek-weekly-plan-dialogue/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 问「帮我制定学习计划」会得到鸡汤。换成「每天 1 小时、共 7 天、目标 Python 读写 CSV」才可执行。

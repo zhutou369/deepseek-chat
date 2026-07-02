@@ -705,7 +705,7 @@ function writePost(item, opts = {}) {
       slug: item.slug,
       cover: item.cover,
       featured: item.featured,
-      generated: opts.generated !== false && !item.featured,
+      generated: opts.generated === true,
       videoBvid: item.videoBvid,
     }),
     item.intro ? item.intro + "\n" : "",

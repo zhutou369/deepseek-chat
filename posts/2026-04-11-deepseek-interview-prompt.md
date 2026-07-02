@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-11-deepseek-interview-prompt/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 面试演练最怕模型一次抛出十道题。让 AI 扮演考官，**每次只问一题**，你答完再给点评。

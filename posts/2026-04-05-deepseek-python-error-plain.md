@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-05-deepseek-python-error-plain/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 调试时最怕模型「顺手」重写几百行。把任务限定为「解释 + 最小改动」，效率更高。

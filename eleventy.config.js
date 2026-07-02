@@ -124,13 +124,17 @@ module.exports = function (eleventyConfig) {
         if (item.date.getTime() > now.getTime() + 24 * 60 * 60 * 1000) return false;
         return isPostIndexable(item.data);
       });
+    const isAprilCurated = (item) => /posts[\\/]2026-04-\d{2}-/.test(item.inputPath || "");
     const featured = posts
       .filter((item) => item.data.featured === true)
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath, "zh-CN"));
-    const rest = posts
-      .filter((item) => item.data.featured !== true)
+    const april = posts
+      .filter((item) => item.data.featured !== true && isAprilCurated(item))
       .sort((a, b) => b.date - a.date);
-    return [...featured, ...rest];
+    const rest = posts
+      .filter((item) => item.data.featured !== true && !isAprilCurated(item))
+      .sort((a, b) => b.date - a.date);
+    return [...featured, ...april, ...rest];
   });
 
   eleventyConfig.addFilter("limit", function (arr, limit) {

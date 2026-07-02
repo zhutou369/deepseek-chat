@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-20-deepseek-customer-service-roleplay/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 客服训练重在短、稳、可复述。让模型扮演顾客，你练回复，再要模型打分。

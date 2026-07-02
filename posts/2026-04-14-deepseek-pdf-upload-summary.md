@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-14-deepseek-pdf-upload-summary/index.html"
 coverImage: "/static/posts/covers/generic.svg"
-generated: true
 ---
 
 上传 PDF 后若只问「总结一下」，得到的多半是目录式废话。任务越具体，摘要越可用。

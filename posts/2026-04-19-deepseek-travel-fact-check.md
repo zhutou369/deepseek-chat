@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-19-deepseek-travel-fact-check/index.html"
 coverImage: "/static/posts/covers/generic.svg"
-generated: true
 ---
 
 AI 写的攻略很流畅，但票价和营业时间可能过期。让模型自检「待核实」项更稳妥。

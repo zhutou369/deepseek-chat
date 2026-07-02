@@ -74,5 +74,101 @@
       <description>配合 B 站视频讲解 chat.deepseek.com 首条消息、模型按钮与多轮迭代，文末附可打印步骤清单。</description>
     </item>
     
+    <item>
+      <title>客服话术对话模拟：单场景单轮训练</title>
+      <link>https://deepseek-chat.com/posts/2026-04-20-deepseek-customer-service-roleplay/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-20-deepseek-customer-service-roleplay/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>模拟投诉、催单、退换货等客服场景，练习短句回复和升级话术。</description>
+    </item>
+    
+    <item>
+      <title>旅行攻略对话：如何让 DeepSeek 标注待核实信息</title>
+      <link>https://deepseek-chat.com/posts/2026-04-19-deepseek-travel-fact-check/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-19-deepseek-travel-fact-check/</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
+      <description>要求模型区分确定事实与需自行核实的票价、营业时间，降低幻觉带来的行程风险。</description>
+    </item>
+    
+    <item>
+      <title>用 DeepSeek 对话拆解一周学习计划</title>
+      <link>https://deepseek-chat.com/posts/2026-04-18-deepseek-weekly-plan-dialogue/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-18-deepseek-weekly-plan-dialogue/</guid>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+      <description>把目标、可用时间和基础水平写清，让模型输出按天任务表而非空泛励志话。</description>
+    </item>
+    
+    <item>
+      <title>中英混输对话的语言控制方法</title>
+      <link>https://deepseek-chat.com/posts/2026-04-17-deepseek-language-mix-control/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-17-deepseek-language-mix-control/</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <description>在术语保留英文、正文用中文等场景下，用一条指令锁定输出语言与专有名词写法。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 对话里表格输出的格式约束技巧</title>
+      <link>https://deepseek-chat.com/posts/2026-04-16-deepseek-table-output-format/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-16-deepseek-table-output-format/</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description>用 Markdown 表头、列定义和示例行锁定表格结构，方便复制到 Excel 或飞书文档。</description>
+    </item>
+    
+    <item>
+      <title>代码调试对话：如何让 DeepSeek 只改一处</title>
+      <link>https://deepseek-chat.com/posts/2026-04-15-deepseek-code-edit-one-place/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-15-deepseek-code-edit-one-place/</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>用最小修改、行号引用和禁止重写整文件等约束，在对话里安全地迭代代码。</description>
+    </item>
+    
+    <item>
+      <title>上传 PDF 让 DeepSeek 总结的正确姿势</title>
+      <link>https://deepseek-chat.com/posts/2026-04-14-deepseek-pdf-upload-summary/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-14-deepseek-pdf-upload-summary/</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>大文档先说明要问什么、输出格式和页码范围，避免模型泛泛概括遗漏关键条款。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 深度思考 R1 模式什么时候开</title>
+      <link>https://deepseek-chat.com/posts/2026-04-13-deepseek-r1-when-to-enable/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-13-deepseek-r1-when-to-enable/</guid>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 GMT</pubDate>
+      <description>区分日常快问快答与需要推理链的复杂问题，避免简单任务也开 R1 导致等待变长。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 对话场景：读书笔记三段式输出</title>
+      <link>https://deepseek-chat.com/posts/2026-04-12-deepseek-reading-notes-three-part/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-12-deepseek-reading-notes-three-part/</guid>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <description>读完一章后用固定结构要观点、行动建议和易误解点，方便复习和分享。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 对话场景：面试模拟考官 Prompt</title>
+      <link>https://deepseek-chat.com/posts/2026-04-11-deepseek-interview-prompt/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-11-deepseek-interview-prompt/</guid>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+      <description>用单题单评模式模拟技术或业务面试，控制节奏并积累可复述的回答要点。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 语音输入对话的识别纠错方法</title>
+      <link>https://deepseek-chat.com/posts/2026-04-10-deepseek-voice-input-correction/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-10-deepseek-voice-input-correction/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>语音输入后快速校对术语、英文专名和数字，减少因识别错误导致的答非所问。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 新开对话 vs 续聊：什么时候该换窗口</title>
+      <link>https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/</guid>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
+      <description>用决策表判断该在同一窗口迭代还是新开对话，减少跑题和上下文污染。</description>
+    </item>
+    
   </channel>
 </rss>

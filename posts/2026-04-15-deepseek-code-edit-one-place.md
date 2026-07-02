@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-15-deepseek-code-edit-one-place/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 开发者在对话里贴代码时，模型喜欢「顺手优化」整段。明确边界能减少合并成本。

@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-16-deepseek-table-output-format/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
-generated: true
 ---
 
 说「用表格」不够，模型可能列名乱变。先定义列，再给一行示例，稳定性会高很多。

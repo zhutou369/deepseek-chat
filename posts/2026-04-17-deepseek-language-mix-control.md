@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-17-deepseek-language-mix-control/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
-generated: true
 ---
 
 技术文档常中英混用。若不说明，模型可能在同一段里随机切换语言。

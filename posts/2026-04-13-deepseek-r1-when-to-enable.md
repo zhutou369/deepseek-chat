@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-13-deepseek-r1-when-to-enable/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
-generated: true
 ---
 
 深度思考（R1）会先展示推理再给出答案，适合多条件约束和逻辑题；写邮件、改标题通常不必开。

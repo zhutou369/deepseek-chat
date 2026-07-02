@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-03-deepseek-mobile-data-saving/index.html"
 coverImage: "/static/posts/covers/mobile-chat.svg"
-generated: true
 ---
 
 通勤路上用手机改文案很常见，但流量和信号都不稳定。Prompt 更短、输出更可控，比开桌面模式更省流。

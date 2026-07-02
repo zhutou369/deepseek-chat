@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-12-deepseek-reading-notes-three-part/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
-generated: true
 ---
 
 读书笔记怕写成流水账。三段式输出强制模型给可复习的结构。

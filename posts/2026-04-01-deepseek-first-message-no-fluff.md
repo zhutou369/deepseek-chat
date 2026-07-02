@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-01-deepseek-first-message-no-fluff/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
-generated: true
 ---
 
 打开 `chat.deepseek.com` 后，很多人第一句就问「帮我写一篇文章」。模型只能猜场景，于是输出又长又空。首条消息写清楚，比多聊十轮更有效。

@@ -43,7 +43,7 @@
     <p class="posts-locale-note">{{ t.postsNote }}</p>
     <div class="guides-grid">
       {% if locale == 'zh-CN' %}
-      {% set latestPosts = collections.homepagePosts | limit(9) %}
+      {% set latestPosts = collections.homepagePosts | limit(27) %}
       {% else %}
       {% set latestPosts = collections.pillarPosts | forLocale(locale) %}
       {% endif %}

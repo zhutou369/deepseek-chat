@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-08-deepseek-answer-length-control/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
-generated: true
 ---
 
 同样一个问题，不加约束时模型倾向写长。长度控制要写在首条或第二轮，不要等写完再砍。

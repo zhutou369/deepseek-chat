@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-09-deepseek-new-chat-vs-continue/index.html"
 coverImage: "/static/posts/covers/multi-turn.svg"
-generated: true
 ---
 
 续聊省事儿，但窗口里堆了太多无关轮次时，模型容易被带偏。换窗口不是失败，是正常操作。

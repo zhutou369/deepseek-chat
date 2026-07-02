@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-06-deepseek-chat-desensitize-share/index.html"
 coverImage: "/static/posts/covers/export-privacy.svg"
-generated: true
 ---
 
 把对话转给同事很方便，但原文里常有手机号、公司名或未公开数据。先脱敏再分享是基本习惯。

@@ -6,7 +6,6 @@ tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-07-deepseek-wechat-inapp-browser/index.html"
 coverImage: "/static/posts/covers/mobile-chat.svg"
-generated: true
 ---
 
 微信群里的链接常在微信内置浏览器打开。它和 Chrome/Safari 的 Cookie、登录态并不完全共享。
