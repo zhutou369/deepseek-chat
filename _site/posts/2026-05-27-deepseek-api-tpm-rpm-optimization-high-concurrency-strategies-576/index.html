@@ -60,13 +60,13 @@
 
   <meta property="og:locale" content="zh_CN">
 
-  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=4">
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=5">
 
   <meta property="og:image:alt" content="DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略">
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=4">
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=5">
 
   <script type="application/ld+json">
 
@@ -168,7 +168,7 @@
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/covers/mobile-chat.svg?v=4" alt="DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/covers/mobile-chat.svg?v=5" alt="DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -246,7 +246,7 @@ def call_deepseek_api_with_retry(payload):
 <li><strong>平衡 TPM</strong>：虽然减少了RPM，但合并请求可能会增加单个请求的TPM。你需要权衡RPM和TPM的限制，找到最佳的批处理大小。确保单个批次请求的TPM不会超出DeepSeek API的单次请求令牌上限。</li>
 </ul>
 <p>例如，如果你需要为1000个短文本生成嵌入向量，与其发起1000个独立的API调用，不如尝试将其封装成10个批次，每个批次包含100个文本。</p>
-<p><img src="/static/posts/covers/step-guide.svg?v=4" alt="API Traffic Management Interface"></p>
+<p><img src="/static/posts/covers/step-guide.svg?v=5" alt="API Traffic Management Interface"></p>
 <h3>API Key 管理与负载均衡</h3>
 <p>在某些高级用例中，如果DeepSeek API允许，或者你的业务逻辑天然分割，可以考虑使用多个DeepSeek API Key。</p>
 <ul>
@@ -316,7 +316,7 @@ def call_deepseek_api_with_retry(payload):
 </ul>
 </li>
 </ul>
-<p><img src="/static/posts/covers/step-guide.svg?v=4" alt="High Performance Infrastructure Overview"></p>
+<p><img src="/static/posts/covers/step-guide.svg?v=5" alt="High Performance Infrastructure Overview"></p>
 <h3>异步 I/O 与并发编程</h3>
 <p>在客户端代码层面，充分利用现代编程语言的异步I/O能力，可以最大化单个进程的并发效率，而不增加实际的API请求速率。</p>
 <ul>
@@ -379,7 +379,7 @@ def call_deepseek_api_with_retry(payload):
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略","description":"为你带来针对DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/covers/mobile-chat.svg?v=4","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-27-deepseek-api-tpm-rpm-optimization-high-concurrency-strategies-576/"}
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略","description":"为你带来针对DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/covers/mobile-chat.svg?v=5","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-27-deepseek-api-tpm-rpm-optimization-high-concurrency-strategies-576/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek API 并发限制（TPM/RPM）如何优化？高并发解决策略","item":"https://deepseek-chat.com/posts/2026-05-27-deepseek-api-tpm-rpm-optimization-high-concurrency-strategies-576/"}]}

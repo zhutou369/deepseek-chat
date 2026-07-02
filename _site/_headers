@@ -25,6 +25,10 @@
   Cache-Control: public, max-age=3600
   Content-Type: application/rss+xml; charset=utf-8
 
+/static/covers/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Type: image/svg+xml; charset=utf-8
+
 /static/posts/covers/*
   Cache-Control: public, max-age=3600, must-revalidate
   Content-Type: image/svg+xml; charset=utf-8
