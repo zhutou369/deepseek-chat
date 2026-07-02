@@ -2,6 +2,8 @@
 /articles/*    /posts/:splat 301
 /rss.xml       /feed.xml   301
 /atom.xml      /feed.xml   301
+/sitemap/      /site-map/  301
+/sitemap/index.html  /site-map/  301
 /posts/deepseek-web-login-troubleshoot/  /posts/deepseek-chat-web-basics/  301
 /posts/deepseek-api-key-and-limits/  /posts/deepseek-chat-scenario-library/  301
 /posts/deepseek-api-retry-guide/  /posts/deepseek-multi-turn-memory/  301
