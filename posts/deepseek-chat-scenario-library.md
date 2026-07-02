@@ -12,6 +12,8 @@ permalink: "/posts/deepseek-chat-scenario-library/index.html"
 coverImage: "/static/posts/covers/scenario-lib.svg"
 ---
 
+> **30 秒结论**：复制最接近的模板，只改括号内容；不满意用多轮迭代，勿一次塞多个任务。
+
 本站定位是「对话场景」而非 API 接入。下面模板均可直接粘贴到 DeepSeek 网页对话使用，按需改括号内容即可。
 
 ## 写作与内容
@@ -82,6 +84,20 @@ coverImage: "/static/posts/covers/scenario-lib.svg"
 3. 首轮输出不满意时，用 [多轮对话技巧](/posts/deepseek-multi-turn-memory/) 迭代
 
 开发者 API 相关请见 [platform.deepseek.com](https://platform.deepseek.com/docs)；本站专注网页聊天体验。
+
+## 常见问题
+
+**问：模板回答太泛？**
+
+答：补上真实材料片段，并加字数/格式约束，见 [网页入门](/posts/deepseek-chat-web-basics/)。
+
+**问：要多版本文案？**
+
+答：见 [一轮多版本](/posts/2026-08-16-deepseek-multi-version-copy-one-shot/)（8 月文）。
+
+**问：复杂任务不知从哪问？**
+
+答：用 [反向 Prompt](/posts/2026-08-13-deepseek-ai-asks-first-prompt/) 让 AI 先提问。
 
 ## 相关教程
 

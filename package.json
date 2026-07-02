@@ -9,6 +9,7 @@
     "add-covers": "node tools/add-default-covers.js",
     "add-links": "node tools/add-internal-links.js",
     "generate-april": "node scripts/generate-april-posts.js",
+  "generate-august": "node scripts/generate-august-posts.js",
     "write-svgs": "node scripts/write-post-svgs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

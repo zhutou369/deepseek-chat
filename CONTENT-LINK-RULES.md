@@ -9,6 +9,8 @@
 | `/posts/deepseek-mobile-app-chat/` | 手机、App、弱网、语音 |
 | `/posts/deepseek-chat-scenario-library/` | 模板、Prompt、场景 |
 | `/posts/deepseek-chat-export-share/` | 导出、分享、隐私、脱敏 |
+| `/posts/deepseek-chat-video-web-tutorial/` | 网页视频 + 步骤清单 |
+| `/posts/deepseek-chat-video-mobile-tutorial/` | 手机视频 + 通勤清单 |
 
 ## 每篇要求
 

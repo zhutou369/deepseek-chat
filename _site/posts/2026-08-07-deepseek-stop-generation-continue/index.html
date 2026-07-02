@@ -34,9 +34,9 @@
 
   
 
-  <title>DeepSeek 多轮聊天上下文太长怎么办 | DeepSeek 对话指南</title>
+  <title>DeepSeek 对话生成到一半停了怎么续写 | DeepSeek 对话指南</title>
 
-  <meta name="description" content="对话变长后回答变慢、漏细节或前后矛盾时，用摘要续聊、拆分批次和周期性重申约束来稳住输出。">
+  <meta name="description" content="回答中断、手动停止或弱网截断时，用「从第 N 点继续」指令续写，避免全文重写。">
 
   <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
 
@@ -46,15 +46,15 @@
 
   
 
-  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-04-02-deepseek-context-too-long/">
+  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-08-07-deepseek-stop-generation-continue/">
 
   <meta property="og:type" content="article">
 
-  <meta property="og:title" content="DeepSeek 多轮聊天上下文太长怎么办">
+  <meta property="og:title" content="DeepSeek 对话生成到一半停了怎么续写">
 
-  <meta property="og:description" content="对话变长后回答变慢、漏细节或前后矛盾时，用摘要续聊、拆分批次和周期性重申约束来稳住输出。">
+  <meta property="og:description" content="回答中断、手动停止或弱网截断时，用「从第 N 点继续」指令续写，避免全文重写。">
 
-  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-04-02-deepseek-context-too-long/">
+  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-08-07-deepseek-stop-generation-continue/">
 
   <meta property="og:site_name" content="DeepSeek 对话指南">
 
@@ -62,7 +62,7 @@
 
   <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=5">
 
-  <meta property="og:image:alt" content="DeepSeek 多轮聊天上下文太长怎么办">
+  <meta property="og:image:alt" content="DeepSeek 对话生成到一半停了怎么续写">
 
   <meta name="twitter:card" content="summary_large_image">
 
@@ -159,16 +159,16 @@
   </nav>
 
   <header class="post-header">
-    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 多轮聊天上下文太长怎么办</h1>
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 对话生成到一半停了怎么续写</h1>
     <div class="post-meta" style="margin-bottom: 20px;">
-      <span>: 2026-04-02</span>
+      <span>: 2026-08-07</span>
       <span> · </span>
     </div>
   </header>
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/covers/multi-turn.svg?v=5" alt="DeepSeek 多轮聊天上下文太长怎么办" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/covers/multi-turn.svg?v=5" alt="DeepSeek 对话生成到一半停了怎么续写" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -176,44 +176,40 @@
 
   <div class="post-content">
     <blockquote>
-<p><strong>30 秒结论</strong>：对话变长时先让模型输出 200 字摘要，再新开对话贴摘要续聊；勿在同一窗口硬塞多个主题。</p>
+<p><strong>30 秒结论</strong>：不要重新提问；发送「请从上一段第 3 点继续，不要重复前文，接着写下半部分」。长文先让模型输出摘要再新开对话续写。</p>
 </blockquote>
-<p>多轮聊天会把历史都塞进上下文。窗口接近上限时，模型会「忘记」早期的硬约束，或把旧结论和新区混在一块。</p>
-<h2>判断该续聊还是新开</h2>
-<p>| 情况 | 建议 |</p>
-<p>|------|------|</p>
-<p>| 同一任务迭代润色 | 续聊 |</p>
-<p>| 换主题（写作→写代码） | 新开 |</p>
-<p>| 模型引用已否定的结论 | 新开 + 摘要 |</p>
-<p>| 单次粘贴超长文档 | 分批处理 |</p>
-<p><img src="/static/posts/covers/step-guide.svg?v=5" alt="DeepSeek 多轮上下文管理示意"></p>
-<h2>摘要续聊三步</h2>
+<h2>操作步骤</h2>
 <ol>
 <li>
-<p>让模型输出「当前结论摘要」，限 200 字</p>
+<p>确认网络稳定后，发续写指令（见下方 Prompt）</p>
 </li>
 <li>
-<p>新开对话，首条粘贴摘要 + 未完成任务</p>
+<p>若模型重复前文，加：<code>只输出新增内容，从「## 第二部分」开始</code></p>
 </li>
 <li>
-<p>重申格式与禁止事项</p>
+<p>多次失败：让模型先列「已完成要点 1–5」，新开对话粘贴摘要继续</p>
+</li>
+<li>
+<p>长任务拆分见 <a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a></p>
 </li>
 </ol>
-<p>详细流程见 <a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a>。</p>
-<h2>长文档分批模板</h2>
+<p><img src="/static/posts/covers/step-guide.svg?v=5" alt="中断续写示意"></p>
+<h2>可直接复制的 Prompt</h2>
 <pre><code>
-下面是第 1/3 批用户评论。请先归纳标签体系，再分类这批数据。
+你上一段回答在第 3 条表格处中断了。
 
-下一批我会继续用同一标签，请不要改定义。
-
-[粘贴第 1 批]
+请从第 3 条继续写完，不要重复第 1–2 条，保持同一表格格式。
 
 </code></pre>
+<h2>常见问题</h2>
+<p><strong>问：点停止后还能接吗？</strong></p>
+<p>答：可以，说明停在哪一句，要求从该句后半继续。</p>
+<p><strong>问：续写风格和前面不一致？</strong></p>
+<p>答：加一句：<code>语气、人称与上文保持一致</code>。</p>
 <h2>延伸阅读</h2>
 <ul>
 <li><a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a></li>
 <li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
-<li><a href="/posts/deepseek-chat-export-share/">导出与隐私</a></li>
 </ul>
 
   </div>
@@ -224,12 +220,12 @@
       
       <li>：
         
-          <a href="/posts/2026-04-03-deepseek-mobile-data-saving/">手机浏览器使用 DeepSeek 对话的省流技巧</a>
+          
         
       </li>
       <li>：
         
-          <a href="/posts/2026-04-01-deepseek-first-message-no-fluff/">DeepSeek 网页对话首条消息怎么写才不出废话</a>
+          
         
       </li>
     </ul>
@@ -238,10 +234,10 @@
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 多轮聊天上下文太长怎么办","description":"对话变长后回答变慢、漏细节或前后矛盾时，用摘要续聊、拆分批次和周期性重申约束来稳住输出。","datePublished":"2026-04-02","dateModified":"2026-04-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/covers/multi-turn.svg?v=5","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-04-02-deepseek-context-too-long/"}
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 对话生成到一半停了怎么续写","description":"回答中断、手动停止或弱网截断时，用「从第 N 点继续」指令续写，避免全文重写。","datePublished":"2026-08-07","dateModified":"2026-08-07","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/covers/multi-turn.svg?v=5","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-08-07-deepseek-stop-generation-continue/"}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 多轮聊天上下文太长怎么办","item":"https://deepseek-chat.com/posts/2026-04-02-deepseek-context-too-long/"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 对话生成到一半停了怎么续写","item":"https://deepseek-chat.com/posts/2026-08-07-deepseek-stop-generation-continue/"}]}
 </script>
 
 

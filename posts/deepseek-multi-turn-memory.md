@@ -12,6 +12,8 @@ permalink: "/posts/deepseek-multi-turn-memory/index.html"
 coverImage: "/static/posts/covers/multi-turn.svg"
 ---
 
+> **30 秒结论**：一个对话窗口只做一个主线；话题切换或上下文过长时新开对话，并用摘要续聊。
+
 多轮对话是 DeepSeek 网页版最常用的能力，但也是最容易「聊着聊着就跑题」的地方。核心原则是：**一个对话窗口只做一个主线任务**。
 
 ## 什么时候该新开对话
@@ -54,7 +56,21 @@ coverImage: "/static/posts/covers/multi-turn.svg"
 
 ![DeepSeek 多轮对话拆分任务示意](/static/posts/covers/step-guide.svg)
 
-延伸阅读：[网页对话入门](/posts/deepseek-chat-web-basics/) · [场景模板库](/posts/deepseek-chat-scenario-library/)
+延伸阅读：[网页对话入门](/posts/deepseek-chat-web-basics/) · [场景模板库](/posts/deepseek-chat-scenario-library/) · [上下文太长怎么办](/posts/2026-04-02-deepseek-context-too-long/)
+
+## 常见问题
+
+**问：新开对话还是续聊？**
+
+答：同一任务润色可续聊；换主题或模型开始胡说时应新开，见 [新开 vs 续聊](/posts/2026-04-09-deepseek-new-chat-vs-continue/)。
+
+**问：生成到一半停了？**
+
+答：用「从第 N 点继续」指令，见 [中断续写](/posts/2026-08-07-deepseek-stop-generation-continue/)（8 月文）。
+
+**问：长对话如何备份？**
+
+答：先让模型输出摘要再导出，见 [导出与隐私](/posts/deepseek-chat-export-share/)。
 
 ## 相关教程
 

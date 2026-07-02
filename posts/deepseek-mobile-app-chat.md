@@ -12,6 +12,8 @@ permalink: "/posts/deepseek-mobile-app-chat/index.html"
 coverImage: "/static/posts/covers/mobile-chat.svg"
 ---
 
+> **30 秒结论**：手机对话要短 Prompt、单任务；语音输入后校对专名；弱网时分段输出。视频演示：[手机端对话视频教程](/posts/deepseek-chat-video-mobile-tutorial/)。
+
 移动端对话的场景往往是「路上改文案」「排队时查资料」。屏幕小、输入法切换频繁，Prompt 要更短、更结构化。
 
 ## 移动端入口选择
@@ -55,8 +57,23 @@ coverImage: "/static/posts/covers/mobile-chat.svg"
 | 键盘遮挡输入框 | 横屏或缩短单次输入 |
 | 回答被截断 | 要求「分两段输出，先输出上半部分」 |
 
+## 常见问题
+
+**问：微信里打不开？**
+
+答：用「在浏览器打开」，见 [微信内置浏览器](/posts/2026-04-07-deepseek-wechat-inapp-browser/)。
+
+**问：晚上看长回答刺眼？**
+
+答：开系统深色模式并缩短段落，见 [夜间阅读技巧](/posts/2026-08-22-deepseek-mobile-night-reading-tips/)（8 月文）。
+
+**问：省流量怎么聊？**
+
+答：见 [省流技巧](/posts/2026-04-03-deepseek-mobile-data-saving/)。
+
 ## 相关教程
 
 - [网页对话入门](/posts/deepseek-chat-web-basics/)
 - [多轮对话管理](/posts/deepseek-multi-turn-memory/)
 - [对话导出与隐私](/posts/deepseek-chat-export-share/)
+- [手机端视频教程](/posts/deepseek-chat-video-mobile-tutorial/)

@@ -8,6 +8,8 @@ permalink: "/posts/2026-04-08-deepseek-answer-length-control/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
 ---
 
+> **30 秒结论**：用「总共不超过 N 字」「只给 3 条」控制变短；太短则要求「每点展开 2 句」。详见 [网页入门](/posts/deepseek-chat-web-basics/)。
+
 同样一个问题，不加约束时模型倾向写长。长度控制要写在首条或第二轮，不要等写完再砍。
 
 ## 变短常用句

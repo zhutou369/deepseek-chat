@@ -12,6 +12,8 @@ permalink: "/posts/deepseek-chat-web-basics/index.html"
 coverImage: "/static/posts/covers/web-chat.svg"
 ---
 
+> **30 秒结论**：首条消息写清场景、任务、格式、约束四要素，比多轮追问更高效。配套视频：[网页对话入门视频教程](/posts/deepseek-chat-video-web-tutorial/)。
+
 很多人打开 `chat.deepseek.com` 后第一句就问「帮我写一篇文章」，结果得到泛泛而谈的长文。网页对话的关键不是问得多，而是**首条消息就把任务说清楚**。
 
 ## 进入对话前的三件事
@@ -58,7 +60,21 @@ coverImage: "/static/posts/covers/web-chat.svg"
 
 ## 下一步
 
-掌握首条消息后，可继续学习 [多轮对话与上下文管理](/posts/deepseek-multi-turn-memory/)，或直接使用 [场景模板库](/posts/deepseek-chat-scenario-library/) 快速开工。
+掌握首条消息后，可继续学习 [多轮对话与上下文管理](/posts/deepseek-multi-turn-memory/)，或直接使用 [场景模板库](/posts/deepseek-chat-scenario-library/) 快速开工。视频版步骤见 [网页对话视频教程](/posts/deepseek-chat-video-web-tutorial/)。
+
+## 常见问题
+
+**问：首条消息最长写多少字？**
+
+答：建议 150–400 字；材料很长时先摘要再附「详见下文要点 1–5」，详见 [首条消息怎么写](/posts/2026-04-01-deepseek-first-message-no-fluff/)。
+
+**问：模型按钮找不到 R1？**
+
+答：以 `chat.deepseek.com` 当前界面为准；是否显示深度思考因版本而异，可参考 [R1 什么时候开](/posts/2026-04-13-deepseek-r1-when-to-enable/)。
+
+**问：回答太长怎么办？**
+
+答：加字数上限或「只给 3 条」；更多见 [控制回答长度](/posts/2026-04-08-deepseek-answer-length-control/)。
 
 ## 相关教程
 
@@ -66,3 +82,4 @@ coverImage: "/static/posts/covers/web-chat.svg"
 - [手机端与 App 对话技巧](/posts/deepseek-mobile-app-chat/)
 - [对话场景模板库](/posts/deepseek-chat-scenario-library/)
 - [对话导出与隐私设置](/posts/deepseek-chat-export-share/)
+- [网页对话视频教程](/posts/deepseek-chat-video-web-tutorial/)

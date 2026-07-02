@@ -12,6 +12,8 @@ permalink: "/posts/deepseek-chat-export-share/index.html"
 coverImage: "/static/posts/covers/export-privacy.svg"
 ---
 
+> **30 秒结论**：分享前先脱敏；重要对话手动复制备份，勿依赖单一浏览器缓存。
+
 对话里常会输入客户资料、内部数据或未公开文案。导出与分享前，先做一次**脱敏检查**。
 
 ## 备份对话的常用方式
@@ -47,6 +49,20 @@ coverImage: "/static/posts/covers/export-privacy.svg"
 
 - 对内分享：用脱敏后的 Markdown + 结论摘要即可
 - 对外分享：避免完整对话记录，只分享经人工审核的片段
+
+## 常见问题
+
+**问：找不到旧对话？**
+
+答：确认同一账号登录；重要内容及时导出，见 [找回历史记录](/posts/2026-08-25-deepseek-find-old-chat-history/)（8 月文）。
+
+**问：分享前怎么脱敏？**
+
+答：对照上文清单；可让模型 `把下面文本中的手机号打码为 ***`。
+
+**问：聊天记录能分享同事吗？**
+
+答：用脱敏摘要即可，完整记录见 [脱敏分享](/posts/2026-04-06-deepseek-chat-desensitize-share/)。
 
 ## 相关教程
 
