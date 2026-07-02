@@ -74,6 +74,24 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => b.date - a.date);
   });
 
+  eleventyConfig.addCollection("homepagePosts", function (collectionApi) {
+    const posts = collectionApi
+      .getFilteredByGlob("posts/*.md")
+      .filter((item) => {
+        if (!item.date) return isPostIndexable(item.data);
+        const now = new Date();
+        if (item.date.getTime() > now.getTime() + 24 * 60 * 60 * 1000) return false;
+        return isPostIndexable(item.data);
+      });
+    const featured = posts
+      .filter((item) => item.data.featured === true)
+      .sort((a, b) => a.inputPath.localeCompare(b.inputPath, "zh-CN"));
+    const rest = posts
+      .filter((item) => item.data.featured !== true)
+      .sort((a, b) => b.date - a.date);
+    return [...featured, ...rest];
+  });
+
   eleventyConfig.addFilter("limit", function (arr, limit) {
     if (!Array.isArray(arr)) return [];
     return arr.slice(0, limit);

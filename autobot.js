@@ -99,8 +99,8 @@ async function runAutoBot() {
     你是熟悉 DeepSeek 与 API 开发的技术写作者。请针对主题 "${currentTopic}" 撰写一篇【简体中文】实用教程，字数 900-1500 字。
     
     【输出格式】：
-    1. 将主题 "${currentTopic}" 翻译为简短英文 slug（小写、连字符分隔），用于 URL。
-    2. 严格按以下 Markdown 头部输出，直接以 --- 开头，不要包裹 \`\`\`markdown：
+    1. 将主题 "${currentTopic}" 翻译为简短英文 slug（小写、连字符分隔），仅用于 permalink 字段，不要单独输出在 --- 之前。
+    2. 严格按以下 Markdown 头部输出，文件必须【直接以 --- 开头】，前面不得有任何 slug、标题或说明文字，不要包裹 \`\`\`markdown：
 
     ---
     title: "${currentTopic}"
@@ -170,6 +170,12 @@ async function runAutoBot() {
         try {
             let articleContent = response.text;
 
+            articleContent = articleContent.replace(/^```(?:markdown|md)?\s*\n?/i, "").replace(/\n?```\s*$/i, "");
+            articleContent = articleContent.replace(/^([a-z0-9][a-z0-9-]*)\s*\r?\n(?=---)/m, "");
+            if (!articleContent.trimStart().startsWith("---")) {
+                const fmStart = articleContent.indexOf("---");
+                if (fmStart > 0) articleContent = articleContent.slice(fmStart);
+            }
             articleContent = articleContent.replace(/permalink:\s*["']?\/posts\/([^"'\n]+)["']?/g, 'permalink: "/posts/$1"');
 
             const fileName = `${todayStr}-post-${randomId}-${currentLoop}.md`;
@@ -197,7 +203,5 @@ async function runAutoBot() {
         console.error("❌ 回写 keywords.json 失败:", e.message);
     }
 }
-
-runAutoBot();
 
 runAutoBot();

@@ -50,7 +50,7 @@ pageKeywords: DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网
   <main class="posts-area">
     <h2 class="section-title">最新教程</h2>
     <ul class="post-list">
-      {% for post in collections.indexablePosts | limit(5) %}
+      {% for post in collections.homepagePosts | limit(5) %}
         <li class="post-card">
           <div class="post-meta">
             <span class="post-date">{{ post.date | dateFilter }}</span>
