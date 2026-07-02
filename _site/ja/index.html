@@ -89,25 +89,27 @@
 
   <style>
 
-    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
 
-    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 0; }
-
-    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
-
-    .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-
-    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
-
-    nav a:last-child { margin-right: 0; }
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
 
     .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
-
     .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
 
-    main { padding: 20px 0; }
-
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
 
   </style>
 
@@ -115,66 +117,44 @@
 
 </head>
 
-<body>
+<body class="site-home">
 
 
 
-  <header>
+  <header class="site-header">
 
-    <div class="header-top">
+    <div class="site-header-inner">
 
-      <div>
+      
+      <a href="/ja/" class="site-brand">Deep<span>Seek</span></a>
+      
 
+      <nav class="site-nav" aria-label="Main">
         
-
-          <h1 style="margin:0;font-size:24px;"><a href="/ja/" class="site-logo">DeepSeek チャットガイド</a></h1>
-
+        <a href="#features">主な機能</a>
         
+        <a href="/ja/">ホーム</a>
+        <a href="/ja/posts/">記事一覧</a>
+      </nav>
 
-        <nav style="margin-top:10px;">
-
-          <a href="/ja/">ホーム</a>
-
-          <a href="/ja/posts/">記事一覧</a>
-
-        </nav>
-
-      </div>
-
-      <div class="header-actions">
-
+      <div class="header-right">
         <div class="lang-switch">
-
           <label for="lang-select">言語</label>
-
           <select id="lang-select" aria-label="言語" onchange="if(this.value){window.location.href=this.value;}">
-
             
-
             <option value="/" >🇨🇳 简体中文</option>
-
             
-
             <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
-
             
-
             <option value="/en/" >🇺🇸 English</option>
-
             
-
             <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
-
             
-
             <option value="/ja/" selected>🇯🇵 日本語</option>
-
             
-
           </select>
-
         </div>
-
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">今すぐ試す</a>
       </div>
 
     </div>
@@ -183,195 +163,184 @@
 
 
 
-  <main>
+  <main class="site-main">
 
     
 
-<header class="hero-section">
-  <div class="hero-container">
-    <h2 class="site-main-title">DeepSeek ウェブチャットのコツ</h2>
-    <p class="site-tagline">最初のメッセージの書き方、マルチターンの文脈管理、スマホでの対話、執筆・コーディング・学習向けプロンプトテンプレートを解説します。</p>
 
-    <div class="site-intro-grid">
-      
-      <div class="intro-card">
-        <h4>ウェブチャット入門</h4>
-        <p>最初のメッセージ4要素と回答の長さの調整方法。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/deepseek-chat-web-basics/">ガイドを読む →</a>
-          
-        </p>
+
+<section class="landing-hero">
+  <div class="page-wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-headline">DeepSeek をあなたの対話パートナーに</h1>
+      <p class="hero-lead">DeepSeek は自然な対話、マルチターン文脈、コーディング支援、創作をサポートする AI アシスタントです。公式ウェブチャットで無料開始。</p>
+      <div class="hero-actions">
+        <a href="https://chat.deepseek.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">無料で始める</a>
+        <a href="#guides" class="btn btn-outline">使い方ガイド</a>
       </div>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/hero-deepseek-chat.svg" alt="DeepSeek ウェブチャット画面" width="640" height="480" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="landing-features" id="features">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">DeepSeek の主な機能</h2>
+      <p class="section-desc">学習・仕事・創作に対応する強力なチャットモデル。</p>
+    </div>
+    <div class="features-grid">
       
-      <div class="intro-card">
-        <h4>マルチターン文脈</h4>
-        <p>新規チャットのタイミング、長いタスクの分割、矛盾の回避。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/deepseek-multi-turn-memory/">ガイドを読む →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🤖</div>
+        <h3>スマート対話</h3>
+        <p>文脈を理解した自然な会話と正確な回答。</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>モバイルのコツ</h4>
-        <p>スマホ・弱い回線・中断時のプロンプトの書き方。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/deepseek-mobile-app-chat/">ガイドを読む →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">💻</div>
+        <h3>コーディング支援</h3>
+        <p>エラー説明、コードレビュー、スニペット生成。</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>シナリオ集</h4>
-        <p>執筆・コーディング・学習向けのコピペ用プロンプト。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/deepseek-chat-scenario-library/">ガイドを読む →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">✍️</div>
+        <h3>クリエイティブ執筆</h3>
+        <p>メール、文案、レポート構成の下書き。</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>エクスポートとプライバシー</h4>
-        <p>会話のバックアップ、安全な共有、ブラウザ履歴の削除。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/deepseek-chat-export-share/">ガイドを読む →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <h3>マルチデバイス</h3>
+        <p>スマホブラウザやアプリからいつでもチャット。</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>その他の記事</h4>
-        <p>チャットのヒントと活用例のアーカイブを見る。</p>
-        <p class="card-link">
-          
-            <a href="/ja/posts/">すべて見る →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📚</div>
+        <h3>学習・試験</h3>
+        <p>読書メモ、概念説明、面接練習テンプレート。</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h3>プロンプト集</h3>
+        <p>執筆・コーディング・学習向けコピペ用テンプレ。</p>
+      </article>
       
     </div>
   </div>
-</header>
+</section>
 
-<div class="main-layout hero-container">
-  <main class="posts-area">
-    <h2 class="section-title">最新ガイド</h2>
-    <p class="posts-locale-note">以下のガイドは日本語版です。その他の記事は簡体字中国語のままです。</p>
-    <ul class="post-list">
-      
-      
-      
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ja/posts/deepseek-chat-web-basics/">DeepSeek ウェブチャット入門：初回から使える回答を得る</a>
-          </h3>
-          <p class="post-excerpt">モデル選択、最初のメッセージの書き方、回答の長さの調整まで。DeepSeek ウェブ版で安定した対話結果を得る方法。</p>
-          <div class="post-card-footer">
-            <a href="/ja/posts/deepseek-chat-web-basics/" class="read-more-btn">続きを読む →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ja/posts/deepseek-multi-turn-memory/">DeepSeek マルチターン対話と文脈管理</a>
-          </h3>
-          <p class="post-excerpt">話題の分割、文脈長の制御、矛盾の回避、長いタスクでの一貫した出力を保つ方法。</p>
-          <div class="post-card-footer">
-            <a href="/ja/posts/deepseek-multi-turn-memory/" class="read-more-btn">続きを読む →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ja/posts/deepseek-mobile-app-chat/">DeepSeek モバイル・アプリでのチャットのコツ</a>
-          </h3>
-          <p class="post-excerpt">スマホブラウザ、アプリ内ブラウザ、公式アプリでの DeepSeek チャット実践ガイド。</p>
-          <div class="post-card-footer">
-            <a href="/ja/posts/deepseek-mobile-app-chat/" class="read-more-btn">続きを読む →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ja/posts/deepseek-chat-scenario-library/">DeepSeek チャットシナリオ集：執筆・コーディング・学習テンプレート</a>
-          </h3>
-          <p class="post-excerpt">コピペで使える DeepSeek ウェブチャット用プロンプト集。文案、コード、読書メモ、面接練習など。</p>
-          <div class="post-card-footer">
-            <a href="/ja/posts/deepseek-chat-scenario-library/" class="read-more-btn">続きを読む →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ja/posts/deepseek-chat-export-share/">DeepSeek 会話のエクスポート・共有とプライバシー</a>
-          </h3>
-          <p class="post-excerpt">会話のバックアップ、安全な共有、ローカルデータの削除によるプライバシー保護。</p>
-          <div class="post-card-footer">
-            <a href="/ja/posts/deepseek-chat-export-share/" class="read-more-btn">続きを読む →</a>
-          </div>
-        </li>
-      
-    </ul>
-    <p class="more-archive-box">
-      <a href="/ja/posts/" class="archive-btn">記事一覧へ →</a>
-    </p>
-  </main>
-
-  <aside class="sidebar-area">
-    <div class="sidebar-widget about-widget">
-      <h3 class="widget-title">このサイトについて</h3>
-      <p>deepseek-chat.com は DeepSeek の日常チャット利用に特化した多言語ランディングページです。</p>
+<section class="landing-guides" id="guides">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">使い方ガイド</h2>
+      <p class="section-desc">最新チュートリアルとチャットのコツ</p>
     </div>
-  </aside>
-</div>
+    <p class="posts-locale-note">以下のガイドは日本語版です。その他の記事は簡体字中国語のままです。</p>
+    <div class="guides-grid">
+      
+      
+      
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ja/posts/deepseek-chat-web-basics/">DeepSeek ウェブチャット入門：初回から使える回答を得る</a></h3>
+        <p class="guide-excerpt">モデル選択、最初のメッセージの書き方、回答の長さの調整まで。DeepSeek ウェブ版で安定した対話結果を得る方法。</p>
+        <a href="/ja/posts/deepseek-chat-web-basics/" class="guide-link">続きを読む →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ja/posts/deepseek-multi-turn-memory/">DeepSeek マルチターン対話と文脈管理</a></h3>
+        <p class="guide-excerpt">話題の分割、文脈長の制御、矛盾の回避、長いタスクでの一貫した出力を保つ方法。</p>
+        <a href="/ja/posts/deepseek-multi-turn-memory/" class="guide-link">続きを読む →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ja/posts/deepseek-mobile-app-chat/">DeepSeek モバイル・アプリでのチャットのコツ</a></h3>
+        <p class="guide-excerpt">スマホブラウザ、アプリ内ブラウザ、公式アプリでの DeepSeek チャット実践ガイド。</p>
+        <a href="/ja/posts/deepseek-mobile-app-chat/" class="guide-link">続きを読む →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ja/posts/deepseek-chat-scenario-library/">DeepSeek チャットシナリオ集：執筆・コーディング・学習テンプレート</a></h3>
+        <p class="guide-excerpt">コピペで使える DeepSeek ウェブチャット用プロンプト集。文案、コード、読書メモ、面接練習など。</p>
+        <a href="/ja/posts/deepseek-chat-scenario-library/" class="guide-link">続きを読む →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ja/posts/deepseek-chat-export-share/">DeepSeek 会話のエクスポート・共有とプライバシー</a></h3>
+        <p class="guide-excerpt">会話のバックアップ、安全な共有、ローカルデータの削除によるプライバシー保護。</p>
+        <a href="/ja/posts/deepseek-chat-export-share/" class="guide-link">続きを読む →</a>
+      </article>
+      
+    </div>
+    <p class="guides-more">
+      <a href="/ja/posts/" class="btn btn-outline">記事一覧へ →</a>
+    </p>
+  </div>
+</section>
 
 <style>
-  :root { --primary-color: #0066cc; --text-main: #222; --text-muted: #666; --bg-light: #f8fafc; --border-color: #e2e8f0; }
-  .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
-  .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 50px 0; margin-bottom: 35px; text-align: center; }
-  .site-main-title { font-size: 2.2rem; margin: 0 0 15px; font-weight: 700; }
-  .site-tagline { color: #94a3b8; font-size: 1.05rem; max-width: 720px; margin: 0 auto 35px; line-height: 1.7; }
-  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
-  .intro-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 8px; }
-  .intro-card h4 { color: #38bdf8; font-size: 1.05rem; margin: 0 0 10px; }
-  .intro-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.6; }
-  .card-link { margin-top: 12px !important; }
-  .card-link a { color: #7dd3fc; font-weight: 600; text-decoration: none; }
-  .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 50px; }
-  @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
-  .posts-locale-note { color: #64748b; font-size: 0.9rem; margin: -8px 0 16px; }
-  .post-list { list-style: none; padding: 0; margin: 0; }
-  .post-card { background: #fff; border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin-bottom: 20px; }
-  .post-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
-  .post-title { font-size: 1.35rem; margin: 0 0 10px; }
-  .post-title a { color: var(--text-main); text-decoration: none; }
-  .post-excerpt { color: #475569; font-size: 0.95rem; margin: 0 0 15px; }
-  .read-more-btn { color: var(--primary-color); text-decoration: none; font-weight: 500; }
-  .archive-btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; border-radius: 6px; font-weight: bold; }
-  .section-title { font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
-  .sidebar-widget { background: var(--bg-light); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 24px; }
-  .widget-title { font-size: 1.1rem; border-left: 4px solid var(--primary-color); padding-left: 10px; margin: 0 0 15px; }
+  .page-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+  .landing-hero { background: linear-gradient(160deg, #f8fafc 0%, #e0f2fe 45%, #f0f9ff 100%); padding: 48px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-headline { font-size: clamp(1.85rem, 4vw, 2.75rem); line-height: 1.2; margin: 0 0 16px; color: #0f172a; font-weight: 800; letter-spacing: -0.02em; }
+  .hero-lead { font-size: 1.05rem; line-height: 1.75; color: #475569; margin: 0 0 28px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff; box-shadow: 0 8px 24px rgba(0,102,204,.28); }
+  .btn-outline { background: #fff; color: #0066cc; border: 1px solid #cbd5e1; }
+  .hero-visual img { width: 100%; height: auto; display: block; border-radius: 16px; }
+  .landing-features { padding: 64px 0; background: #fff; }
+  .landing-guides { padding: 64px 0 80px; background: #f8fafc; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .section-heading { font-size: 1.75rem; margin: 0 0 12px; color: #0f172a; font-weight: 700; }
+  .section-desc { margin: 0; color: #64748b; font-size: 1rem; line-height: 1.7; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; transition: box-shadow .2s, border-color .2s; }
+  .feature-card:hover { box-shadow: 0 12px 32px rgba(15,23,42,.06); border-color: #bfdbfe; }
+  .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+  .feature-card h3 { margin: 0 0 10px; font-size: 1.1rem; color: #0f172a; }
+  .feature-card p { margin: 0; font-size: 0.92rem; color: #64748b; line-height: 1.65; }
+  .posts-locale-note { text-align: center; color: #64748b; font-size: 0.9rem; margin: -16px 0 28px; }
+  .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+  .guide-meta { font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; }
+  .guide-title { font-size: 1.05rem; margin: 0 0 10px; line-height: 1.4; }
+  .guide-title a { color: #0f172a; text-decoration: none; }
+  .guide-title a:hover { color: #0066cc; }
+  .guide-excerpt { flex: 1; margin: 0 0 14px; font-size: 0.9rem; color: #64748b; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .guide-link { font-size: 0.9rem; font-weight: 600; color: #0066cc; text-decoration: none; }
+  .guides-more { text-align: center; margin: 40px 0 0; }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-lead { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; max-width: 520px; margin: 0 auto; }
+    .features-grid, .guides-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .features-grid, .guides-grid { grid-template-columns: 1fr; }
+    .landing-hero { padding: 32px 0 48px; }
+  }
 </style>
 
 
@@ -380,7 +349,7 @@
 
 
 
-  <footer>
+  <footer class="site-footer">
 
     <p>&copy; 2026 DeepSeek チャットガイド · 非公式の DeepSeek 利用ガイドです。 · <a href="/privacy/" style="color:#888;">プライバシー</a></p>
 

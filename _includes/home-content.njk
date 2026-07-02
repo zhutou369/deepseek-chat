@@ -1,88 +1,111 @@
-<header class="hero-section">
-  <div class="hero-container">
-    <h2 class="site-main-title">{{ t.heroTitle }}</h2>
-    <p class="site-tagline">{{ t.heroText }}</p>
+{% set chatUrl = "https://chat.deepseek.com/" %}
 
-    <div class="site-intro-grid">
-      {% for card in t.cards %}
-      <div class="intro-card">
-        <h4>{{ card.title }}</h4>
-        <p>{{ card.desc }}</p>
-        <p class="card-link">
-          {% if card.all %}
-            <a href="{{ locale | postPath }}">{{ t.viewAll }}</a>
-          {% else %}
-            <a href="{{ locale | postPath(card.slug) }}">{{ t.readMore }}</a>
-          {% endif %}
-        </p>
+<section class="landing-hero">
+  <div class="page-wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-headline">{{ t.heroHeadline }}</h1>
+      <p class="hero-lead">{{ t.heroLead }}</p>
+      <div class="hero-actions">
+        <a href="{{ chatUrl }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ t.ctaStart }}</a>
+        <a href="#guides" class="btn btn-outline">{{ t.ctaGuide }}</a>
       </div>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/hero-deepseek-chat.svg" alt="{{ t.heroImageAlt }}" width="640" height="480" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="landing-features" id="features">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">{{ t.featuresTitle }}</h2>
+      <p class="section-desc">{{ t.featuresDesc }}</p>
+    </div>
+    <div class="features-grid">
+      {% for f in t.features %}
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">{{ f.icon }}</div>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.desc }}</p>
+      </article>
       {% endfor %}
     </div>
   </div>
-</header>
+</section>
 
-<div class="main-layout hero-container">
-  <main class="posts-area">
-    <h2 class="section-title">{{ t.latestTitle }}</h2>
+<section class="landing-guides" id="guides">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">{{ t.guidesTitle }}</h2>
+      <p class="section-desc">{{ t.guidesDesc }}</p>
+    </div>
     <p class="posts-locale-note">{{ t.postsNote }}</p>
-    <ul class="post-list">
+    <div class="guides-grid">
       {% if locale == 'zh-CN' %}
-      {% set latestPosts = collections.homepagePosts | limit(5) %}
+      {% set latestPosts = collections.homepagePosts | limit(9) %}
       {% else %}
-      {% set latestPosts = collections.pillarPosts | forLocale(locale) | limit(5) %}
+      {% set latestPosts = collections.pillarPosts | forLocale(locale) %}
       {% endif %}
       {% for post in latestPosts %}
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">{{ post.date | dateFilter }}</span>
-          </div>
-          <h3 class="post-title">
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
-          </h3>
-          <p class="post-excerpt">{{ post.data.description }}</p>
-          <div class="post-card-footer">
-            <a href="{{ post.url }}" class="read-more-btn">{{ t.readFull }}</a>
-          </div>
-        </li>
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">{{ post.date | dateFilter }}</span>
+        </div>
+        <h3 class="guide-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p class="guide-excerpt">{{ post.data.description }}</p>
+        <a href="{{ post.url }}" class="guide-link">{{ t.readFull }}</a>
+      </article>
       {% endfor %}
-    </ul>
-    <p class="more-archive-box">
-      <a href="{{ locale | postPath }}" class="archive-btn">{{ t.archiveBtn }}</a>
-    </p>
-  </main>
-
-  <aside class="sidebar-area">
-    <div class="sidebar-widget about-widget">
-      <h3 class="widget-title">{{ t.aboutTitle }}</h3>
-      <p>{{ t.aboutText }}</p>
     </div>
-  </aside>
-</div>
+    <p class="guides-more">
+      <a href="{{ locale | postPath }}" class="btn btn-outline">{{ t.archiveBtn }}</a>
+    </p>
+  </div>
+</section>
 
 <style>
-  :root { --primary-color: #0066cc; --text-main: #222; --text-muted: #666; --bg-light: #f8fafc; --border-color: #e2e8f0; }
-  .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
-  .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 50px 0; margin-bottom: 35px; text-align: center; }
-  .site-main-title { font-size: 2.2rem; margin: 0 0 15px; font-weight: 700; }
-  .site-tagline { color: #94a3b8; font-size: 1.05rem; max-width: 720px; margin: 0 auto 35px; line-height: 1.7; }
-  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
-  .intro-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 8px; }
-  .intro-card h4 { color: #38bdf8; font-size: 1.05rem; margin: 0 0 10px; }
-  .intro-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.6; }
-  .card-link { margin-top: 12px !important; }
-  .card-link a { color: #7dd3fc; font-weight: 600; text-decoration: none; }
-  .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 50px; }
-  @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
-  .posts-locale-note { color: #64748b; font-size: 0.9rem; margin: -8px 0 16px; }
-  .post-list { list-style: none; padding: 0; margin: 0; }
-  .post-card { background: #fff; border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin-bottom: 20px; }
-  .post-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
-  .post-title { font-size: 1.35rem; margin: 0 0 10px; }
-  .post-title a { color: var(--text-main); text-decoration: none; }
-  .post-excerpt { color: #475569; font-size: 0.95rem; margin: 0 0 15px; }
-  .read-more-btn { color: var(--primary-color); text-decoration: none; font-weight: 500; }
-  .archive-btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; border-radius: 6px; font-weight: bold; }
-  .section-title { font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
-  .sidebar-widget { background: var(--bg-light); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 24px; }
-  .widget-title { font-size: 1.1rem; border-left: 4px solid var(--primary-color); padding-left: 10px; margin: 0 0 15px; }
+  .page-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+  .landing-hero { background: linear-gradient(160deg, #f8fafc 0%, #e0f2fe 45%, #f0f9ff 100%); padding: 48px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-headline { font-size: clamp(1.85rem, 4vw, 2.75rem); line-height: 1.2; margin: 0 0 16px; color: #0f172a; font-weight: 800; letter-spacing: -0.02em; }
+  .hero-lead { font-size: 1.05rem; line-height: 1.75; color: #475569; margin: 0 0 28px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff; box-shadow: 0 8px 24px rgba(0,102,204,.28); }
+  .btn-outline { background: #fff; color: #0066cc; border: 1px solid #cbd5e1; }
+  .hero-visual img { width: 100%; height: auto; display: block; border-radius: 16px; }
+  .landing-features { padding: 64px 0; background: #fff; }
+  .landing-guides { padding: 64px 0 80px; background: #f8fafc; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .section-heading { font-size: 1.75rem; margin: 0 0 12px; color: #0f172a; font-weight: 700; }
+  .section-desc { margin: 0; color: #64748b; font-size: 1rem; line-height: 1.7; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; transition: box-shadow .2s, border-color .2s; }
+  .feature-card:hover { box-shadow: 0 12px 32px rgba(15,23,42,.06); border-color: #bfdbfe; }
+  .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+  .feature-card h3 { margin: 0 0 10px; font-size: 1.1rem; color: #0f172a; }
+  .feature-card p { margin: 0; font-size: 0.92rem; color: #64748b; line-height: 1.65; }
+  .posts-locale-note { text-align: center; color: #64748b; font-size: 0.9rem; margin: -16px 0 28px; }
+  .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+  .guide-meta { font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; }
+  .guide-title { font-size: 1.05rem; margin: 0 0 10px; line-height: 1.4; }
+  .guide-title a { color: #0f172a; text-decoration: none; }
+  .guide-title a:hover { color: #0066cc; }
+  .guide-excerpt { flex: 1; margin: 0 0 14px; font-size: 0.9rem; color: #64748b; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .guide-link { font-size: 0.9rem; font-weight: 600; color: #0066cc; text-decoration: none; }
+  .guides-more { text-align: center; margin: 40px 0 0; }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-lead { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; max-width: 520px; margin: 0 auto; }
+    .features-grid, .guides-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .features-grid, .guides-grid { grid-template-columns: 1fr; }
+    .landing-hero { padding: 32px 0 48px; }
+  }
 </style>

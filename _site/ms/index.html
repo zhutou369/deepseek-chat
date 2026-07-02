@@ -89,25 +89,27 @@
 
   <style>
 
-    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
 
-    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 0; }
-
-    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
-
-    .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-
-    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
-
-    nav a:last-child { margin-right: 0; }
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
 
     .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
-
     .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
 
-    main { padding: 20px 0; }
-
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
 
   </style>
 
@@ -115,66 +117,44 @@
 
 </head>
 
-<body>
+<body class="site-home">
 
 
 
-  <header>
+  <header class="site-header">
 
-    <div class="header-top">
+    <div class="site-header-inner">
 
-      <div>
+      
+      <a href="/ms/" class="site-brand">Deep<span>Seek</span></a>
+      
 
+      <nav class="site-nav" aria-label="Main">
         
-
-          <h1 style="margin:0;font-size:24px;"><a href="/ms/" class="site-logo">Panduan Sembang DeepSeek</a></h1>
-
+        <a href="#features">Ciri utama</a>
         
+        <a href="/ms/">Laman Utama</a>
+        <a href="/ms/posts/">Artikel</a>
+      </nav>
 
-        <nav style="margin-top:10px;">
-
-          <a href="/ms/">Laman Utama</a>
-
-          <a href="/ms/posts/">Artikel</a>
-
-        </nav>
-
-      </div>
-
-      <div class="header-actions">
-
+      <div class="header-right">
         <div class="lang-switch">
-
           <label for="lang-select">Bahasa</label>
-
           <select id="lang-select" aria-label="Bahasa" onchange="if(this.value){window.location.href=this.value;}">
-
             
-
             <option value="/" >🇨🇳 简体中文</option>
-
             
-
             <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
-
             
-
             <option value="/en/" >🇺🇸 English</option>
-
             
-
             <option value="/ms/" selected>🇲🇾 Bahasa Melayu</option>
-
             
-
             <option value="/ja/" >🇯🇵 日本語</option>
-
             
-
           </select>
-
         </div>
-
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">Cuba sekarang</a>
       </div>
 
     </div>
@@ -183,195 +163,184 @@
 
 
 
-  <main>
+  <main class="site-main">
 
     
 
-<header class="hero-section">
-  <div class="hero-container">
-    <h2 class="site-main-title">Tip Sembang Web DeepSeek</h2>
-    <p class="site-tagline">Belajar menulis mesej pertama yang lebih baik, mengurus konteks berbilang giliran, bersembang di telefon, dan menggunakan templat prompt untuk penulisan, pengekodan, dan pembelajaran.</p>
 
-    <div class="site-intro-grid">
-      
-      <div class="intro-card">
-        <h4>Asas sembang web</h4>
-        <p>Empat elemen mesej pertama dan cara mengawal panjang jawapan.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/deepseek-chat-web-basics/">Baca panduan →</a>
-          
-        </p>
+
+<section class="landing-hero">
+  <div class="page-wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-headline">Jadikan DeepSeek rakan sembang pintar anda</h1>
+      <p class="hero-lead">DeepSeek ialah pembantu AI untuk dialog semula jadi, konteks berbilang giliran, bantuan pengekodan, dan penulisan kreatif. Mulakan percuma di sembang web rasmi.</p>
+      <div class="hero-actions">
+        <a href="https://chat.deepseek.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Mula percuma</a>
+        <a href="#guides" class="btn btn-outline">Panduan pengguna</a>
       </div>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/hero-deepseek-chat.svg" alt="Antara muka sembang web DeepSeek" width="640" height="480" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="landing-features" id="features">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">Keupayaan utama DeepSeek</h2>
+      <p class="section-desc">Model sembang berkuasa untuk pembelajaran, kerja, dan penciptaan.</p>
+    </div>
+    <div class="features-grid">
       
-      <div class="intro-card">
-        <h4>Konteks berbilang giliran</h4>
-        <p>Bila memulakan sembang baharu, pecahkan tugas panjang, elakkan percanggahan.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/deepseek-multi-turn-memory/">Baca panduan →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🤖</div>
+        <h3>Dialog pintar</h3>
+        <p>Sembang bahasa semula jadi dengan jawapan koheren.</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>Tip sembang mudah alih</h4>
-        <p>Corak prompt untuk telefon, rangkaian lemah, dan jawapan terganggu.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/deepseek-mobile-app-chat/">Baca panduan →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">💻</div>
+        <h3>Bantuan kod</h3>
+        <p>Terangkan ralat dan semak kod dengan cepat.</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>Perpustakaan templat</h4>
-        <p>Prompt sedia salin untuk penulisan, pengekodan, dan pembelajaran.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/deepseek-chat-scenario-library/">Baca panduan →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">✍️</div>
+        <h3>Penulisan kreatif</h3>
+        <p>Draf e-mel, salinan, dan rangka laporan.</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>Eksport &amp; privasi</h4>
-        <p>Sandarkan sembang, kongsi dengan selamat, dan kosongkan jejak pelayar.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/deepseek-chat-export-share/">Baca panduan →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <h3>Pelbagai peranti</h3>
+        <p>Sembang di telefon dan pelayar mudah alih.</p>
+      </article>
       
-      <div class="intro-card">
-        <h4>Lebih banyak artikel</h4>
-        <p>Layari arkib penuh tip sembang dan kes penggunaan.</p>
-        <p class="card-link">
-          
-            <a href="/ms/posts/">Lihat semua →</a>
-          
-        </p>
-      </div>
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📚</div>
+        <h3>Pembelajaran</h3>
+        <p>Nota bacaan dan latihan temu duga.</p>
+      </article>
+      
+      <article class="feature-card">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h3>Perpustakaan prompt</h3>
+        <p>Templat sedia salin untuk pelbagai senario.</p>
+      </article>
       
     </div>
   </div>
-</header>
+</section>
 
-<div class="main-layout hero-container">
-  <main class="posts-area">
-    <h2 class="section-title">Panduan terkini</h2>
-    <p class="posts-locale-note">Panduan utama di bawah tersedia dalam Bahasa Melayu. Artikel tambahan kekal dalam Bahasa Cina Ringkas.</p>
-    <ul class="post-list">
-      
-      
-      
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ms/posts/deepseek-chat-web-basics/">Asas Sembang Web DeepSeek: Dapatkan Jawapan Berguna pada Percubaan Pertama</a>
-          </h3>
-          <p class="post-excerpt">Daripada memilih model dan menulis mesej pertama hingga mengawal panjang jawapan — hasilkan output stabil dalam sembang web DeepSeek.</p>
-          <div class="post-card-footer">
-            <a href="/ms/posts/deepseek-chat-web-basics/" class="read-more-btn">Baca penuh →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ms/posts/deepseek-multi-turn-memory/">Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks</a>
-          </h3>
-          <p class="post-excerpt">Cara memecahkan topik, mengawal panjang konteks, mengelak percanggahan, dan mengekalkan konsistensi dalam perbualan panjang.</p>
-          <div class="post-card-footer">
-            <a href="/ms/posts/deepseek-multi-turn-memory/" class="read-more-btn">Baca penuh →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ms/posts/deepseek-mobile-app-chat/">Tip Sembang Mudah Alih &amp; App DeepSeek</a>
-          </h3>
-          <p class="post-excerpt">Tip praktikal untuk sembang DeepSeek di pelayar mudah alih, WebView dalam aplikasi, dan app rasmi — input suara dan rangkaian lemah.</p>
-          <div class="post-card-footer">
-            <a href="/ms/posts/deepseek-mobile-app-chat/" class="read-more-btn">Baca penuh →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ms/posts/deepseek-chat-scenario-library/">Perpustakaan Senario Sembang DeepSeek: Penulisan, Pengekodan &amp; Pembelajaran</a>
-          </h3>
-          <p class="post-excerpt">Templat prompt sedia salin untuk sembang web DeepSeek — penyuntingan salinan, penjelasan kod, nota bacaan, dan latihan temu duga.</p>
-          <div class="post-card-footer">
-            <a href="/ms/posts/deepseek-chat-scenario-library/" class="read-more-btn">Baca penuh →</a>
-          </div>
-        </li>
-      
-        <li class="post-card">
-          <div class="post-meta">
-            <span class="post-date">2026-07-02</span>
-          </div>
-          <h3 class="post-title">
-            <a href="/ms/posts/deepseek-chat-export-share/">Eksport, Kongsi &amp; Privasi Sembang DeepSeek</a>
-          </h3>
-          <p class="post-excerpt">Cara membuat sandaran perbualan DeepSeek, berkongsi petikan dengan selamat, dan mengosongkan data tempatan.</p>
-          <div class="post-card-footer">
-            <a href="/ms/posts/deepseek-chat-export-share/" class="read-more-btn">Baca penuh →</a>
-          </div>
-        </li>
-      
-    </ul>
-    <p class="more-archive-box">
-      <a href="/ms/posts/" class="archive-btn">Lihat semua artikel →</a>
-    </p>
-  </main>
-
-  <aside class="sidebar-area">
-    <div class="sidebar-widget about-widget">
-      <h3 class="widget-title">Tentang laman ini</h3>
-      <p>deepseek-chat.com memberi tumpuan kepada aliran kerja sembang DeepSeek harian dengan halaman utama berbilang bahasa.</p>
+<section class="landing-guides" id="guides">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2 class="section-heading">Panduan pengguna</h2>
+      <p class="section-desc">Tutorial terkini dan tip sembang DeepSeek</p>
     </div>
-  </aside>
-</div>
+    <p class="posts-locale-note">Panduan utama di bawah tersedia dalam Bahasa Melayu. Artikel tambahan kekal dalam Bahasa Cina Ringkas.</p>
+    <div class="guides-grid">
+      
+      
+      
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ms/posts/deepseek-chat-web-basics/">Asas Sembang Web DeepSeek: Dapatkan Jawapan Berguna pada Percubaan Pertama</a></h3>
+        <p class="guide-excerpt">Daripada memilih model dan menulis mesej pertama hingga mengawal panjang jawapan — hasilkan output stabil dalam sembang web DeepSeek.</p>
+        <a href="/ms/posts/deepseek-chat-web-basics/" class="guide-link">Baca penuh →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ms/posts/deepseek-multi-turn-memory/">Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks</a></h3>
+        <p class="guide-excerpt">Cara memecahkan topik, mengawal panjang konteks, mengelak percanggahan, dan mengekalkan konsistensi dalam perbualan panjang.</p>
+        <a href="/ms/posts/deepseek-multi-turn-memory/" class="guide-link">Baca penuh →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ms/posts/deepseek-mobile-app-chat/">Tip Sembang Mudah Alih &amp; App DeepSeek</a></h3>
+        <p class="guide-excerpt">Tip praktikal untuk sembang DeepSeek di pelayar mudah alih, WebView dalam aplikasi, dan app rasmi — input suara dan rangkaian lemah.</p>
+        <a href="/ms/posts/deepseek-mobile-app-chat/" class="guide-link">Baca penuh →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ms/posts/deepseek-chat-scenario-library/">Perpustakaan Senario Sembang DeepSeek: Penulisan, Pengekodan &amp; Pembelajaran</a></h3>
+        <p class="guide-excerpt">Templat prompt sedia salin untuk sembang web DeepSeek — penyuntingan salinan, penjelasan kod, nota bacaan, dan latihan temu duga.</p>
+        <a href="/ms/posts/deepseek-chat-scenario-library/" class="guide-link">Baca penuh →</a>
+      </article>
+      
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-date">2026-07-02</span>
+        </div>
+        <h3 class="guide-title"><a href="/ms/posts/deepseek-chat-export-share/">Eksport, Kongsi &amp; Privasi Sembang DeepSeek</a></h3>
+        <p class="guide-excerpt">Cara membuat sandaran perbualan DeepSeek, berkongsi petikan dengan selamat, dan mengosongkan data tempatan.</p>
+        <a href="/ms/posts/deepseek-chat-export-share/" class="guide-link">Baca penuh →</a>
+      </article>
+      
+    </div>
+    <p class="guides-more">
+      <a href="/ms/posts/" class="btn btn-outline">Lihat semua artikel →</a>
+    </p>
+  </div>
+</section>
 
 <style>
-  :root { --primary-color: #0066cc; --text-main: #222; --text-muted: #666; --bg-light: #f8fafc; --border-color: #e2e8f0; }
-  .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
-  .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 50px 0; margin-bottom: 35px; text-align: center; }
-  .site-main-title { font-size: 2.2rem; margin: 0 0 15px; font-weight: 700; }
-  .site-tagline { color: #94a3b8; font-size: 1.05rem; max-width: 720px; margin: 0 auto 35px; line-height: 1.7; }
-  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
-  .intro-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 8px; }
-  .intro-card h4 { color: #38bdf8; font-size: 1.05rem; margin: 0 0 10px; }
-  .intro-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.6; }
-  .card-link { margin-top: 12px !important; }
-  .card-link a { color: #7dd3fc; font-weight: 600; text-decoration: none; }
-  .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 50px; }
-  @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
-  .posts-locale-note { color: #64748b; font-size: 0.9rem; margin: -8px 0 16px; }
-  .post-list { list-style: none; padding: 0; margin: 0; }
-  .post-card { background: #fff; border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin-bottom: 20px; }
-  .post-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
-  .post-title { font-size: 1.35rem; margin: 0 0 10px; }
-  .post-title a { color: var(--text-main); text-decoration: none; }
-  .post-excerpt { color: #475569; font-size: 0.95rem; margin: 0 0 15px; }
-  .read-more-btn { color: var(--primary-color); text-decoration: none; font-weight: 500; }
-  .archive-btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; border-radius: 6px; font-weight: bold; }
-  .section-title { font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
-  .sidebar-widget { background: var(--bg-light); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 24px; }
-  .widget-title { font-size: 1.1rem; border-left: 4px solid var(--primary-color); padding-left: 10px; margin: 0 0 15px; }
+  .page-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+  .landing-hero { background: linear-gradient(160deg, #f8fafc 0%, #e0f2fe 45%, #f0f9ff 100%); padding: 48px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-headline { font-size: clamp(1.85rem, 4vw, 2.75rem); line-height: 1.2; margin: 0 0 16px; color: #0f172a; font-weight: 800; letter-spacing: -0.02em; }
+  .hero-lead { font-size: 1.05rem; line-height: 1.75; color: #475569; margin: 0 0 28px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff; box-shadow: 0 8px 24px rgba(0,102,204,.28); }
+  .btn-outline { background: #fff; color: #0066cc; border: 1px solid #cbd5e1; }
+  .hero-visual img { width: 100%; height: auto; display: block; border-radius: 16px; }
+  .landing-features { padding: 64px 0; background: #fff; }
+  .landing-guides { padding: 64px 0 80px; background: #f8fafc; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .section-heading { font-size: 1.75rem; margin: 0 0 12px; color: #0f172a; font-weight: 700; }
+  .section-desc { margin: 0; color: #64748b; font-size: 1rem; line-height: 1.7; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; transition: box-shadow .2s, border-color .2s; }
+  .feature-card:hover { box-shadow: 0 12px 32px rgba(15,23,42,.06); border-color: #bfdbfe; }
+  .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+  .feature-card h3 { margin: 0 0 10px; font-size: 1.1rem; color: #0f172a; }
+  .feature-card p { margin: 0; font-size: 0.92rem; color: #64748b; line-height: 1.65; }
+  .posts-locale-note { text-align: center; color: #64748b; font-size: 0.9rem; margin: -16px 0 28px; }
+  .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+  .guide-meta { font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; }
+  .guide-title { font-size: 1.05rem; margin: 0 0 10px; line-height: 1.4; }
+  .guide-title a { color: #0f172a; text-decoration: none; }
+  .guide-title a:hover { color: #0066cc; }
+  .guide-excerpt { flex: 1; margin: 0 0 14px; font-size: 0.9rem; color: #64748b; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .guide-link { font-size: 0.9rem; font-weight: 600; color: #0066cc; text-decoration: none; }
+  .guides-more { text-align: center; margin: 40px 0 0; }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-lead { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; max-width: 520px; margin: 0 auto; }
+    .features-grid, .guides-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .features-grid, .guides-grid { grid-template-columns: 1fr; }
+    .landing-hero { padding: 32px 0 48px; }
+  }
 </style>
 
 
@@ -380,7 +349,7 @@
 
 
 
-  <footer>
+  <footer class="site-footer">
 
     <p>&copy; 2026 Panduan Sembang DeepSeek · Laman panduan pihak ketiga — bukan laman rasmi DeepSeek. · <a href="/privacy/" style="color:#888;">Privasi</a></p>
 
