@@ -5,7 +5,7 @@ date: 2026-04-03
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-03-deepseek-mobile-data-saving/index.html"
-coverImage: "/static/posts/chat-mobile-cover.svg"
+coverImage: "/static/posts/covers/mobile-chat.svg"
 generated: true
 ---
 
@@ -21,7 +21,7 @@ generated: true
 
 更多移动端技巧见 [手机端对话技巧](/posts/deepseek-mobile-app-chat/)。
 
-![DeepSeek 手机浏览器对话省流示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 手机浏览器对话省流示意](/static/posts/covers/step-guide.svg)
 
 ## 弱网续写指令
 

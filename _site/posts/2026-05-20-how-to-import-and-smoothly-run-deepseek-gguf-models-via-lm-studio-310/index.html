@@ -60,13 +60,13 @@
 
   <meta property="og:locale" content="zh_CN">
 
-  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=4">
 
   <meta property="og:image:alt" content="如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型">
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=4">
 
   <script type="application/ld+json">
 
@@ -168,7 +168,7 @@
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/chat-memory-cover.svg?v=3" alt="如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/covers/multi-turn.svg?v=4" alt="如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -244,7 +244,7 @@
 <li><strong>Q2_K、Q3_K_M：</strong> 占用显存最少，但精度损失较大，通常用于资源极端受限的场景。</li>
 </ul>
 <p>选择模型的原则是：<strong>在你的硬件允许范围内，选择量化级别最高的模型。</strong> 对于初次尝试，建议从 Q4_K_M 或 Q5_K_M 版本开始。</p>
-<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="GGUF model downloading and selection process">
+<p><img src="/static/posts/covers/step-guide.svg?v=4" alt="GGUF model downloading and selection process">
 <em>图片描述：GGUF模型下载和选择过程，示意了多种模型版本和量化级别的选项。</em></p>
 <p><strong>下载方式：</strong></p>
 <ul>
@@ -304,7 +304,7 @@
 <li><strong>量化选择：</strong> 如果即使 <code>n_gpu_layers</code> 设为很低仍然显存不足，或者推理速度不尽如人意，可以考虑下载一个更低量化级别的模型（例如从 Q5_K_M 切换到 Q4_K_M）。</li>
 <li><strong>关闭其他占用 GPU 的应用：</strong> 确保在运行 LLM 时，没有其他程序（如游戏、视频编辑软件）占用你的 GPU 资源。</li>
 </ol>
-<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="LM Studio advanced model settings interface">
+<p><img src="/static/posts/covers/step-guide.svg?v=4" alt="LM Studio advanced model settings interface">
 <em>图片描述：LM Studio高级模型设置界面，展示了调整参数以优化性能的选项。</em></p>
 <h2>流畅运行 DeepSeek 模型进行推理</h2>
 <p>在完成模型加载和参数配置后，你就可以开始与 DeepSeek 模型进行互动，无论是通过 LM Studio 的聊天界面，还是通过其提供的 API 服务。</p>
@@ -462,7 +462,7 @@ print(completion.choices[0].message.content)
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型","description":"为你带来针对如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-20","dateModified":"2026-05-20","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=3","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-20-how-to-import-and-smoothly-run-deepseek-gguf-models-via-lm-studio-310/"}
+{"@context":"https://schema.org","@type":"Article","headline":"如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型","description":"为你带来针对如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-20","dateModified":"2026-05-20","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/covers/multi-turn.svg?v=4","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-20-how-to-import-and-smoothly-run-deepseek-gguf-models-via-lm-studio-310/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"如何通过 LM Studio 导入并流畅运行 DeepSeek GGUF 格式模型","item":"https://deepseek-chat.com/posts/2026-05-20-how-to-import-and-smoothly-run-deepseek-gguf-models-via-lm-studio-310/"}]}

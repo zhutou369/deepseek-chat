@@ -5,7 +5,7 @@ date: 2026-04-09
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-09-deepseek-new-chat-vs-continue/index.html"
-coverImage: "/static/posts/chat-memory-cover.svg"
+coverImage: "/static/posts/covers/multi-turn.svg"
 generated: true
 ---
 
@@ -25,7 +25,7 @@ generated: true
 
 | 长文档已做摘要 | | ✓（贴摘要） |
 
-![DeepSeek 新开对话与续聊选择示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 新开对话与续聊选择示意](/static/posts/covers/step-guide.svg)
 
 ## 新开时首条怎么写
 

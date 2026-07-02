@@ -5,7 +5,7 @@ date: 2026-04-10
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-10-deepseek-voice-input-correction/index.html"
-coverImage: "/static/posts/chat-mobile-cover.svg"
+coverImage: "/static/posts/covers/mobile-chat.svg"
 generated: true
 ---
 
@@ -19,7 +19,7 @@ generated: true
 
 - 英文术语后加中文注释：「Kubernetes（K8s 容器编排）」
 
-![DeepSeek 语音输入对话纠错示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 语音输入对话纠错示意](/static/posts/covers/step-guide.svg)
 
 ## 识别错了怎么补救
 

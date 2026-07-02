@@ -5,7 +5,7 @@ const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
 const POSTS_DIR = path.join(ROOT, "posts");
-const FALLBACK = "/static/posts/chat-generic-step.svg";
+const FALLBACK = "/static/posts/covers/step-guide.svg";
 const UNSPLASH_RE = /https:\/\/images\.unsplash\.com[^\s)"']+/g;
 
 function walkMd(dir, fn) {
@@ -32,7 +32,7 @@ txt = txt
   .split(/\r?\n/)
   .map((l) => l.trim())
   .filter((l) => l && !l.includes("unsplash.com"))
-  .concat([FALLBACK, "/static/posts/chat-generic-cover.svg"])
+  .concat([FALLBACK, "/static/posts/covers/generic.svg"])
   .filter((v, i, a) => a.indexOf(v) === i)
   .join("\n");
 fs.writeFileSync(path.join(ROOT, "images.txt"), txt + "\n", "utf-8");

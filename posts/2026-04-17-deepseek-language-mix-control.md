@@ -5,7 +5,7 @@ date: 2026-04-17
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-17-deepseek-language-mix-control/index.html"
-coverImage: "/static/posts/chat-web-basics-cover.svg"
+coverImage: "/static/posts/covers/web-chat.svg"
 generated: true
 ---
 
@@ -21,7 +21,7 @@ generated: true
 
 ```
 
-![DeepSeek 中英混输对话语言控制示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 中英混输对话语言控制示意](/static/posts/covers/step-guide.svg)
 
 
 ## 延伸阅读

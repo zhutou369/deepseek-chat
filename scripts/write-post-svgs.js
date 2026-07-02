@@ -3,10 +3,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const OUT = path.join(__dirname, "..", "static", "posts");
+const OUT = path.join(__dirname, "..", "static", "posts", "covers");
 
 const files = {
-  "chat-web-basics-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek web chat basics">
+  "web-chat.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek web chat basics">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e3a5f"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="100" fill="#93c5fd" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">WEB CHAT</text>
@@ -21,7 +21,7 @@ const files = {
   <text x="380" y="366" fill="#ffffff" font-family="Segoe UI,sans-serif" font-size="15" font-weight="600">Send</text>
 </svg>
 `,
-  "chat-memory-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek multi-turn context">
+  "multi-turn.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek multi-turn context">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#312e81"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="100" fill="#c4b5fd" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">MULTI-TURN</text>
@@ -34,7 +34,7 @@ const files = {
   <rect x="200" y="350" width="380" height="28" rx="6" fill="#f1f5f9"/><text x="215" y="369" fill="#64748b" font-size="13" font-family="Segoe UI,sans-serif">Edit paragraph 2 only</text>
 </svg>
 `,
-  "chat-mobile-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek mobile chat">
+  "mobile-chat.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek mobile chat">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#134e4a"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="100" fill="#6ee7b7" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">MOBILE</text>
@@ -46,7 +46,7 @@ const files = {
   <text x="355" y="361" fill="#64748b" font-size="12" font-family="Segoe UI,sans-serif">Message...</text>
 </svg>
 `,
-  "chat-scenario-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek prompt templates">
+  "scenario-lib.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek prompt templates">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7c2d12"/><stop offset="100%" stop-color="#9a3412"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="100" fill="#fdba74" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">TEMPLATES</text>
@@ -57,7 +57,7 @@ const files = {
   <rect x="200" y="340" width="400" height="50" rx="8" fill="#ffffff" fill-opacity="0.85"/><text x="220" y="372" fill="#9a3412" font-size="15" font-family="Segoe UI,sans-serif">Interview mock prompt</text>
 </svg>
 `,
-  "chat-export-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek export and privacy">
+  "export-privacy.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek export and privacy">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1f2937"/><stop offset="100%" stop-color="#374151"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="100" fill="#9ca3af" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">EXPORT</text>
@@ -69,7 +69,7 @@ const files = {
   <rect x="400" y="300" width="120" height="36" rx="8" fill="#dc2626"/><text x="425" y="323" fill="#ffffff" font-size="14" font-family="Segoe UI,sans-serif">Redact</text>
 </svg>
 `,
-  "chat-generic-cover.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek chat guide">
+  "generic.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek chat guide">
   <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0c4a6e"/><stop offset="100%" stop-color="#0369a1"/></linearGradient></defs>
   <rect width="800" height="450" fill="url(#bg)"/>
   <text x="80" y="120" fill="#7dd3fc" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">DEEPSEEK CHAT</text>
@@ -81,7 +81,7 @@ const files = {
   <rect x="500" y="320" width="160" height="28" rx="8" fill="#0284c7"/><text x="530" y="339" fill="#ffffff" font-size="13" font-family="Segoe UI,sans-serif">Start chat</text>
 </svg>
 `,
-  "chat-generic-step.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" role="img" aria-label="DeepSeek chat steps">
+  "step-guide.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" role="img" aria-label="DeepSeek chat steps">
   <rect width="720" height="400" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
   <text x="32" y="48" fill="#0f172a" font-family="Segoe UI,sans-serif" font-size="18" font-weight="700">Step-by-step</text>
   <circle cx="56" cy="100" r="18" fill="#2563eb"/><text x="50" y="106" fill="#ffffff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">1</text>

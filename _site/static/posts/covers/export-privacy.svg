@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek export and privacy">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1f2937"/><stop offset="100%" stop-color="#374151"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <text x="80" y="100" fill="#9ca3af" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">EXPORT</text>
+  <text x="80" y="145" fill="#f9fafb" font-family="Segoe UI,sans-serif" font-size="28" font-weight="700">Export and Privacy</text>
+  <text x="80" y="180" fill="#d1d5db" font-family="Segoe UI,sans-serif" font-size="16">Redact / share / backup</text>
+  <rect x="240" y="220" width="320" height="180" rx="12" fill="#ffffff" fill-opacity="0.95"/>
+  <rect x="260" y="245" width="280" height="8" rx="4" fill="#e5e7eb"/><rect x="260" y="265" width="220" height="8" rx="4" fill="#e5e7eb"/>
+  <rect x="260" y="300" width="120" height="36" rx="8" fill="#059669"/><text x="285" y="323" fill="#ffffff" font-size="14" font-family="Segoe UI,sans-serif">Export MD</text>
+  <rect x="400" y="300" width="120" height="36" rx="8" fill="#dc2626"/><text x="425" y="323" fill="#ffffff" font-size="14" font-family="Segoe UI,sans-serif">Redact</text>
+</svg>

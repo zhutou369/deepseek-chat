@@ -6,14 +6,14 @@ const fs = require("fs");
 const path = require("path");
 
 const OUT = path.join(__dirname, "..", "posts");
-const STEP = "/static/posts/chat-generic-step.svg";
+const STEP = "/static/posts/covers/step-guide.svg";
 const COVERS = {
-  web: "/static/posts/chat-web-basics-cover.svg",
-  memory: "/static/posts/chat-memory-cover.svg",
-  mobile: "/static/posts/chat-mobile-cover.svg",
-  scenario: "/static/posts/chat-scenario-cover.svg",
-  export: "/static/posts/chat-export-cover.svg",
-  generic: "/static/posts/chat-generic-cover.svg",
+  web: "/static/posts/covers/web-chat.svg",
+  memory: "/static/posts/covers/multi-turn.svg",
+  mobile: "/static/posts/covers/mobile-chat.svg",
+  scenario: "/static/posts/covers/scenario-lib.svg",
+  export: "/static/posts/covers/export-privacy.svg",
+  generic: "/static/posts/covers/generic.svg",
 };
 
 const LINKS = {

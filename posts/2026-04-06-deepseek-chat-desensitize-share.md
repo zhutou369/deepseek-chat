@@ -5,7 +5,7 @@ date: 2026-04-06
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-06-deepseek-chat-desensitize-share/index.html"
-coverImage: "/static/posts/chat-export-cover.svg"
+coverImage: "/static/posts/covers/export-privacy.svg"
 generated: true
 ---
 
@@ -23,7 +23,7 @@ generated: true
 
 完整说明见 [导出与隐私](/posts/deepseek-chat-export-share/)。
 
-![DeepSeek 对话脱敏分享示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 对话脱敏分享示意](/static/posts/covers/step-guide.svg)
 
 ## 让模型协助脱敏
 

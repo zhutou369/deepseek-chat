@@ -20,5 +20,5 @@
 ## 图片
 
 - 封面：`coverImage: "/static/posts/xxx-cover.svg"`
-- 正文步骤图：`/static/posts/chat-generic-step.svg` 或主题 step 图
+- 正文步骤图：`/static/posts/covers/step-guide.svg` 或主题 step 图
 - 禁止正文使用 unsplash.com 外链

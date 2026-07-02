@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek prompt templates">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7c2d12"/><stop offset="100%" stop-color="#9a3412"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <text x="80" y="100" fill="#fdba74" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">TEMPLATES</text>
+  <text x="80" y="145" fill="#fff7ed" font-family="Segoe UI,sans-serif" font-size="28" font-weight="700">Scenario Library</text>
+  <text x="80" y="180" fill="#fed7aa" font-family="Segoe UI,sans-serif" font-size="16">Meeting / interview / notes</text>
+  <rect x="200" y="210" width="400" height="50" rx="8" fill="#ffffff" fill-opacity="0.95"/><text x="220" y="242" fill="#9a3412" font-size="15" font-family="Segoe UI,sans-serif">Meeting minutes</text>
+  <rect x="200" y="275" width="400" height="50" rx="8" fill="#ffffff" fill-opacity="0.9"/><text x="220" y="307" fill="#9a3412" font-size="15" font-family="Segoe UI,sans-serif">Python error explain</text>
+  <rect x="200" y="340" width="400" height="50" rx="8" fill="#ffffff" fill-opacity="0.85"/><text x="220" y="372" fill="#9a3412" font-size="15" font-family="Segoe UI,sans-serif">Interview mock prompt</text>
+</svg>

@@ -9,7 +9,7 @@ translationKey: deepseek-mobile-app-chat
 tags: ["移动端"]
 layout: "post.njk"
 permalink: "/posts/deepseek-mobile-app-chat/index.html"
-coverImage: "/static/posts/chat-mobile-cover.svg"
+coverImage: "/static/posts/covers/mobile-chat.svg"
 ---
 
 移动端对话的场景往往是「路上改文案」「排队时查资料」。屏幕小、输入法切换频繁，Prompt 要更短、更结构化。
@@ -20,7 +20,7 @@ coverImage: "/static/posts/chat-mobile-cover.svg"
 2. **微信内置浏览器**：部分链接会在微信内打开，注意登录态可能与系统浏览器不共享。
 3. **官方 App**（若有提供）：通常通知与登录更稳定，适合高频用户。
 
-![DeepSeek 手机端对话界面示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 手机端对话界面示意](/static/posts/covers/step-guide.svg)
 
 ## 适合手机的 Prompt 写法
 

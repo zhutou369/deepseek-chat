@@ -5,7 +5,7 @@ date: 2026-04-20
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-20-deepseek-customer-service-roleplay/index.html"
-coverImage: "/static/posts/chat-scenario-cover.svg"
+coverImage: "/static/posts/covers/scenario-lib.svg"
 generated: true
 ---
 
@@ -23,7 +23,7 @@ generated: true
 
 ```
 
-![DeepSeek 客服话术对话模拟示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 客服话术对话模拟示意](/static/posts/covers/step-guide.svg)
 
 
 ## 延伸阅读

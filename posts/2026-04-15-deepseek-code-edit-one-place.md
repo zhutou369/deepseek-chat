@@ -5,7 +5,7 @@ date: 2026-04-15
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-15-deepseek-code-edit-one-place/index.html"
-coverImage: "/static/posts/chat-scenario-cover.svg"
+coverImage: "/static/posts/covers/scenario-lib.svg"
 generated: true
 ---
 
@@ -21,7 +21,7 @@ generated: true
 
 ```
 
-![DeepSeek 代码对话最小修改示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 代码对话最小修改示意](/static/posts/covers/step-guide.svg)
 
 
 ## 延伸阅读

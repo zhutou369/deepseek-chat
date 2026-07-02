@@ -1,2 +1,2 @@
-/static/posts/chat-generic-step.svg
-/static/posts/chat-generic-cover.svg
+/static/posts/covers/step-guide.svg
+/static/posts/covers/generic.svg

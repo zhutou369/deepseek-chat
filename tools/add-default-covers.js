@@ -4,13 +4,13 @@ const path = require("path");
 
 const POSTS_DIR = path.join(__dirname, "..", "posts");
 const COVERS = {
-  web: "/static/posts/chat-web-basics-cover.svg",
-  memory: "/static/posts/chat-memory-cover.svg",
-  mobile: "/static/posts/chat-mobile-cover.svg",
-  scenario: "/static/posts/chat-scenario-cover.svg",
-  export: "/static/posts/chat-export-cover.svg",
+  web: "/static/posts/covers/web-chat.svg",
+  memory: "/static/posts/covers/multi-turn.svg",
+  mobile: "/static/posts/covers/mobile-chat.svg",
+  scenario: "/static/posts/covers/scenario-lib.svg",
+  export: "/static/posts/covers/export-privacy.svg",
 };
-const GENERIC = "/static/posts/chat-generic-cover.svg";
+const GENERIC = "/static/posts/covers/generic.svg";
 
 function splitFm(raw) {
   if (!raw.startsWith("---")) return null;

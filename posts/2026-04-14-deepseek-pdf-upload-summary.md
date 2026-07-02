@@ -5,7 +5,7 @@ date: 2026-04-14
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-14-deepseek-pdf-upload-summary/index.html"
-coverImage: "/static/posts/chat-generic-cover.svg"
+coverImage: "/static/posts/covers/generic.svg"
 generated: true
 ---
 
@@ -25,7 +25,7 @@ generated: true
 
 ```
 
-![DeepSeek PDF 文档对话总结示意](/static/posts/chat-generic-step.svg)
+![DeepSeek PDF 文档对话总结示意](/static/posts/covers/step-guide.svg)
 
 
 ## 延伸阅读

@@ -5,7 +5,7 @@ date: 2026-04-02
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-02-deepseek-context-too-long/index.html"
-coverImage: "/static/posts/chat-memory-cover.svg"
+coverImage: "/static/posts/covers/multi-turn.svg"
 generated: true
 ---
 
@@ -25,7 +25,7 @@ generated: true
 
 | 单次粘贴超长文档 | 分批处理 |
 
-![DeepSeek 多轮上下文管理示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 多轮上下文管理示意](/static/posts/covers/step-guide.svg)
 
 ## 摘要续聊三步
 

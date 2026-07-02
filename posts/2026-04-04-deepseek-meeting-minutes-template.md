@@ -5,7 +5,7 @@ date: 2026-04-04
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-04-deepseek-meeting-minutes-template/index.html"
-coverImage: "/static/posts/chat-scenario-cover.svg"
+coverImage: "/static/posts/covers/scenario-lib.svg"
 generated: true
 ---
 
@@ -33,7 +33,7 @@ generated: true
 
 更多模板见 [场景模板库](/posts/deepseek-chat-scenario-library/)。
 
-![DeepSeek 会议纪要对话模板示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 会议纪要对话模板示意](/static/posts/covers/step-guide.svg)
 
 ## 多轮校对
 

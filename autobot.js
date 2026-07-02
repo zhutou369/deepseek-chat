@@ -80,16 +80,16 @@ async function runAutoBot() {
         const randomId = Math.floor(100 + Math.random() * 900); 
 
         const coverPool = [
-            '/static/posts/chat-generic-cover.svg',
-            '/static/posts/chat-web-basics-cover.svg',
-            '/static/posts/chat-scenario-cover.svg',
+            '/static/posts/covers/generic.svg',
+            '/static/posts/covers/web-chat.svg',
+            '/static/posts/covers/scenario-lib.svg',
         ];
         const coverImage = coverPool[Math.floor(Math.random() * coverPool.length)];
 
         // 6. 构造图片指导 Prompt
         let imagePromptInstruction = `
     5. 【封面】：frontmatter 必须包含 coverImage: "${coverImage}"
-    6. 【插图】：正文嵌入 2 张图，只用 /static/posts/chat-generic-step.svg 或 images.txt 中的 /static/images/ 路径，禁止 unsplash.com
+    6. 【插图】：正文嵌入 2 张图，只用 /static/posts/covers/step-guide.svg 或 images.txt 中的 /static/images/ 路径，禁止 unsplash.com
     7. 【内链】：正文自然链向 2-3 篇本站教程：/posts/deepseek-chat-web-basics/、/posts/deepseek-multi-turn-memory/、/posts/deepseek-mobile-app-chat/、/posts/deepseek-chat-scenario-library/、/posts/deepseek-chat-export-share/
     8. 文末加 ## 延伸阅读，列 2-3 条站内链接
         `;

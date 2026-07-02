@@ -5,7 +5,7 @@ date: 2026-04-16
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-16-deepseek-table-output-format/index.html"
-coverImage: "/static/posts/chat-web-basics-cover.svg"
+coverImage: "/static/posts/covers/web-chat.svg"
 generated: true
 ---
 
@@ -23,7 +23,7 @@ generated: true
 
 ```
 
-![DeepSeek 对话表格格式示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 对话表格格式示意](/static/posts/covers/step-guide.svg)
 
 
 ## 延伸阅读

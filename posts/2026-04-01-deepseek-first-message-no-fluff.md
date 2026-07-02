@@ -5,7 +5,7 @@ date: 2026-04-01
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-01-deepseek-first-message-no-fluff/index.html"
-coverImage: "/static/posts/chat-web-basics-cover.svg"
+coverImage: "/static/posts/covers/web-chat.svg"
 generated: true
 ---
 
@@ -25,7 +25,7 @@ generated: true
 
 可先阅读 [网页对话入门](/posts/deepseek-chat-web-basics/) 里的完整示例。
 
-![DeepSeek 首条消息四要素示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 首条消息四要素示意](/static/posts/covers/step-guide.svg)
 
 ## 三个可直接复制的开头
 

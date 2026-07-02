@@ -5,7 +5,7 @@ date: 2026-04-13
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-13-deepseek-r1-when-to-enable/index.html"
-coverImage: "/static/posts/chat-web-basics-cover.svg"
+coverImage: "/static/posts/covers/web-chat.svg"
 generated: true
 ---
 
@@ -19,7 +19,7 @@ generated: true
 
 - 规则多、约束冲突的决策草稿
 
-![DeepSeek R1 深度思考模式使用示意](/static/posts/chat-generic-step.svg)
+![DeepSeek R1 深度思考模式使用示意](/static/posts/covers/step-guide.svg)
 
 ## 不必开 R1 的场景
 

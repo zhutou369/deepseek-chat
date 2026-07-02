@@ -5,7 +5,7 @@ date: 2026-04-07
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/2026-04-07-deepseek-wechat-inapp-browser/index.html"
-coverImage: "/static/posts/chat-mobile-cover.svg"
+coverImage: "/static/posts/covers/mobile-chat.svg"
 generated: true
 ---
 
@@ -23,7 +23,7 @@ generated: true
 
 | 收藏入口 | 需手动添加 | 可加主屏幕 |
 
-![DeepSeek 微信内置浏览器对话示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 微信内置浏览器对话示意](/static/posts/covers/step-guide.svg)
 
 ## 推荐做法
 

@@ -9,7 +9,7 @@ translationKey: deepseek-chat-scenario-library
 tags: ["场景模板"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-scenario-library/index.html"
-coverImage: "/static/posts/chat-scenario-cover.svg"
+coverImage: "/static/posts/covers/scenario-lib.svg"
 ---
 
 本站定位是「对话场景」而非 API 接入。下面模板均可直接粘贴到 DeepSeek 网页对话使用，按需改括号内容即可。
@@ -34,7 +34,7 @@ coverImage: "/static/posts/chat-scenario-cover.svg"
 [粘贴转写]
 ```
 
-![DeepSeek 对话场景模板使用示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 对话场景模板使用示意](/static/posts/covers/step-guide.svg)
 
 ## 编程与调试
 

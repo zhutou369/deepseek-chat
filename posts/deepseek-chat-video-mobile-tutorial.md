@@ -5,7 +5,7 @@ date: 2026-04-24
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-video-mobile-tutorial/index.html"
-coverImage: "/static/posts/chat-mobile-cover.svg"
+coverImage: "/static/posts/covers/mobile-chat.svg"
 featured: true
 videoBvid: "BV1UZFfeMEvd"
 ---
@@ -13,7 +13,7 @@ videoBvid: "BV1UZFfeMEvd"
 
 视频介绍 DeepSeek 常见使用技巧，含移动端访问与实用场景。观看时注意辨别「网页对话」与「本地部署」章节，本站专注前者。
 
-![DeepSeek 手机端对话视频教程配套示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 手机端对话视频教程配套示意](/static/posts/covers/step-guide.svg)
 
 ## 通勤场景练习
 

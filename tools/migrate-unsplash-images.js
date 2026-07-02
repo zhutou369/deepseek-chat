@@ -53,7 +53,7 @@ async function ensure(url, map) {
       console.log("ok");
     } catch (e) {
       console.log("fail", e.message);
-      map.set(id, "/static/posts/chat-generic-step.svg");
+      map.set(id, "/static/posts/covers/step-guide.svg");
       return map.get(id);
     }
   }

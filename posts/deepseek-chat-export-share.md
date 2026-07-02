@@ -9,7 +9,7 @@ translationKey: deepseek-chat-export-share
 tags: ["隐私"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-export-share/index.html"
-coverImage: "/static/posts/chat-export-cover.svg"
+coverImage: "/static/posts/covers/export-privacy.svg"
 ---
 
 对话里常会输入客户资料、内部数据或未公开文案。导出与分享前，先做一次**脱敏检查**。
@@ -22,7 +22,7 @@ coverImage: "/static/posts/chat-export-cover.svg"
 
 目前 DeepSeek 网页版功能会随版本更新，若界面提供「导出」或「分享链接」，优先使用官方入口，并确认链接是否公开可访问。
 
-![DeepSeek 对话导出与脱敏检查示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 对话导出与脱敏检查示意](/static/posts/covers/step-guide.svg)
 
 ## 分享前的脱敏清单
 

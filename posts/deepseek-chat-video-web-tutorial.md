@@ -5,7 +5,7 @@ date: 2026-04-22
 tags: ["对话教程"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-video-web-tutorial/index.html"
-coverImage: "/static/posts/chat-web-basics-cover.svg"
+coverImage: "/static/posts/covers/web-chat.svg"
 featured: true
 videoBvid: "BV1ZpdZYBE6E"
 ---
@@ -17,7 +17,7 @@ videoBvid: "BV1ZpdZYBE6E"
 
 官方入口：[chat.deepseek.com](https://chat.deepseek.com/)
 
-![DeepSeek 网页对话视频教程配套示意](/static/posts/chat-generic-step.svg)
+![DeepSeek 网页对话视频教程配套示意](/static/posts/covers/step-guide.svg)
 
 ## 看完后的三步练习
 

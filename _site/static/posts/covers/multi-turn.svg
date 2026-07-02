@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek multi-turn context">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#312e81"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <text x="80" y="100" fill="#c4b5fd" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">MULTI-TURN</text>
+  <text x="80" y="145" fill="#f8fafc" font-family="Segoe UI,sans-serif" font-size="28" font-weight="700">Context Memory</text>
+  <text x="80" y="180" fill="#a5b4fc" font-family="Segoe UI,sans-serif" font-size="16">New chat / continue / length</text>
+  <rect x="180" y="210" width="440" height="200" rx="12" fill="#ffffff" fill-opacity="0.95"/>
+  <rect x="200" y="230" width="120" height="28" rx="6" fill="#dbeafe"/><text x="215" y="249" fill="#1d4ed8" font-size="13" font-family="Segoe UI,sans-serif">Turn 1</text>
+  <rect x="200" y="270" width="380" height="28" rx="6" fill="#f1f5f9"/><text x="215" y="289" fill="#64748b" font-size="13" font-family="Segoe UI,sans-serif">Summarize the material below...</text>
+  <rect x="200" y="310" width="120" height="28" rx="6" fill="#ede9fe"/><text x="215" y="329" fill="#6d28d9" font-size="13" font-family="Segoe UI,sans-serif">Turn 2</text>
+  <rect x="200" y="350" width="380" height="28" rx="6" fill="#f1f5f9"/><text x="215" y="369" fill="#64748b" font-size="13" font-family="Segoe UI,sans-serif">Edit paragraph 2 only</text>
+</svg>
