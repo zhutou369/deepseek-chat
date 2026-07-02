@@ -10,7 +10,6 @@ tags: ["モバイル"]
 layout: "post.njk"
 permalink: "/ja/posts/deepseek-mobile-app-chat/index.html"
 ---
-
 モバイルでは「移動中に文案を直す」「待ち時間に調べる」が典型。画面が小さいので、プロンプトは**短く構造化**する。
 
 ## 入口の選び方
@@ -50,3 +49,8 @@ permalink: "/ja/posts/deepseek-mobile-app-chat/index.html"
 - [ウェブチャット入門](/ja/posts/deepseek-chat-web-basics/)
 - [マルチターン文脈](/ja/posts/deepseek-multi-turn-memory/)
 - [エクスポートとプライバシー](/ja/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/ja/posts/deepseek-chat-web-basics/)
+- [多轮上下文管理](/ja/posts/deepseek-multi-turn-memory/)

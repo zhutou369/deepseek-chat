@@ -10,7 +10,6 @@ tags: ["privasi"]
 layout: "post.njk"
 permalink: "/ms/posts/deepseek-chat-export-share/index.html"
 ---
-
 Sembang sering mengandungi data pelanggan atau salinan dalaman. **Semak redaksi sebelum eksport atau kongsi.**
 
 ## Kaedah sandaran
@@ -43,3 +42,8 @@ Sembang sering mengandungi data pelanggan atau salinan dalaman. **Semak redaksi 
 - [Asas sembang web](/ms/posts/deepseek-chat-web-basics/)
 - [Konteks berbilang giliran](/ms/posts/deepseek-multi-turn-memory/)
 - [Perpustakaan templat](/ms/posts/deepseek-chat-scenario-library/)
+
+## 延伸阅读
+
+- [网页对话入门](/ms/posts/deepseek-chat-web-basics/)
+- [多轮上下文管理](/ms/posts/deepseek-multi-turn-memory/)

@@ -5,7 +5,7 @@ description: "浏览 DeepSeek 网页版登录、API 接入、提示词技巧、�
 eleventyComputed:
   noindex: "{{ pagination.pageNumber > 0 }}"
 pagination:
-  data: collections.posts
+  data: collections.indexablePosts
   size: 10
   alias: posts
   reverse: true
@@ -15,13 +15,20 @@ permalink: "/posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumb
 <h1>DeepSeek 技术文章列表</h1>
 <p>优先收录可直接照做的入门教程；部分早期自动生成内容已从搜索索引中排除，但仍保留供参考。</p>
 
-<ul class="post-list" style="margin-top: 20px;">
+<ul class="post-list" style="margin-top: 20px; list-style: none; padding: 0;">
   {% for post in posts %}
-    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
-      <span class="post-meta">发布时间：{{ post.date | dateFilter }}</span>
-
-      <h2 style="font-size: 20px; margin: 5px 0;"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-      <p style="font-size: 15px; color: #555;">{{ post.data.description }}</p>
+    <li class="posts-list-item" style="display:flex;gap:20px;padding:20px 0;border-bottom:1px dashed #eee;align-items:flex-start;">
+      {% if post.data.coverImage %}
+      <a href="{{ post.url }}" class="posts-list-thumb" style="flex:0 0 200px;">
+        <img src="{{ post.data.coverImage | assetUrl }}" alt="{{ post.data.title }}" width="200" height="112" loading="lazy" decoding="async" style="width:200px;height:auto;border-radius:8px;display:block;">
+      </a>
+      {% endif %}
+      <div class="posts-list-body" style="flex:1;min-width:0;">
+        <span class="post-meta" style="font-size:14px;color:#0066cc;">发布时间：{{ post.date | dateFilter }}</span>
+        <h2 style="font-size: 20px; margin: 5px 0;"><a href="{{ post.url }}" style="color:#0f172a;text-decoration:none;">{{ post.data.title }}</a></h2>
+        <p style="font-size: 15px; color: #555; margin:0 0 10px;">{{ post.data.description }}</p>
+        <a href="{{ post.url }}" style="color:#0066cc;font-size:14px;font-weight:600;text-decoration:none;">阅读全文 &raquo;</a>
+      </div>
     </li>
   {% endfor %}
 </ul>

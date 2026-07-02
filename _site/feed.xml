@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DeepSeek 对话指南</title>
+    <link>https://deepseek-chat.com/</link>
+    <description>专注 DeepSeek 网页对话入门、多轮上下文管理、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。</description>
+    <language>zh-cn</language>
+    
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 GMT</lastBuildDate>
+    
+    <atom:link href="https://deepseek-chat.com/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>DeepSeek 对话记录导出、分享与隐私设置</title>
+      <link>https://deepseek-chat.com/posts/deepseek-chat-export-share/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-chat-export-share/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>说明如何备份 DeepSeek 对话内容、安全分享片段，以及清除本地缓存与降低隐私风险的注意事项。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 对话场景库：写作、编程、学习模板</title>
+      <link>https://deepseek-chat.com/posts/deepseek-chat-scenario-library/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-chat-scenario-library/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>收录可直接复制的 DeepSeek 对话 Prompt 模板，覆盖文案改写、代码解释、读书笔记与面试准备等高频场景。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 网页对话入门：第一次聊出好用回答</title>
+      <link>https://deepseek-chat.com/posts/deepseek-chat-web-basics/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-chat-web-basics/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>从选择模型、写好首条消息到控制回答长度，帮你在 DeepSeek 网页版快速获得稳定、可复用的对话结果。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 手机端与 App 对话使用技巧</title>
+      <link>https://deepseek-chat.com/posts/deepseek-mobile-app-chat/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-mobile-app-chat/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>在手机浏览器、微信内置页或官方 App 中使用 DeepSeek 对话的实操技巧，包括输入法、语音输入与弱网环境处理。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 多轮对话与上下文记忆管理</title>
+      <link>https://deepseek-chat.com/posts/deepseek-multi-turn-memory/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-multi-turn-memory/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>讲解 DeepSeek 多轮聊天时如何拆分话题、控制上下文长度、避免前后矛盾，并在长任务中保持输出一致。</description>
+    </item>
+    
+    <item>
+      <title>数据分析师用 DeepSeek 生成 Python Pandas 常用代码</title>
+      <link>https://deepseek-chat.com/posts/2026-06-27-deepseek-pandas-dataframe-code-analyst-527/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/2026-06-27-deepseek-pandas-dataframe-code-analyst-527/</guid>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 GMT</pubDate>
+      <description>用 DeepSeek 快速生成数据清洗、分组聚合、缺失值处理与导出等 Pandas 代码片段，并附可复用的提示词模板与验收步骤。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 手机端对话视频教程：通勤场景实战</title>
+      <link>https://deepseek-chat.com/posts/deepseek-chat-video-mobile-tutorial/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-chat-video-mobile-tutorial/</guid>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+      <description>结合视频演示手机浏览器访问、语音输入纠错与弱网续写，适合路上快速改文案。</description>
+    </item>
+    
+    <item>
+      <title>DeepSeek 网页对话入门视频教程（附步骤清单）</title>
+      <link>https://deepseek-chat.com/posts/deepseek-chat-video-web-tutorial/</link>
+      <guid isPermaLink="true">https://deepseek-chat.com/posts/deepseek-chat-video-web-tutorial/</guid>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 GMT</pubDate>
+      <description>配合 B 站视频讲解 chat.deepseek.com 首条消息、模型按钮与多轮迭代，文末附可打印步骤清单。</description>
+    </item>
+    
+  </channel>
+</rss>

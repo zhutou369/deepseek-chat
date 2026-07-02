@@ -9,6 +9,7 @@ translationKey: deepseek-chat-scenario-library
 tags: ["场景模板"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-scenario-library/index.html"
+coverImage: "/static/posts/chat-scenario-cover.svg"
 ---
 
 本站定位是「对话场景」而非 API 接入。下面模板均可直接粘贴到 DeepSeek 网页对话使用，按需改括号内容即可。
@@ -32,6 +33,8 @@ permalink: "/posts/deepseek-chat-scenario-library/index.html"
 ---
 [粘贴转写]
 ```
+
+![DeepSeek 对话场景模板使用示意](/static/posts/chat-generic-step.svg)
 
 ## 编程与调试
 
@@ -78,7 +81,7 @@ permalink: "/posts/deepseek-chat-scenario-library/index.html"
 2. 只改括号与附件内容
 3. 首轮输出不满意时，用 [多轮对话技巧](/posts/deepseek-multi-turn-memory/) 迭代
 
-API 密钥、限流等开发话题请见 [deepseek-1.com](https://deepseek-1.com)；本站专注网页聊天体验。
+开发者 API 相关请见 [platform.deepseek.com](https://platform.deepseek.com/docs)；本站专注网页聊天体验。
 
 ## 相关教程
 

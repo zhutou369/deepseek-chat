@@ -10,7 +10,6 @@ tags: ["私隱"]
 layout: "post.njk"
 permalink: "/zh-Hant/posts/deepseek-chat-export-share/index.html"
 ---
-
 對話裏常會輸入客戶資料、內部數據或未公開文案。導出與分享前，先做一次**脫敏檢查**。
 
 ## 備份對話的常用方式
@@ -50,3 +49,8 @@ permalink: "/zh-Hant/posts/deepseek-chat-export-share/index.html"
 - [網頁對話入門](/zh-Hant/posts/deepseek-chat-web-basics/)
 - [多輪對話管理](/zh-Hant/posts/deepseek-multi-turn-memory/)
 - [場景模板庫](/zh-Hant/posts/deepseek-chat-scenario-library/)
+
+## 延伸阅读
+
+- [网页对话入门](/zh-Hant/posts/deepseek-chat-web-basics/)
+- [场景模板库](/zh-Hant/posts/deepseek-chat-scenario-library/)

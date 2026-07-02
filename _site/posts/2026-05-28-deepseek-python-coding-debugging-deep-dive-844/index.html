@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+
+  <title>DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="为你带来针对DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="noindex,follow">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-05-28-deepseek-python-coding-debugging-deep-dive-844/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码">
+
+  <meta property="og:description" content="为你带来针对DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-05-28-deepseek-python-coding-debugging-deep-dive-844/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;"></a> &gt;
+    <a href="/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-05-28</span>
+      <span> · </span>
+    </div>
+  </header>
+
+  
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="/static/posts/chat-mobile-cover.svg?v=2" alt="DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  
+
+  
+
+  <div class="post-content">
+    <p>在当今快速迭代的软件开发领域，效率与准确性是衡量开发者生产力的两大核心指标。随着人工智能技术的飞速发展，AI辅助编程工具正逐渐成为开发者不可或缺的伙伴。其中，DeepSeek以其卓越的代码理解、生成和优化能力，在Python生态系统中展现出巨大潜力。本文将深入探讨如何将DeepSeek融入你的Python开发工作流，从高效编写到精准调试，全方位提升你的编程体验与项目质量。</p>
+<h2>DeepSeek 为什么是 Python 开发者的利器？</h2>
+<p>Python以其简洁的语法和丰富的库生态，成为数据科学、Web开发、自动化脚本等多个领域的热门选择。然而，面对复杂的业务逻辑、海量的API调用以及反复的调试过程，即使是经验丰富的开发者也常感力不不逮。DeepSeek的出现，恰好填补了这些效率上的鸿沟。</p>
+<h3>智能代码补全与生成</h3>
+<p>DeepSeek 不仅仅是提供简单的代码补全，它能理解你当前的编程上下文、变量类型甚至项目整体结构，从而提供高度相关的、可直接使用的代码片段。无论你是需要快速搭建一个Web服务的基础路由，还是编写一个复杂的数据处理函数，DeepSeek都能基于自然语言描述或部分代码提示，生成高质量的骨架代码，极大地减少了“从零开始”的思考时间。</p>
+<h3>快速错误识别与修复建议</h3>
+<p>编程过程中，语法错误、逻辑错误是家常便饭。DeepSeek能够实时分析你的代码，不仅指出潜在的错误点，更能基于其对编程范式和常见问题的理解，提供具体、可操作的修复建议。这就像有一个经验丰富的同事在旁边，随时为你指出问题并提供解决方案，让调试过程从“大海捞针”变为“精准定位”。</p>
+<h3>复杂逻辑理解与重构</h3>
+<p>在处理遗留代码或复杂模块时，理解其内部逻辑往往耗时耗力。DeepSeek可以帮助你快速概括函数功能、解释代码意图，甚至根据新的需求进行智能重构。它能够识别代码中的冗余、潜在的性能瓶颈，并建议更优雅、更高效的实现方式，从而提升代码的可读性、可维护性和执行效率。</p>
+<h2>环境搭建与 DeepSeek 集成：准备工作</h2>
+<p>要充分发挥DeepSeek的效能，第一步是将其无缝集成到你的开发环境中。</p>
+<h3>选择合适的 IDE/编辑器</h3>
+<p>DeepSeek通常通过插件或集成的方式，支持主流的IDE和代码编辑器。</p>
+<ul>
+<li><strong>VS Code</strong>: 作为Python开发者的首选之一，VS Code拥有庞大且活跃的扩展生态。DeepSeek通常会提供专门的VS Code扩展，安装后即可直接使用其功能。</li>
+<li><strong>PyCharm</strong>:  JetBrains系列IDE在Python开发领域具有极佳的口碑。如果DeepSeek提供PyCharm插件，通常能获得更深度的集成体验，例如代码重构、调试辅助等。</li>
+<li><strong>Jupyter Notebook/Lab</strong>: 对于数据科学家和研究人员，DeepSeek也可能以Jupyter扩展的形式存在，直接在Notebook中辅助代码编写和分析。</li>
+</ul>
+<h3>安装 DeepSeek 插件/SDK</h3>
+<p>以VS Code为例，通常步骤如下：</p>
+<ol>
+<li>打开VS Code。</li>
+<li>前往Extensions视图（<code>Ctrl+Shift+X</code>）。</li>
+<li>搜索“DeepSeek”或相关关键词。</li>
+<li>点击安装官方提供的DeepSeek AI插件。</li>
+<li>根据插件指引完成配置。</li>
+</ol>
+<p>对于某些特定场景，DeepSeek可能提供Python SDK，允许你在脚本中直接调用其API进行代码生成、分析等高级操作。这对于自动化代码生成、自定义CI/CD流程中的代码检查等场景非常有用。</p>
+<h3>配置 DeepSeek API Key</h3>
+<p>大多数AI服务需要通过API Key进行身份验证和资源访问。</p>
+<ol>
+<li>在DeepSeek官方网站注册账号并获取API Key。通常，你会有一个个人仪表盘来管理你的Keys。</li>
+<li>在IDE插件设置中，找到DeepSeek相关的配置项，输入你的API Key。</li>
+<li>保存配置，并根据需要重启IDE或插件。
+确保你的API Key妥善保管，切勿泄露。</li>
+</ol>
+<p>通过以上步骤，你的开发环境就已经准备就绪，可以开始体验DeepSeek带来的编程变革。</p>
+<p><img src="/static/posts/chat-generic-step.svg" alt="DeepSeek AI model processing Python code"></p>
+<h2>实战编程：利用 DeepSeek 提升编码效率</h2>
+<p>掌握了DeepSeek的集成，现在让我们看看如何在实际编码中发挥它的作用。</p>
+<h3>需求分析与原型构建</h3>
+<p>当接到一个新任务时，DeepSeek能帮你快速启动项目。</p>
+<ul>
+<li><strong>示例：构建一个简单的 RESTful API</strong>
+假设你需要一个Python Flask或FastAPI的API，实现用户注册、登录功能。
+你可以直接向DeepSeek提问（通过插件的聊天窗口或注释）：
+<code># DeepSeek: Generate a basic Flask API for user registration and login with SQLite database.</code>
+DeepSeek会立刻生成一个包含<code>app.py</code>、<code>User</code>模型定义、注册和登录路由的骨架代码。你只需在此基础上进行细化和安全加固，大大节省了初期搭建的时间。</li>
+</ul>
+<h3>自动化代码生成</h3>
+<p>DeepSeek在代码生成方面的能力尤为突出，但如何有效地“提问”是关键。</p>
+<ul>
+<li>
+<p><strong>Prompt 技巧</strong></p>
+<ul>
+<li><strong>明确需求</strong>: 尽可能具体地描述你想要的功能、输入、输出和预期行为。例如，不要只说“写个排序函数”，而要说“写一个Python函数，接受一个整数列表，返回一个按升序排列的新列表，使用归并排序算法。”</li>
+<li><strong>提供上下文</strong>: 如果代码依赖于已有的类或变量，在Prompt中提及它们，或将Prompt放在相关代码附近。</li>
+<li><strong>指定技术栈</strong>: 明确你使用的框架或库（如<code>Pandas</code>, <code>NumPy</code>, <code>Django</code>, <code>FastAPI</code>），这有助于DeepSeek生成更适配的代码。</li>
+<li><strong>迭代优化</strong>: DeepSeek生成的代码可能不是一次完美，你可以基于其初稿，提出修改意见，例如“在此基础上添加错误处理”、“将数据存储改为PostgreSQL”。</li>
+</ul>
+</li>
+<li>
+<p><strong>代码审查与优化</strong>
+生成代码后，始终进行人工审查。DeepSeek能提供基础功能，但细节、边界情况和性能优化仍需人工把控。利用DeepSeek的“优化建议”功能，它可以帮你检查代码风格、潜在的性能问题，甚至提供更符合PEP 8规范的重构方案。</p>
+</li>
+</ul>
+<h3>单元测试生成与辅助</h3>
+<p>编写高质量的单元测试是保证代码健壮性的重要环节。DeepSeek能加速这一过程。</p>
+<ul>
+<li><strong>编写可测试代码的 DeepSeek 提示</strong>
+当你完成一个函数后，可以要求DeepSeek为其生成单元测试：
+<code># DeepSeek: Generate pytest unit tests for the 'calculate_average' function, including edge cases like empty list and single element.</code>
+DeepSeek会根据函数签名和文档字符串，甚至通过分析函数体，生成一系列<code>pytest</code>或<code>unittest</code>框架的测试用例，覆盖正常情况、边界情况和错误处理。这不仅提高了测试覆盖率，也帮助你思考代码的各种可能行为。</li>
+</ul>
+<h2>高效调试：DeepSeek 助你定位并解决 Bug</h2>
+<p>调试是每个开发者绕不开的环节，DeepSeek能将其变得更高效、更直观。</p>
+<h3>错误日志分析与异常处理建议</h3>
+<p>当程序抛出异常时，DeepSeek能快速解读堆栈信息，并提供解决方案。</p>
+<ul>
+<li><strong>示例：处理 <code>IndexError</code> 和 <code>TypeError</code></strong>
+当你遇到如下Python错误：<pre><code class="language-python">Traceback (most recent call last):
+  File &quot;my_script.py&quot;, line 10, in &lt;module&gt;
+    print(my_list[10])
+IndexError: list index out of range
+</code></pre>
+你可以将整个错误日志粘贴给DeepSeek，它会告诉你：
+<ol>
+<li>错误类型（<code>IndexError</code>）及其含义（尝试访问列表中不存在的索引）。</li>
+<li>发生位置（<code>my_script.py</code>, line 10）。</li>
+<li>建议的修复方法：检查列表长度、使用<code>try-except</code>块捕获异常、或在访问前进行索引范围检查。
+DeepSeek甚至可能直接建议修正代码，例如将 <code>my_list[10]</code> 改为 <code>my_list[len(my_list) - 1]</code> 或 <code>my_list[safe_index]</code>。</li>
+</ol>
+</li>
+</ul>
+<h3>性能瓶颈诊断与优化</h3>
+<p>对于运行缓慢的代码，DeepSeek可以帮助你分析潜在的性能问题。</p>
+<ul>
+<li>你可以将一段代码提交给DeepSeek，并询问：“这段代码是否有性能瓶颈？如何优化？”</li>
+<li>它可能会指出：
+<ul>
+<li><strong>N+1查询问题</strong>: 在数据库操作中，建议批量查询或使用<code>select_related</code>/<code>prefetch_related</code>。</li>
+<li><strong>循环内部的昂贵操作</strong>: 建议将重复计算移到循环外部，或使用更高效的数据结构。</li>
+<li><strong>不必要的IO操作</strong>: 提示缓存常用数据。</li>
+<li><strong>算法复杂度</strong>: 建议使用更优的算法，例如将O(N^2)的排序改为O(N log N)。
+DeepSeek甚至能直接给出优化后的代码片段。</li>
+</ul>
+</li>
+</ul>
+<h3>重构与代码质量提升</h3>
+<p>除了解决即时问题，DeepSeek也是提升代码长期质量的好帮手。</p>
+<ul>
+<li><strong>代码异味检测</strong>: 它可以识别出重复代码、过长的函数、复杂的条件语句等“代码异味”，并建议重构方案。</li>
+<li><strong>设计模式应用</strong>: 当你的代码变得复杂时，DeepSeek可以建议应用常见的设计模式（如工厂模式、策略模式），提升代码的模块化和可扩展性。</li>
+<li><strong>文档生成</strong>: 它可以根据函数签名和代码逻辑，自动生成或补充Docstrings，提升代码的可读性和维护性。</li>
+</ul>
+<p><img src="/static/posts/chat-generic-step.svg" alt="Python code debugging session on screen"></p>
+<h2>进阶技巧：DeepSeek 在企业级项目中的应用</h2>
+<p>在大型企业级项目中，DeepSeek的价值远不止于个人编码效率的提升。</p>
+<h3>与 CI/CD 流程整合</h3>
+<p>通过DeepSeek的API或SDK，你可以将其能力集成到CI/CD（持续集成/持续部署）管道中。</p>
+<ul>
+<li><strong>自动化代码审查</strong>: 在每次代码提交或合并请求时，CI/CD流水线可以调用DeepSeek API对新代码进行风格检查、潜在错误检测和安全漏洞扫描。</li>
+<li><strong>代码质量门禁</strong>: 设置规则，例如当DeepSeek检测到高严重性问题或代码质量评分低于某个阈值时，阻止代码合并，确保只有高质量的代码才能进入主分支。</li>
+<li><strong>自动修复建议</strong>: DeepSeek可以生成修复建议，甚至在某些情况下，自动生成Pull Request来修复简单的、标准化的代码问题。</li>
+</ul>
+<h3>代码规范与安全审查</h3>
+<p>企业通常有严格的代码规范和安全要求。DeepSeek可以通过学习这些规范，帮助团队成员编写符合标准的代码。</p>
+<ul>
+<li><strong>定制化规范检查</strong>: DeepSeek可以根据企业内部的代码规范（例如，特定的命名约定、注释格式、错误处理模式），提供定制化的检查和建议。</li>
+<li><strong>潜在安全漏洞检测</strong>: DeepSeek可以识别常见的安全漏洞模式，如SQL注入、XSS、不安全的API调用、硬编码凭据等，并建议修复方案，帮助团队构建更安全的应用程序。</li>
+</ul>
+<h3>团队协作与知识共享</h3>
+<p>DeepSeek可以作为团队知识共享的工具。</p>
+<ul>
+<li><strong>内部文档助手</strong>: DeepSeek可以帮助生成项目文档、API文档，甚至根据代码库自动生成技术报告。</li>
+<li><strong>新成员 onboarding</strong>: 新加入的团队成员可以利用DeepSeek快速理解现有代码库的结构和功能，加速融入项目。通过提问或让DeepSeek解释复杂模块，他们能更快地上手。</li>
+<li><strong>统一代码风格</strong>: DeepSeek的风格建议功能可以帮助团队成员统一代码风格，减少因风格不一致带来的合并冲突和审查成本。</li>
+</ul>
+<h2>总结与展望</h2>
+<p>DeepSeek作为一款强大的AI辅助编程工具，正在深刻改变Python开发者的工作方式。它不仅能显著提升编码效率，加速原型开发，还能在复杂的调试过程中提供智能洞察，甚至在企业级项目中作为代码质量和安全的守门员。</p>
+<p>然而，我们也应认识到，AI工具是辅助而非替代。开发者仍然需要保持批判性思维，审查AI生成的代码，理解其工作原理，并将其应用到实际场景中。未来的DeepSeek将更加智能，有望在更深层次上理解业务逻辑，提供更具创造性的解决方案，甚至参与到软件架构设计的早期阶段。拥抱DeepSeek这样的前沿技术，将使我们能够专注于更高层次的思考和创新，从而构建出更加健壮、高效和高质量的Python应用程序。开始你的DeepSeek之旅吧，它将是你Python编程道路上的得力伙伴！</p>
+<h2>延伸阅读</h2>
+<ul>
+<li><a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a></li>
+<li><a href="/posts/deepseek-chat-scenario-library/">场景模板库</a></li>
+<li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          
+        
+      </li>
+      <li>：
+        
+          
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码","description":"为你带来针对DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-28","dateModified":"2026-05-28","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-mobile-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-28-deepseek-python-coding-debugging-deep-dive-844/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 辅助编程实战：如何用它高效编写与调试 Python 代码","item":"https://deepseek-chat.com/posts/2026-05-28-deepseek-python-coding-debugging-deep-dive-844/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

@@ -10,7 +10,6 @@ tags: ["多輪對話"]
 layout: "post.njk"
 permalink: "/zh-Hant/posts/deepseek-multi-turn-memory/index.html"
 ---
-
 多輪對話是 DeepSeek 網頁版最常用的能力，但也是最容易「聊着聊着就跑題」的地方。核心原則是：**一個對話視窗只做一個主線任務**。
 
 ## 什麼時候該新開對話
@@ -58,3 +57,8 @@ permalink: "/zh-Hant/posts/deepseek-multi-turn-memory/index.html"
 - [網頁對話入門](/zh-Hant/posts/deepseek-chat-web-basics/)
 - [對話場景模板庫](/zh-Hant/posts/deepseek-chat-scenario-library/)
 - [對話導出與私隱](/zh-Hant/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/zh-Hant/posts/deepseek-chat-web-basics/)
+- [场景模板库](/zh-Hant/posts/deepseek-chat-scenario-library/)

@@ -58,7 +58,7 @@ async function runAutoBot() {
                 const allImages = fs.readFileSync(imagesPath, 'utf-8')
                     .split(/\r?\n/)
                     .map(line => line.trim().replace(/^\s*/i, '')) 
-                    .filter(line => line.length > 0 && line.startsWith('http'));
+                    .filter(line => line.length > 0 && (line.startsWith('http') || line.startsWith('/static/')));
 
                 if (allImages.length >= 2) {
                     const shuffled = allImages.sort(() => 0.5 - Math.random());
@@ -79,18 +79,24 @@ async function runAutoBot() {
         const todayStr = new Date().toISOString().split('T')[0];
         const randomId = Math.floor(100 + Math.random() * 900); 
 
+        const coverPool = [
+            '/static/posts/chat-generic-cover.svg',
+            '/static/posts/chat-web-basics-cover.svg',
+            '/static/posts/chat-scenario-cover.svg',
+        ];
+        const coverImage = coverPool[Math.floor(Math.random() * coverPool.length)];
+
         // 6. 构造图片指导 Prompt
-        let imagePromptInstruction = '';
+        let imagePromptInstruction = `
+    5. 【封面】：frontmatter 必须包含 coverImage: "${coverImage}"
+    6. 【插图】：正文嵌入 2 张图，只用 /static/posts/chat-generic-step.svg 或 images.txt 中的 /static/images/ 路径，禁止 unsplash.com
+    7. 【内链】：正文自然链向 2-3 篇本站教程：/posts/deepseek-chat-web-basics/、/posts/deepseek-multi-turn-memory/、/posts/deepseek-mobile-app-chat/、/posts/deepseek-chat-scenario-library/、/posts/deepseek-chat-export-share/
+    8. 文末加 ## 延伸阅读，列 2-3 条站内链接
+        `;
         if (selectedImages.length === 2) {
-            imagePromptInstruction = `
-    5. 【插图嵌入要求】：
-       请在撰写文章正文时，将以下两个图片链接【严格、自然地】嵌入到不同的二级标题（##）或段落之间，提升排版丰富度。
-       必须使用标准的 Markdown 图片格式，且必须补充具有 SEO 价值的 alt 描述（严禁包含中文百分号或特殊字符）。
-       
+            imagePromptInstruction += `
        图片链接 1：${selectedImages[0]}
        图片链接 2：${selectedImages[1]}
-       
-       例如嵌入格式：![FinalShell 核心功能界面演示](${selectedImages[0]})
             `;
         }
 
@@ -107,6 +113,7 @@ async function runAutoBot() {
     description: "用一句话概括本文解决的具体问题与适用场景，40-80 字，禁止套用模板句。"
     date: ${todayStr}
     generated: true
+    coverImage: "${coverImage}"
     tags: ["posts"]
     layout: "post.njk"
     permalink: "/posts/${todayStr}-你的英文slug-${randomId}/index.html"

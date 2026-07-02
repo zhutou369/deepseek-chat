@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  
+  <title>DeepSeek API 503/429 错误的重试与熔断策略 | DeepSeek 使用指南</title>
+  <meta name="description" content="实现 DeepSeek API 在 503 与 429 错误下的指数退避重试、最大重试次数与熔断器模式，提升服务稳定性。">
+  <meta name="keywords" content="DeepSeek,DeepSeek API,DeepSeek 登录,DeepSeek 提示词,DeepSeek 教程,深度求索">
+  
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  <link rel="canonical" href="https://deepseek-chat.com/posts/deepseek-api-retry-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DeepSeek API 503/429 错误的重试与熔断策略">
+  <meta property="og:description" content="实现 DeepSeek API 在 503 与 429 错误下的指数退避重试、最大重试次数与熔断器模式，提升服务稳定性。">
+  <meta property="og:url" content="https://deepseek-chat.com/posts/deepseek-api-retry-guide/">
+  <meta property="og:site_name" content="DeepSeek 使用指南">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com","description":"整理 DeepSeek 网页版登录、API 密钥申请、提示词技巧、503/429 错误排查与本地 Ollama 部署的简体中文实操说明。"}
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    main { padding: 20px 0; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
+    .friend-links a:hover { text-decoration: underline; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 15px; }
+    .post-meta { color: #888; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-hd">
+      
+        <a href="/" class="site-logo">DeepSeek 使用指南</a>
+      
+    </div>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/posts/">技术文章</a>
+    </nav>
+  </header>
+
+  <main>
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;">首页</a> &gt;
+    <a href="/posts/" style="color: #666;">技术文章</a> &gt;
+    <span>正文</span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek API 503/429 错误的重试与熔断策略</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>发布日期: 2026-06-27</span> · 更新于 2026-06-27
+      <span> · DeepSeek 使用指南</span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>503 与 429 都是暂时性错误，但处理方式不同：503 通常表示服务端暂时不可用，429 表示你的请求过快。两者都需要重试，但不能无脑循环。</p>
+<h2>错误区分</h2>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+<th>是否适合重试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>503</td>
+<td>服务暂时不可用</td>
+<td>是，需退避</td>
+</tr>
+<tr>
+<td>429</td>
+<td>超出速率限制</td>
+<td>是，需更长等待</td>
+</tr>
+<tr>
+<td>401/403</td>
+<td>认证或权限问题</td>
+<td>否，检查 Key</td>
+</tr>
+<tr>
+<td>400</td>
+<td>请求格式错误</td>
+<td>否，修正参数</td>
+</tr>
+</tbody>
+</table>
+<h2>指数退避重试（Exponential Backoff）</h2>
+<p>基本流程：</p>
+<ol>
+<li>首次失败后等待 1 秒</li>
+<li>第二次等待 2 秒，第三次 4 秒</li>
+<li>加入随机抖动（jitter），避免多个客户端同时重试</li>
+<li>设定 <code>maxRetries = 3</code> 或 <code>5</code>，超过则返回友好错误</li>
+</ol>
+<h2>熔断器（Circuit Breaker）</h2>
+<p>连续失败达到阈值时，暂停请求一段时间，避免把已过载的服务打得更忙。</p>
+<p>典型参数：</p>
+<ul>
+<li>失败阈值：5 次连续 503/429</li>
+<li>熔断开启时间：30–60 秒</li>
+<li>半开状态：允许 1 个探测请求，成功则恢复</li>
+</ul>
+<h2>429 的特殊处理</h2>
+<ul>
+<li>优先读取 <code>Retry-After</code> 响应头</li>
+<li>若无该字段，429 的等待时间应比 503 更长</li>
+<li>对批量任务使用队列 + 固定并发（如同时最多 2 个请求）</li>
+</ul>
+<h2>用户端应有的降级方案</h2>
+<ul>
+<li>返回「服务繁忙，请稍后再试」而非 raw error</li>
+<li>对可缓存问题（FAQ、固定模板）使用本地缓存</li>
+<li>关键流程提供人工兜底入口</li>
+</ul>
+<h2>排查日志关键字段</h2>
+<p>记录 HTTP 状态码、重试次数、请求耗时、使用的模型与 Token 数，方便定位是平台高峰还是自身请求模式问题。</p>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;">延伸阅读</h3>
+    <ul>
+      <li>上一篇：
+        
+          <a href="/posts/deepseek-api-key-and-limits/">DeepSeek API 密钥申请、限流与 429 错误处理</a>
+        
+      </li>
+      <li>下一篇：
+        
+          <a href="/posts/deepseek-ollama-local-setup/">使用 Ollama 在本地运行 DeepSeek 模型</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/">返回文章列表 &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek API 503/429 错误的重试与熔断策略","description":"实现 DeepSeek API 在 503 与 429 错误下的指数退避重试、最大重试次数与熔断器模式，提升服务稳定性。","datePublished":"2026-06-27","dateModified":"2026-06-27","author":{"@type":"Organization","name":"DeepSeek 使用指南"},"publisher":{"@type":"Organization","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/posts/deepseek-api-retry-guide/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"name":"技术文章","item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek API 503/429 错误的重试与熔断策略","item":"https://deepseek-chat.com/posts/deepseek-api-retry-guide/"}]}
+</script>
+
+  </main>
+
+  <footer>
+    <div class="friend-links">
+      <strong>相关站点：</strong>
+      
+        <a href="https://hk-deepseek.com" target="_blank" rel="noopener">DeepSeek 香港资料</a>
+      
+        <a href="https://deepseek-in.com" target="_blank" rel="noopener">DeepSeek 国际版说明</a>
+      
+        <a href="https://deepseek-1.com" target="_blank" rel="noopener">DeepSeek 技术文章</a>
+      
+        <a href="https://deepseek-my.com" target="_blank" rel="noopener">DeepSeek 马来西亚资料</a>
+      
+    </div>
+    <p>&copy; 2026 DeepSeek 使用指南 · 本站为第三方使用说明整理，非 DeepSeek 官方网站。</p>
+  </footer>
+
+  
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+  
+
+</body>
+</html>

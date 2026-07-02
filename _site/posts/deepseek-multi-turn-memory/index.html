@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="zh-Hant" href="https://deepseek-chat.com/zh-Hant/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="en" href="https://deepseek-chat.com/en/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ms" href="https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ja" href="https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+
+  <title>DeepSeek 多轮对话与上下文记忆管理 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="讲解 DeepSeek 多轮聊天时如何拆分话题、控制上下文长度、避免前后矛盾，并在长任务中保持输出一致。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="DeepSeek 多轮对话与上下文记忆管理">
+
+  <meta property="og:description" content="讲解 DeepSeek 多轮聊天时如何拆分话题、控制上下文长度、避免前后矛盾，并在长任务中保持输出一致。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="DeepSeek 多轮对话与上下文记忆管理">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;"></a> &gt;
+    <a href="/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 多轮对话与上下文记忆管理</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-07-02</span> ·  2026-07-02
+      <span> · </span>
+    </div>
+  </header>
+
+  
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="/static/posts/chat-memory-cover.svg?v=2" alt="DeepSeek 多轮对话与上下文记忆管理" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  
+
+  
+
+  <div class="post-content">
+    <p>多轮对话是 DeepSeek 网页版最常用的能力，但也是最容易「聊着聊着就跑题」的地方。核心原则是：<strong>一个对话窗口只做一个主线任务</strong>。</p>
+<h2>什么时候该新开对话</h2>
+<ul>
+<li>从「写邮件」突然转到「写 Python 脚本」</li>
+<li>模型开始引用几轮之前已否定的结论</li>
+<li>你需要完全不同的角色设定（客服 vs 程序员）</li>
+<li>上下文已经很长，回答明显变慢或遗漏细节</li>
+</ul>
+<h2>长任务的拆分方法</h2>
+<p>以「整理 30 条用户反馈并分类」为例：</p>
+<ol>
+<li><strong>第 1 轮</strong>：粘贴 10 条，要求分类并给出标签体系</li>
+<li><strong>第 2 轮</strong>：确认标签后，处理下一批 10 条</li>
+<li><strong>第 3 轮</strong>：汇总统计，要求输出表格</li>
+</ol>
+<p>每轮结束时加一句：「请记住标签体系：A/B/C，下一批继续用同一标准。」</p>
+<h2>减少前后矛盾的技巧</h2>
+<ul>
+<li>关键约束每 3–5 轮重复一次（语气、字数、禁止事项）</li>
+<li>用「根据上文第 2 点的结论」明确引用</li>
+<li>发现矛盾时直接说：「请以第 4 条规则为准，重写上一段」</li>
+</ul>
+<h2>上下文过长时的处理</h2>
+<p>模型有上下文窗口上限。当对话很长时：</p>
+<ul>
+<li>让模型先输出「当前结论摘要」（200 字内）</li>
+<li>新开对话，把摘要作为首条消息继续</li>
+<li>大段原文不要反复粘贴，改为「见上文附件要点 1–5」</li>
+</ul>
+<h2>多轮对话检查清单</h2>
+<ul>
+<li>[ ] 一个窗口一个主线任务</li>
+<li>[ ] 关键格式要求会周期性重申</li>
+<li>[ ] 超长对话会先做摘要再续聊</li>
+<li>[ ] 话题切换时考虑新开窗口</li>
+</ul>
+<p><img src="/static/posts/chat-generic-step.svg" alt="DeepSeek 多轮对话拆分任务示意"></p>
+<p>延伸阅读：<a href="/posts/deepseek-chat-web-basics/">网页对话入门</a> · <a href="/posts/deepseek-chat-scenario-library/">场景模板库</a></p>
+<h2>相关教程</h2>
+<ul>
+<li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+<li><a href="/posts/deepseek-chat-scenario-library/">对话场景模板库</a></li>
+<li><a href="/posts/deepseek-chat-export-share/">对话导出与隐私</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          <a href="/posts/deepseek-chat-web-basics/">DeepSeek 网页对话入门：第一次聊出好用回答</a>
+        
+      </li>
+      <li>：
+        
+          <a href="/posts/deepseek-mobile-app-chat/">DeepSeek 手机端与 App 对话使用技巧</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 多轮对话与上下文记忆管理","description":"讲解 DeepSeek 多轮聊天时如何拆分话题、控制上下文长度、避免前后矛盾，并在长任务中保持输出一致。","datePublished":"2026-07-02","dateModified":"2026-07-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/deepseek-multi-turn-memory/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 多轮对话与上下文记忆管理","item":"https://deepseek-chat.com/posts/deepseek-multi-turn-memory/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

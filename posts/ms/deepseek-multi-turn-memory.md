@@ -10,7 +10,6 @@ tags: ["berbilang giliran"]
 layout: "post.njk"
 permalink: "/ms/posts/deepseek-multi-turn-memory/index.html"
 ---
-
 Sembang berbilang giliran adalah cara paling biasa menggunakan DeepSeek — dan paling mudah melencong topik. Peraturan utama: **satu tetingkap, satu tugas utama**.
 
 ## Bila perlu sembang baharu
@@ -52,3 +51,8 @@ Contoh: "Klasifikasikan 30 maklum balas pengguna"
 - [Asas sembang web](/ms/posts/deepseek-chat-web-basics/)
 - [Perpustakaan templat](/ms/posts/deepseek-chat-scenario-library/)
 - [Eksport & privasi](/ms/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/ms/posts/deepseek-chat-web-basics/)
+- [手机端对话技巧](/ms/posts/deepseek-mobile-app-chat/)

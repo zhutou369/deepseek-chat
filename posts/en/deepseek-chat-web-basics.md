@@ -10,7 +10,6 @@ tags: ["chat basics"]
 layout: "post.njk"
 permalink: "/en/posts/deepseek-chat-web-basics/index.html"
 ---
-
 Many people open `chat.deepseek.com` and start with “write me an article,” only to get a long, generic reply. Web chat is not about asking more — it is about **making the first message clear**.
 
 ## Three things before you start
@@ -63,3 +62,8 @@ After your first message works, read [multi-turn context management](/en/posts/d
 - [Mobile & app chat tips](/en/posts/deepseek-mobile-app-chat/)
 - [Scenario prompt library](/en/posts/deepseek-chat-scenario-library/)
 - [Export, share & privacy](/en/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [手机端对话技巧](/en/posts/deepseek-mobile-app-chat/)
+- [场景模板库](/en/posts/deepseek-chat-scenario-library/)

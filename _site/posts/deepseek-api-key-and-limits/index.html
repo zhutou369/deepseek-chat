@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  
+  <title>DeepSeek API 密钥申请、限流与 429 错误处理 | DeepSeek 使用指南</title>
+  <meta name="description" content="说明 DeepSeek API Key 申请流程、常见限流规则、Token 用量观察方式，以及遇到 429 Too Many Requests 时的实务处理。">
+  <meta name="keywords" content="DeepSeek,DeepSeek API,DeepSeek 登录,DeepSeek 提示词,DeepSeek 教程,深度求索">
+  
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  <link rel="canonical" href="https://deepseek-chat.com/posts/deepseek-api-key-and-limits/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DeepSeek API 密钥申请、限流与 429 错误处理">
+  <meta property="og:description" content="说明 DeepSeek API Key 申请流程、常见限流规则、Token 用量观察方式，以及遇到 429 Too Many Requests 时的实务处理。">
+  <meta property="og:url" content="https://deepseek-chat.com/posts/deepseek-api-key-and-limits/">
+  <meta property="og:site_name" content="DeepSeek 使用指南">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com","description":"整理 DeepSeek 网页版登录、API 密钥申请、提示词技巧、503/429 错误排查与本地 Ollama 部署的简体中文实操说明。"}
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    main { padding: 20px 0; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
+    .friend-links a:hover { text-decoration: underline; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 15px; }
+    .post-meta { color: #888; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-hd">
+      
+        <a href="/" class="site-logo">DeepSeek 使用指南</a>
+      
+    </div>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/posts/">技术文章</a>
+    </nav>
+  </header>
+
+  <main>
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;">首页</a> &gt;
+    <a href="/posts/" style="color: #666;">技术文章</a> &gt;
+    <span>正文</span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek API 密钥申请、限流与 429 错误处理</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>发布日期: 2026-06-27</span> · 更新于 2026-06-27
+      <span> · DeepSeek 使用指南</span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>接入 DeepSeek API 前，先把密钥管理与限流规则搞清楚，能避免上线后大量 429 错误。</p>
+<h2>API Key 申请与安全存放</h2>
+<ol>
+<li>登录 DeepSeek 开发者平台，创建项目并生成 API Key。</li>
+<li>Key 只显示一次，请立即存入密钥管理服务（如 GitHub Secrets、Vault、云厂商 Secret Manager）。</li>
+<li>不要把 Key 写进前端 JavaScript 或公开 Git 仓库。</li>
+<li>生产与测试环境使用不同 Key，方便轮换与追踪用量。</li>
+</ol>
+<h2>理解限流（Rate Limit）</h2>
+<p>429 错误表示请求频率或并发超出配额。常见限制维度包括：</p>
+<ul>
+<li>每分钟请求数（RPM）</li>
+<li>每分钟 Token 数（TPM）</li>
+<li>单次请求最大 Token</li>
+</ul>
+<p>开发阶段建议：</p>
+<ul>
+<li>在请求头或响应中记录 <code>x-ratelimit-*</code> 类字段（若平台提供）。</li>
+<li>对批量任务加入队列，而不是同时发送数百个请求。</li>
+<li>长文本任务拆段处理，避免单次 Prompt 过大。</li>
+</ul>
+<h2>429 发生时怎么做</h2>
+<ol>
+<li><strong>立即停止重试风暴</strong>：连续重试会让限流时间更长。</li>
+<li><strong>读取 Retry-After</strong>：若响应头提供等待秒数，按指示延迟。</li>
+<li><strong>指数退避</strong>：例如 1s → 2s → 4s，并设定最大重试次数（3–5 次）。</li>
+<li><strong>降级策略</strong>：高峰期切换到更小模型或缓存相似问题的回答。</li>
+</ol>
+<h2>用量与成本观察</h2>
+<ul>
+<li>记录每次请求的 <code>prompt_tokens</code> 与 <code>completion_tokens</code>。</li>
+<li>为不同功能模块分开统计，找出 Token 消耗异常的接口。</li>
+<li>定期轮换 Key，并删除不再使用的旧 Key。</li>
+</ul>
+<h2>上线前检查清单</h2>
+<ul>
+<li>[ ] Key 未暴露在前端或公开仓库</li>
+<li>[ ] 已设定请求超时（建议 30–60 秒）</li>
+<li>[ ] 已实现 429/503 重试与熔断</li>
+<li>[ ] 有基本日志：状态码、耗时、Token 用量</li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;">延伸阅读</h3>
+    <ul>
+      <li>上一篇：
+        
+          <a href="/posts/2026-06-27-deepseek-pandas-dataframe-code-analyst-527/">数据分析师用 DeepSeek 生成 Python Pandas 常用代码</a>
+        
+      </li>
+      <li>下一篇：
+        
+          <a href="/posts/deepseek-api-retry-guide/">DeepSeek API 503/429 错误的重试与熔断策略</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/">返回文章列表 &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek API 密钥申请、限流与 429 错误处理","description":"说明 DeepSeek API Key 申请流程、常见限流规则、Token 用量观察方式，以及遇到 429 Too Many Requests 时的实务处理。","datePublished":"2026-06-27","dateModified":"2026-06-27","author":{"@type":"Organization","name":"DeepSeek 使用指南"},"publisher":{"@type":"Organization","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/posts/deepseek-api-key-and-limits/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"name":"技术文章","item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek API 密钥申请、限流与 429 错误处理","item":"https://deepseek-chat.com/posts/deepseek-api-key-and-limits/"}]}
+</script>
+
+  </main>
+
+  <footer>
+    <div class="friend-links">
+      <strong>相关站点：</strong>
+      
+        <a href="https://hk-deepseek.com" target="_blank" rel="noopener">DeepSeek 香港资料</a>
+      
+        <a href="https://deepseek-in.com" target="_blank" rel="noopener">DeepSeek 国际版说明</a>
+      
+        <a href="https://deepseek-1.com" target="_blank" rel="noopener">DeepSeek 技术文章</a>
+      
+        <a href="https://deepseek-my.com" target="_blank" rel="noopener">DeepSeek 马来西亚资料</a>
+      
+    </div>
+    <p>&copy; 2026 DeepSeek 使用指南 · 本站为第三方使用说明整理，非 DeepSeek 官方网站。</p>
+  </footer>
+
+  
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+  
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+
+  <title>DeepSeek 技术文章与使用教程 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="浏览 DeepSeek 网页版登录、API 接入、提示词技巧、错误排查与本地部署等简体中文教程。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="noindex,follow">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/page-13/">
+
+  <meta property="og:type" content="website">
+
+  <meta property="og:title" content="DeepSeek 技术文章与使用教程">
+
+  <meta property="og:description" content="浏览 DeepSeek 网页版登录、API 接入、提示词技巧、错误排查与本地部署等简体中文教程。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/page-13/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="DeepSeek 技术文章与使用教程">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<h1>DeepSeek 技术文章列表</h1>
+<p>优先收录可直接照做的入门教程；部分早期自动生成内容已从搜索索引中排除，但仍保留供参考。</p>
+
+<ul class="post-list" style="margin-top: 20px;">
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-17</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-17-deepseek-ai-for-teachers-lesson-plan-exam-generation-839/">教师提效指南：如何用 DeepSeek 快速编写教案与期末考试试卷</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对教师提效指南：如何用 DeepSeek 快速编写教案与期末考试试卷的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-17</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-17-deepseek-for-teacher-productivity-lesson-plan-exam-389/">教师提效指南：如何用 DeepSeek 快速编写教案与期末考试试卷</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对教师提效指南：如何用 DeepSeek 快速编写教案与期末考试试卷的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-18</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-18-deepseek-assisting-kids-coding-math-problem-solving-smart-tutor-parents-teachers-959/">DeepSeek 辅助少儿编程/数学解题：家长和老师的智能辅导老师</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对DeepSeek 辅助少儿编程/数学解题：家长和老师的智能辅导老师的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-18</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-18-how-to-use-deepseek-for-personalized-efficient-study-schedules-760/">如何利用 DeepSeek 制定个性化高效率的考公/考证复习时间表</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对如何利用 DeepSeek 制定个性化高效率的考公/考证复习时间表的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-18</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-18-deepseek-ai-assistant-children-coding-math-problem-solving-602/">DeepSeek 辅助少儿编程/数学解题：家长和老师的智能辅导老师</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对DeepSeek 辅助少儿编程/数学解题：家长和老师的智能辅导老师的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-18</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-18-deepseek-for-personalized-exam-study-schedules-253/">如何利用 DeepSeek 制定个性化高效率的考公/考证复习时间表</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对如何利用 DeepSeek 制定个性化高效率的考公/考证复习时间表的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-19</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-19-deepseek-creative-writing-worldbuilding-character-techniques-974/">DeepSeek 辅助历史/文学创意写作：设定世界观与角色背景的技巧</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对DeepSeek 辅助历史/文学创意写作：设定世界观与角色背景的技巧的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-19</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-19-deepseek-zotero-high-impact-literature-workflow-740/">学术研究者的福音：DeepSeek 配合 Zotero 打造高能文献管理流</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对学术研究者的福音：DeepSeek 配合 Zotero 打造高能文献管理流的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-19</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-19-deepseek-assisted-storytelling-world-character-techniques-707/">DeepSeek 辅助历史/文学创意写作：设定世界观与角色背景的技巧</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对DeepSeek 辅助历史/文学创意写作：设定世界观与角色背景的技巧的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+    <li style="padding: 15px 0; border-bottom: 1px dashed #eee;">
+      <span class="post-meta">发布时间：2026-06-19</span>
+
+      <h2 style="font-size: 20px; margin: 5px 0;"><a href="/posts/2026-06-19-deepseek-zotero-high-power-literature-management-flow-685/">学术研究者的福音：DeepSeek 配合 Zotero 打造高能文献管理流</a></h2>
+      <p style="font-size: 15px; color: #555;">为你带来针对学术研究者的福音：DeepSeek 配合 Zotero 打造高能文献管理流的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。</p>
+    </li>
+  
+</ul>
+
+
+<nav class="pagination-nav" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+  <ul style="list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 10px; justify-content: center; align-items: center;">
+    
+    <li>
+      
+        <a href="/posts/page-12/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">&laquo; 上一页</a>
+      
+    </li>
+      
+      
+      <li>
+        
+          <a href="/posts/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">1</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-2/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">2</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-3/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">3</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-4/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">4</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-5/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">5</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-6/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">6</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-7/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">7</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-8/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">8</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-9/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">9</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-10/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">10</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-11/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">11</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-12/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">12</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <span style="padding: 6px 12px; background: #333; color: #fff; border: 1px solid #333; font-weight: bold; border-radius: 4px; font-size: 14px;">13</span>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-14/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">14</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-15/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">15</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-16/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">16</a>
+        
+      </li>
+      
+      
+      <li>
+        
+          <a href="/posts/page-17/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">17</a>
+        
+      </li>
+
+    <li>
+      
+        <a href="/posts/page-14/" style="padding: 6px 12px; border: 1px solid #ddd; text-decoration: none; color: #0066cc; border-radius: 4px; font-size: 14px;">下一页 &raquo;</a>
+      
+    </li>
+
+  </ul>
+</nav>
+
+
+<p style="margin-top: 30px;"><a href="/">&larr; 返回首页</a></p>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

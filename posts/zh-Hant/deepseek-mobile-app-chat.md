@@ -10,7 +10,6 @@ tags: ["移動端"]
 layout: "post.njk"
 permalink: "/zh-Hant/posts/deepseek-mobile-app-chat/index.html"
 ---
-
 移動端對話的場景往往是「路上改文案」「排隊時查資料」。屏幕小、輸入法切換頻繁，Prompt 要更短、更結構化。
 
 ## 移動端入口選擇
@@ -57,3 +56,8 @@ permalink: "/zh-Hant/posts/deepseek-mobile-app-chat/index.html"
 - [網頁對話入門](/zh-Hant/posts/deepseek-chat-web-basics/)
 - [多輪對話管理](/zh-Hant/posts/deepseek-multi-turn-memory/)
 - [對話導出與私隱](/zh-Hant/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/zh-Hant/posts/deepseek-chat-web-basics/)
+- [场景模板库](/zh-Hant/posts/deepseek-chat-scenario-library/)

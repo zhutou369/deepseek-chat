@@ -49,6 +49,11 @@
       {% endif %}
       {% for post in latestPosts %}
       <article class="guide-card">
+        {% if post.data.coverImage %}
+        <a href="{{ post.url }}" class="guide-thumb" style="display:block;margin:-22px -22px 14px;border-radius:14px 14px 0 0;overflow:hidden;">
+          <img src="{{ post.data.coverImage | assetUrl }}" alt="{{ post.data.title }}" width="360" height="202" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;">
+        </a>
+        {% endif %}
         <div class="guide-meta">
           <span class="guide-date">{{ post.date | dateFilter }}</span>
         </div>
@@ -89,7 +94,7 @@
   .feature-card p { margin: 0; font-size: 0.92rem; color: #64748b; line-height: 1.65; }
   .posts-locale-note { text-align: center; color: #64748b; font-size: 0.9rem; margin: -16px 0 28px; }
   .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; }
+  .guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; overflow: hidden; }
   .guide-meta { font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; }
   .guide-title { font-size: 1.05rem; margin: 0 0 10px; line-height: 1.4; }
   .guide-title a { color: #0f172a; text-decoration: none; }

@@ -10,7 +10,6 @@ tags: ["對話入門"]
 layout: "post.njk"
 permalink: "/zh-Hant/posts/deepseek-chat-web-basics/index.html"
 ---
-
 很多人打開 `chat.deepseek.com` 後第一句就問「幫我寫一篇文章」，結果得到泛泛而談的長文。網頁對話的關鍵不是問得多，而是**首條訊息就把任務說清楚**。
 
 ## 進入對話前的三件事
@@ -63,3 +62,9 @@ permalink: "/zh-Hant/posts/deepseek-chat-web-basics/index.html"
 - [手機端與 App 對話技巧](/zh-Hant/posts/deepseek-mobile-app-chat/)
 - [對話場景模板庫](/zh-Hant/posts/deepseek-chat-scenario-library/)
 - [對話導出與私隱設定](/zh-Hant/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [多轮上下文管理](/zh-Hant/posts/deepseek-multi-turn-memory/)
+- [手机端对话技巧](/zh-Hant/posts/deepseek-mobile-app-chat/)
+- [场景模板库](/zh-Hant/posts/deepseek-chat-scenario-library/)

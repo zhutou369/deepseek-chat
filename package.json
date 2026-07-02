@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "npx @11ty/eleventy",
+    "migrate-images": "node tools/migrate-unsplash-images.js",
+    "replace-unsplash": "node tools/replace-unsplash-with-local.js",
+    "add-covers": "node tools/add-default-covers.js",
+    "add-links": "node tools/add-internal-links.js",
+    "generate-april": "node scripts/generate-april-posts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

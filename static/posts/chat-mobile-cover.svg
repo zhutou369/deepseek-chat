@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="DeepSeek K:ïùÝ">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#134e4a"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <text x="80" y="100" fill="#6ee7b7" font-family="Segoe UI,sans-serif" font-size="16" font-weight="600">MOBILE</text>
+  <text x="80" y="145" fill="#f8fafc" font-family="Segoe UI,sans-serif" font-size="28" font-weight="700">K:ïùÝ€ç</text>
+  <text x="80" y="180" fill="#99f6e4" font-family="Segoe UI,sans-serif" font-size="16">OÈh · íó · 1QA</text>
+  <rect x="300" y="120" width="200" height="300" rx="24" fill="#0f172a" stroke="#34d399" stroke-width="3"/>
+  <rect x="315" y="150" width="170" height="220" rx="8" fill="#f8fafc"/>
+  <rect x="325" y="340" width="150" height="32" rx="16" fill="#e2e8f0"/>
+  <text x="355" y="361" fill="#64748b" font-size="12" font-family="Segoe UI,sans-serif">ô¹ÀH&</text>
+</svg>

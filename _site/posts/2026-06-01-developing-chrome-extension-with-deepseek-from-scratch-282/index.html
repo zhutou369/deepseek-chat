@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+
+  <title>从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="为你带来针对从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="noindex,follow">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-06-01-developing-chrome-extension-with-deepseek-from-scratch-282/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程">
+
+  <meta property="og:description" content="为你带来针对从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-06-01-developing-chrome-extension-with-deepseek-from-scratch-282/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;"></a> &gt;
+    <a href="/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-06-01</span>
+      <span> · </span>
+    </div>
+  </header>
+
+  
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="/static/posts/chat-mobile-cover.svg?v=2" alt="从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  
+
+  
+
+  <div class="post-content">
+    <p>Chrome 浏览器插件作为增强用户体验和提升生产力的利器，其开发生态日益成熟。然而，从零开始构建一个功能完备的插件，需要开发者掌握前端技术、Chrome API 知识以及复杂的业务逻辑实现。幸运的是，随着人工智能技术的飞速发展，像 DeepSeek 这样的先进 AI 助手，正以前所未有的方式赋能开发者，极大地降低了技术门槛，并加速了开发进程。</p>
+<p>本文将作为一份详尽的实战教程，手把手指导你如何从零开始，借助 DeepSeek 的强大能力，开发一个实用的 Chrome 浏览器插件。我们将覆盖从环境搭建、核心概念理解、代码编写、DeepSeek 深度集成到最终调试优化的全流程，旨在帮助你不仅掌握插件开发，更能体会 AI 赋能开发的巨大潜力。</p>
+<h2>为什么选择 DeepSeek 辅助 Chrome 插件开发？</h2>
+<p>在复杂的软件工程项目中，代码编写只是其中的一环。更耗时、更具挑战性的往往是概念设计、API 调用规范查阅、疑难杂症排查以及性能优化。DeepSeek 作为一个多模态、高智能的 AI 助手，能在以下几个关键方面提供无与伦比的价值：</p>
+<ul>
+<li><strong>智能代码生成与补全：</strong> DeepSeek 能够根据自然语言描述或上下文，快速生成 Chrome API 调用代码、前端 UI 组件、事件监听器等，大幅减少手写代码量。</li>
+<li><strong>疑难问题解答与调试：</strong> 遇到 Chrome 插件特有的跨域限制、权限问题或消息传递机制难题时，DeepSeek 可以提供即时的问题诊断和解决方案。</li>
+<li><strong>最佳实践与架构建议：</strong> 对于复杂插件的架构设计、性能优化策略、安全防护措施，DeepSeek 能提供专家级的建议，帮助你避免常见的陷阱。</li>
+<li><strong>API 文档速查与理解：</strong> Chrome 官方文档虽详尽但庞大，DeepSeek 可以快速提取关键信息，解释不熟悉的 API 用法，甚至提供使用示例。</li>
+<li><strong>多语言与框架支持：</strong> 无论你是使用纯 JavaScript、TypeScript，还是结合 React/Vue 等前端框架，DeepSeek 都能提供相应的支持。</li>
+</ul>
+<p>通过深度整合 DeepSeek，我们不仅能提升开发效率，还能在没有深厚背景知识的情况下，构建出高质量、功能丰富的 Chrome 插件。</p>
+<h2>核心环境配置与开发准备</h2>
+<p>在踏上插件开发之旅前，我们需要确保本地环境配置妥当。</p>
+<h3>1. 必备工具与软件</h3>
+<ul>
+<li><strong>现代浏览器：</strong> Google Chrome (当然是！)。</li>
+<li><strong>代码编辑器：</strong> Visual Studio Code (VS Code) 是首选，其丰富的插件生态对开发大有裨益。</li>
+<li><strong>Node.js 与 npm/yarn：</strong> 用于管理项目依赖，构建工具等。如果你需要使用构建工具，如 Webpack 或 Vite，它们会是必需的。</li>
+<li><strong>DeepSeek API 密钥：</strong> 访问 DeepSeek 官方网站，注册并获取你的 API Key。这是你的插件与 DeepSeek AI 服务交互的凭证。</li>
+</ul>
+<h3>2. DeepSeek AI 账户与 API 密钥获取</h3>
+<p>访问 <a href="https://www.deepseek.com/">DeepSeek 官网</a> 注册账号，并在控制台中找到 API 管理或开发者设置，生成你的 API Key。请务必妥善保管此密钥，切勿直接硬编码到前端代码中，后续我们会讨论更安全的处理方式。</p>
+<h3>3. 创建项目骨架</h3>
+<p>首先，在你的文件系统中创建一个新文件夹，作为你的插件项目根目录。</p>
+<pre><code class="language-bash">mkdir deepseek-chrome-extension
+cd deepseek-chrome-extension
+</code></pre>
+<p>然后，我们将通过 DeepSeek 智能地创建最基础的 <code>manifest.json</code> 文件。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Generate a basic <code>manifest.json</code> file for a Chrome extension. It should have a name 'DeepSeek Helper', version '1.0', description 'A simple helper extension powered by DeepSeek', and include permissions for 'activeTab' and 'scripting'.&quot;</p>
+<p>DeepSeek 会迅速为你生成类似以下内容：</p>
+<pre><code class="language-json">{
+  &quot;manifest_version&quot;: 3,
+  &quot;name&quot;: &quot;DeepSeek Helper&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;description&quot;: &quot;A simple helper extension powered by DeepSeek.&quot;,
+  &quot;permissions&quot;: [&quot;activeTab&quot;, &quot;scripting&quot;],
+  &quot;action&quot;: {
+    &quot;default_popup&quot;: &quot;popup.html&quot;,
+    &quot;default_icon&quot;: {
+      &quot;16&quot;: &quot;images/icon16.png&quot;,
+      &quot;48&quot;: &quot;images/icon48.png&quot;,
+      &quot;128&quot;: &quot;images/icon128.png&quot;
+    }
+  },
+  &quot;icons&quot;: {
+    &quot;16&quot;: &quot;images/icon16.png&quot;,
+    &quot;48&quot;: &quot;images/icon48.png&quot;,
+    &quot;128&quot;: &quot;images/icon128.png&quot;
+  },
+  &quot;background&quot;: {
+    &quot;service_worker&quot;: &quot;background.js&quot;
+  }
+}
+</code></pre>
+<p>将 DeepSeek 生成的内容保存为 <code>manifest.json</code> 在你的项目根目录。同时，创建 <code>images</code> 文件夹，并放入一些占位图标文件（<code>icon16.png</code>, <code>icon48.png</code>, <code>icon128.png</code>）。</p>
+<p><img src="/static/posts/chat-generic-step.svg" alt="Chrome Extension Development Workflow"></p>
+<h2>Chrome 插件核心组件解析</h2>
+<p>在 DeepSeek 的辅助下，我们来深入理解 Chrome 插件的几个核心组件：</p>
+<h3>1. manifest.json：插件的蓝图</h3>
+<p>这是插件的元数据文件，定义了插件的名称、版本、描述、权限、入口点等所有重要信息。<code>manifest_version</code> 字段至关重要，目前推荐使用 <code>3</code> (Manifest V3)。</p>
+<ul>
+<li><code>action</code>: 定义了当用户点击浏览器工具栏上的插件图标时会发生什么，通常是弹出一个 <code>popup.html</code> 页面。</li>
+<li><code>permissions</code>: 声明插件需要访问的特定浏览器 API 或网站数据。例如 <code>activeTab</code> 允许插件临时访问当前活跃标签页的权限，而 <code>scripting</code> 则允许插件在网页中注入脚本。</li>
+<li><code>background</code>: 定义了插件的后台脚本，它在浏览器后台持续运行，处理事件监听、API 调用等任务。Manifest V3 中使用的是 <code>service_worker</code>。</li>
+<li><code>content_scripts</code>: 允许插件在特定的网页中注入脚本，与网页内容进行交互。</li>
+</ul>
+<h3>2. background.js (Service Worker)：插件的大脑</h3>
+<p>后台 Service Worker 是插件的“大脑”，它是一个常驻的脚本，负责监听浏览器事件（如标签页更新、网络请求）、处理 API 调用、执行定时任务等。与传统后台页面不同，Service Worker 是事件驱动的，只有在需要时才唤醒，更省资源。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Create a <code>background.js</code> (service worker) file for a Chrome extension. It should listen for a message from the popup script and log the message to the console.&quot;</p>
+<pre><code class="language-javascript">// background.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) =&gt; {
+  if (message.action === &quot;logMessage&quot;) {
+    console.log(&quot;Message received from popup:&quot;, message.payload);
+    sendResponse({ status: &quot;success&quot;, message: &quot;Logged successfully!&quot; });
+  }
+  // Add more message handling logic here
+  return true; // Indicates that sendResponse will be called asynchronously
+});
+
+console.log(&quot;Background Service Worker loaded.&quot;);
+</code></pre>
+<h3>3. popup.html 与 popup.js：用户界面</h3>
+<p><code>popup.html</code> 是当用户点击插件图标时弹出的界面。它是一个标准的 HTML 页面，可以包含 CSS 样式和 JavaScript 逻辑 (<code>popup.js</code>) 来与用户互动。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Generate a simple <code>popup.html</code> with a button and a <code>popup.js</code> that sends a message 'Hello from popup!' to the background script when the button is clicked.&quot;</p>
+<p><code>popup.html</code>:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;DeepSeek Helper&lt;/title&gt;
+  &lt;style&gt;
+    body { width: 300px; padding: 10px; font-family: sans-serif; }
+    button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;DeepSeek Actions&lt;/h1&gt;
+  &lt;button id=&quot;sendMessageButton&quot;&gt;Send Message to Background&lt;/button&gt;
+  &lt;script src=&quot;popup.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>popup.js</code>:</p>
+<pre><code class="language-javascript">// popup.js
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  const sendMessageButton = document.getElementById('sendMessageButton');
+
+  sendMessageButton.addEventListener('click', () =&gt; {
+    chrome.runtime.sendMessage({ action: &quot;logMessage&quot;, payload: &quot;Hello from popup!&quot; }, (response) =&gt; {
+      console.log(&quot;Response from background:&quot;, response);
+    });
+  });
+});
+</code></pre>
+<h3>4. content.js：与网页交互</h3>
+<p>内容脚本在用户访问的网页上下文中运行，可以读取、修改网页的 DOM，并与后台 Service Worker 通信。它拥有与普通网页脚本相同的 JavaScript 能力，但可以通过 <code>chrome.runtime.sendMessage</code> 与插件的其他部分通信。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Write a <code>content.js</code> script that can be injected into a page. It should get the selected text on the page and send it to the background script with action 'summarizeText'.&quot;</p>
+<pre><code class="language-javascript">// content.js
+function getSelectedText() {
+  const selection = window.getSelection();
+  return selection ? selection.toString() : '';
+}
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) =&gt; {
+  if (message.action === &quot;getSelectedText&quot;) {
+    const selectedText = getSelectedText();
+    sendResponse({ selectedText: selectedText });
+  }
+  return true;
+});
+
+console.log(&quot;Content script loaded.&quot;);
+</code></pre>
+<p>将这些文件分别创建并保存到你的项目目录中。对于 <code>popup.html</code> 和 <code>popup.js</code>，它们应在项目根目录。对于 <code>background.js</code> 和 <code>content.js</code> 也是如此。</p>
+<h2>实战：构建一个 DeepSeek 文本处理插件</h2>
+<p>现在，我们将这些核心组件组合起来，构建一个实际的插件：<strong>一个可以总结当前页面选中文本的插件</strong>。用户选中一段文本，点击插件图标，然后插件将选中文本发送给 DeepSeek API 进行总结，并将结果显示在弹出窗口中。</p>
+<h3>1. 修改 manifest.json</h3>
+<p>我们需要添加一些权限，以便插件可以访问 DeepSeek API 并与网页交互。</p>
+<pre><code class="language-json">{
+  &quot;manifest_version&quot;: 3,
+  &quot;name&quot;: &quot;DeepSeek Text Summarizer&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;description&quot;: &quot;Summarize selected text using DeepSeek AI.&quot;,
+  &quot;permissions&quot;: [&quot;activeTab&quot;, &quot;scripting&quot;, &quot;storage&quot;],
+  &quot;host_permissions&quot;: [&quot;&lt;all_urls&gt;&quot;],
+  &quot;action&quot;: {
+    &quot;default_popup&quot;: &quot;popup.html&quot;,
+    &quot;default_icon&quot;: {
+      &quot;16&quot;: &quot;images/icon16.png&quot;,
+      &quot;48&quot;: &quot;images/icon48.png&quot;,
+      &quot;128&quot;: &quot;images/icon128.png&quot;
+    }
+  },
+  &quot;icons&quot;: {
+    &quot;16&quot;: &quot;images/icon16.png&quot;,
+    &quot;48&quot;: &quot;images/icon48.png&quot;,
+    &quot;128&quot;: &quot;images/icon128.png&quot;
+  },
+  &quot;background&quot;: {
+    &quot;service_worker&quot;: &quot;background.js&quot;
+  }
+}
+</code></pre>
+<ul>
+<li><code>storage</code>: 用于安全存储 DeepSeek API Key。</li>
+<li><code>host_permissions</code>: 允许插件在所有网站 (<code>&lt;all_urls&gt;</code>) 注入内容脚本。</li>
+</ul>
+<h3>2. 增强 popup.html 与 popup.js</h3>
+<p><code>popup.html</code> 将展示总结按钮和 DeepSeek 返回的结果。<code>popup.js</code> 负责与 <code>content.js</code> 和 <code>background.js</code> 进行通信，并将结果呈现在 UI 上。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Modify <code>popup.html</code> to have a 'Summarize Selected Text' button and a <code>div</code> to display the summary. Modify <code>popup.js</code> to first ask the <code>content.js</code> for selected text, then send it to <code>background.js</code> for summarization, and finally display the result.&quot;</p>
+<p><code>popup.html</code>:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;DeepSeek Summarizer&lt;/title&gt;
+  &lt;style&gt;
+    body { width: 350px; padding: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; }
+    h1 { font-size: 1.5em; color: #0056b3; margin-bottom: 15px; }
+    button { width: 100%; padding: 12px; margin-bottom: 15px; background-color: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.2s ease; }
+    button:hover { background-color: #0056b3; }
+    #summaryResult { min-height: 80px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background-color: white; overflow-wrap: break-word; font-size: 0.9em; line-height: 1.5; color: #555; }
+    .loading-spinner { border: 4px solid rgba(0, 0, 0, .1); border-left-color: #007bff; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 20px auto; display: none; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;DeepSeek 文本摘要&lt;/h1&gt;
+  &lt;button id=&quot;summarizeButton&quot;&gt;总结选中文本&lt;/button&gt;
+  &lt;div class=&quot;loading-spinner&quot; id=&quot;loadingSpinner&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;summaryResult&quot;&gt;请选择文本并点击按钮进行总结...&lt;/div&gt;
+  &lt;script src=&quot;popup.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>popup.js</code>:</p>
+<pre><code class="language-javascript">// popup.js
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  const summarizeButton = document.getElementById('summarizeButton');
+  const summaryResultDiv = document.getElementById('summaryResult');
+  const loadingSpinner = document.getElementById('loadingSpinner');
+
+  summarizeButton.addEventListener('click', async () =&gt; {
+    summaryResultDiv.textContent = '';
+    loadingSpinner.style.display = 'block';
+    summarizeButton.disabled = true;
+
+    try {
+      // 1. 获取当前活动标签页
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+      // 2. 向内容脚本注入并请求选中文本
+      // 注意：这里需要确保content.js已经注入，或者主动注入
+      // 对于MV3，scripting API是首选
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js'] // 确保content.js被注入
+      });
+
+      const responseFromContent = await chrome.tabs.sendMessage(tab.id, { action: &quot;getSelectedText&quot; });
+      const selectedText = responseFromContent?.selectedText;
+
+      if (!selectedText) {
+        summaryResultDiv.textContent = '请先在页面上选择一段文本。';
+        return;
+      }
+
+      // 3. 将选中文本发送到后台 Service Worker 进行总结
+      const responseFromBackground = await chrome.runtime.sendMessage({
+        action: &quot;summarizeText&quot;,
+        text: selectedText
+      });
+
+      if (responseFromBackground &amp;&amp; responseFromBackground.summary) {
+        summaryResultDiv.textContent = responseFromBackground.summary;
+      } else {
+        summaryResultDiv.textContent = '总结失败，请稍后再试或检查DeepSeek API。';
+      }
+
+    } catch (error) {
+      console.error('插件操作失败:', error);
+      summaryResultDiv.textContent = `发生错误: ${error.message}`;
+    } finally {
+      loadingSpinner.style.display = 'none';
+      summarizeButton.disabled = false;
+    }
+  });
+});
+</code></pre>
+<h3>3. 完善 content.js</h3>
+<p><code>content.js</code> 保持不变，但要确保它能被 <code>popup.js</code> 通过 <code>chrome.scripting.executeScript</code> 注入。</p>
+<pre><code class="language-javascript">// content.js
+function getSelectedText() {
+  const selection = window.getSelection();
+  return selection ? selection.toString() : '';
+}
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) =&gt; {
+  if (message.action === &quot;getSelectedText&quot;) {
+    const selectedText = getSelectedText();
+    sendResponse({ selectedText: selectedText });
+  }
+  return true; // Keep the message channel open for async response
+});
+</code></pre>
+<h3>4. 核心：在 background.js 中调用 DeepSeek API</h3>
+<p>这是插件的核心逻辑，我们将在这里处理 DeepSeek API 的调用。出于安全考虑，API Key 不应直接暴露在客户端脚本中。最佳实践是将其存储在 <code>chrome.storage.sync</code> 中，或者通过一个简单的配置页面让用户自行输入。</p>
+<p><strong>DeepSeek 提示词示例：</strong>
+&quot;Modify <code>background.js</code> to handle 'summarizeText' action. It should make a POST request to DeepSeek API with the provided text, using a placeholder API key. The prompt for DeepSeek should be 'Summarize the following text concisely: [text]'.&quot;</p>
+<pre><code class="language-javascript">// background.js
+const DEEPSEEK_API_ENDPOINT = &quot;https://api.deepseek.com/chat/completions&quot;;
+// 建议用户通过配置页面输入，或从 chrome.storage.sync 获取
+let deepseekApiKey = &quot;YOUR_DEEPSEEK_API_KEY&quot;; // 请替换为你的实际API Key
+
+// 监听消息，处理总结请求
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) =&gt; {
+  if (message.action === &quot;summarizeText&quot; &amp;&amp; message.text) {
+    summarizeTextWithDeepSeek(message.text)
+      .then(summary =&gt; {
+        sendResponse({ summary: summary });
+      })
+      .catch(error =&gt; {
+        console.error(&quot;Error summarizing text:&quot;, error);
+        sendResponse({ error: error.message });
+      });
+    return true; // Indicate that sendResponse will be called asynchronously
+  }
+});
+
+async function summarizeTextWithDeepSeek(text) {
+  if (!deepseekApiKey || deepseekApiKey === &quot;YOUR_DEEPSEEK_API_KEY&quot;) {
+    throw new Error(&quot;DeepSeek API Key is not configured. Please set it in background.js or through options.&quot;);
+  }
+
+  try {
+    const response = await fetch(DEEPSEEK_API_ENDPOINT, {
+      method: &quot;POST&quot;,
+      headers: {
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+        &quot;Authorization&quot;: `Bearer ${deepseekApiKey}`
+      },
+      body: JSON.stringify({
+        model: &quot;deepseek-chat&quot;, // 可以根据需求选择其他模型
+        messages: [
+          {
+            role: &quot;system&quot;,
+            content: &quot;You are a helpful assistant specialized in concise text summarization.&quot;
+          },
+          {
+            role: &quot;user&quot;,
+            content: `Summarize the following text concisely:\n\n${text}`
+          }
+        ],
+        stream: false
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`DeepSeek API error: ${response.status} - ${JSON.stringify(errorData)}`);
+    }
+
+    const data = await response.json();
+    const summary = data.choices[0]?.message?.content.trim();
+
+    return summary || &quot;No summary generated.&quot;;
+
+  } catch (error) {
+    console.error(&quot;Failed to call DeepSeek API:&quot;, error);
+    throw error;
+  }
+}
+
+// 示例：从storage中获取API Key (更安全的方式)
+// chrome.storage.sync.get('deepseekApiKey', (data) =&gt; {
+//   if (data.deepseekApiKey) {
+//     deepseekApiKey = data.deepseekApiKey;
+//     console.log(&quot;DeepSeek API Key loaded from storage.&quot;);
+//   } else {
+//     console.warn(&quot;DeepSeek API Key not found in storage. Please set it.&quot;);
+//   }
+// });
+
+console.log(&quot;DeepSeek Text Summarizer Background Service Worker loaded.&quot;);
+</code></pre>
+<p><strong>重要提示：</strong></p>
+<ul>
+<li>将 <code>YOUR_DEEPSEEK_API_KEY</code> 替换为你真实的 DeepSeek API Key。</li>
+<li>在实际生产环境中，API Key 不应直接硬编码在代码中。考虑通过插件的选项页让用户输入，并使用 <code>chrome.storage.sync</code> 安全存储。或者，如果你的插件有后端服务，将 API 调用放在后端进行，并通过插件与你的后端通信，这样可以更好地保护密钥。</li>
+</ul>
+<p><img src="/static/posts/chat-generic-step.svg" alt="DeepSeek AI Assistant Coding Interface"></p>
+<h2>加载与调试你的插件</h2>
+<h3>1. 在 Chrome 浏览器中加载插件</h3>
+<ol>
+<li>打开 Chrome 浏览器，在地址栏输入 <code>chrome://extensions</code> 并回车。</li>
+<li>打开右上角的“开发者模式”开关。</li>
+<li>点击“加载已解压的扩展程序”按钮。</li>
+<li>选择你项目所在的文件夹 (<code>deepseek-chrome-extension</code>)。</li>
+</ol>
+<p>此时，你的插件应该会出现在扩展程序列表中。你会在浏览器工具栏看到你的插件图标。</p>
+<h3>2. 调试技巧</h3>
+<ul>
+<li><strong>Popup 页面调试：</strong> 右键点击浏览器工具栏上的插件图标，选择“检查弹出内容”，这会打开开发者工具，你可以调试 <code>popup.html</code> 和 <code>popup.js</code>。</li>
+<li><strong>Background Service Worker 调试：</strong> 在 <code>chrome://extensions</code> 页面找到你的插件，点击“Service Worker”链接，这会打开一个独立的开发者工具窗口，用于调试 <code>background.js</code>。</li>
+<li><strong>Content Script 调试：</strong> 在你注入内容脚本的网页上（例如一个新闻网站），打开开发者工具（F12），在 <code>Sources</code> 标签页下，你可以找到并调试你的 <code>content.js</code>。</li>
+<li><strong>消息传递调试：</strong> 使用 <code>console.log()</code> 在各个脚本中输出消息，观察消息传递的流程和数据。</li>
+</ul>
+<h2>高级考虑与未来优化</h2>
+<h3>1. 安全性</h3>
+<ul>
+<li><strong>API Key 管理：</strong> 如前所述，绝不硬编码。使用 <code>chrome.storage.sync</code> 或通过后端代理请求。</li>
+<li><strong>CSP (Content Security Policy)：</strong> 在 <code>manifest.json</code> 中定义严格的 CSP 策略，限制脚本和资源的加载源，减少 XSS 攻击风险。</li>
+<li><strong>权限最小化：</strong> 只请求你的插件确实需要的权限。不必要的权限会增加安全风险，并可能导致用户不信任。</li>
+</ul>
+<h3>2. 用户体验与性能</h3>
+<ul>
+<li><strong>响应速度：</strong> 优化 DeepSeek API 调用，考虑缓存策略，或者在等待 AI 响应时提供加载动画。</li>
+<li><strong>错误处理：</strong> 优雅地处理 API 调用失败、网络中断等情况，并向用户提供清晰的反馈。</li>
+<li><strong>UI/UX 设计：</strong> 保持简洁直观的用户界面，确保插件易于使用。</li>
+</ul>
+<h3>3. 发布到 Chrome Web Store</h3>
+<p>一旦你的插件开发完成并经过充分测试，你可以考虑将其发布到 Chrome Web Store，与更广泛的用户分享。这需要注册一个开发者账户，遵循 Chrome Web Store 的政策，并提供详细的插件描述、截图等信息。</p>
+<h2>总结</h2>
+<p>本文从零开始，手把手带你完成了使用 DeepSeek 开发 Chrome 浏览器插件的实战教程。我们不仅学习了 Chrome 插件的核心架构、<code>manifest.json</code> 配置、后台 Service Worker、弹出页面和内容脚本的交互，更深入探讨了如何巧妙地集成 DeepSeek AI，使其成为你开发过程中的强大助手。</p>
+<p>通过这个实战项目，你应该已经掌握了：</p>
+<ul>
+<li>Chrome 插件开发的基本流程与核心概念。</li>
+<li>如何利用 DeepSeek 智能生成代码、解决问题、加速开发。</li>
+<li>构建一个实际的、结合 AI 能力的文本总结插件。</li>
+<li>插件调试、安全和性能优化的基本策略。</li>
+</ul>
+<p>DeepSeek 和其他 AI 工具的出现，正在彻底改变软件开发的格局。掌握如何与这些智能助手协作，将是未来开发者不可或缺的关键技能。现在，你可以发挥你的创意，利用 DeepSeek 和 Chrome 插件的强大组合，去打造更多创新、实用的工具，赋能你的工作与生活！</p>
+<h2>延伸阅读</h2>
+<ul>
+<li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+<li><a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a></li>
+<li><a href="/posts/deepseek-mobile-app-chat/">手机端对话技巧</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          
+        
+      </li>
+      <li>：
+        
+          
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程","description":"为你带来针对从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-mobile-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-06-01-developing-chrome-extension-with-deepseek-from-scratch-282/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"从零开始用 DeepSeek 开发一个 Chrome 浏览器插件实战教程","item":"https://deepseek-chat.com/posts/2026-06-01-developing-chrome-extension-with-deepseek-from-scratch-282/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

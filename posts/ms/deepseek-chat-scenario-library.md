@@ -10,7 +10,6 @@ tags: ["templat"]
 layout: "post.njk"
 permalink: "/ms/posts/deepseek-chat-scenario-library/index.html"
 ---
-
 Laman ini fokus pada **senario sembang**, bukan integrasi API. Tampal templat di bawah ke sembang web DeepSeek dan ubah tempat letak dalam kurungan.
 
 ## Penulisan & kandungan
@@ -71,3 +70,8 @@ Untuk API dan had kadar, rujuk dokumentasi API berasingan.
 - [Asas sembang web](/ms/posts/deepseek-chat-web-basics/)
 - [Konteks berbilang giliran](/ms/posts/deepseek-multi-turn-memory/)
 - [Tip mudah alih](/ms/posts/deepseek-mobile-app-chat/)
+
+## 延伸阅读
+
+- [手机端对话技巧](/ms/posts/deepseek-mobile-app-chat/)
+- [网页对话入门](/ms/posts/deepseek-chat-web-basics/)

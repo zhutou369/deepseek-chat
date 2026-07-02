@@ -10,7 +10,6 @@ tags: ["privacy"]
 layout: "post.njk"
 permalink: "/en/posts/deepseek-chat-export-share/index.html"
 ---
-
 Chats often contain customer data, internal notes, or unreleased copy. **Redact before you export or share.**
 
 ## Common backup methods
@@ -50,3 +49,8 @@ DeepSeek’s web UI changes over time. If official export or share links appear,
 - [Web chat basics](/en/posts/deepseek-chat-web-basics/)
 - [Multi-turn context](/en/posts/deepseek-multi-turn-memory/)
 - [Scenario library](/en/posts/deepseek-chat-scenario-library/)
+
+## 延伸阅读
+
+- [网页对话入门](/en/posts/deepseek-chat-web-basics/)
+- [手机端对话技巧](/en/posts/deepseek-mobile-app-chat/)

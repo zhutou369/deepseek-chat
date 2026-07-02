@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  
+  <title>使用 Ollama 在本地运行 DeepSeek 模型 | DeepSeek 使用指南</title>
+  <meta name="description" content="在 Windows 与 macOS 上通过 Ollama 拉取 DeepSeek 模型、检查输出质量，并排查常见的内存不足问题。">
+  <meta name="keywords" content="DeepSeek,DeepSeek API,DeepSeek 登录,DeepSeek 提示词,DeepSeek 教程,深度求索">
+  
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  <link rel="canonical" href="https://deepseek-chat.com/posts/deepseek-ollama-local-setup/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="使用 Ollama 在本地运行 DeepSeek 模型">
+  <meta property="og:description" content="在 Windows 与 macOS 上通过 Ollama 拉取 DeepSeek 模型、检查输出质量，并排查常见的内存不足问题。">
+  <meta property="og:url" content="https://deepseek-chat.com/posts/deepseek-ollama-local-setup/">
+  <meta property="og:site_name" content="DeepSeek 使用指南">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com","description":"整理 DeepSeek 网页版登录、API 密钥申请、提示词技巧、503/429 错误排查与本地 Ollama 部署的简体中文实操说明。"}
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    main { padding: 20px 0; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
+    .friend-links a:hover { text-decoration: underline; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 15px; }
+    .post-meta { color: #888; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-hd">
+      
+        <a href="/" class="site-logo">DeepSeek 使用指南</a>
+      
+    </div>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/posts/">技术文章</a>
+    </nav>
+  </header>
+
+  <main>
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;">首页</a> &gt;
+    <a href="/posts/" style="color: #666;">技术文章</a> &gt;
+    <span>正文</span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">使用 Ollama 在本地运行 DeepSeek 模型</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>发布日期: 2026-06-27</span> · 更新于 2026-06-27
+      <span> · DeepSeek 使用指南</span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>本地部署 DeepSeek 适合需要离线测试、敏感数据不便上云，或想控制推理成本的场景。Ollama 是目前最简单的入门方式之一。</p>
+<h2>环境准备</h2>
+<ul>
+<li><strong>macOS</strong>：Apple Silicon 建议 16GB 内存以上。</li>
+<li><strong>Windows</strong>：建议 NVIDIA 显卡 + 最新驱动；仅 CPU 也可运行小模型，但速度较慢。</li>
+<li>硬盘预留至少 10–30GB，视模型大小而定。</li>
+</ul>
+<h2>安装 Ollama</h2>
+<ol>
+<li>前往 Ollama 官网下载对应系统安装包。</li>
+<li>安装完成后，在终端执行 <code>ollama --version</code> 确认可用。</li>
+<li>首次拉取模型需下载数 GB 文件，请保持网络稳定。</li>
+</ol>
+<h2>拉取 DeepSeek 模型</h2>
+<pre><code class="language-bash">ollama pull deepseek-r1:7b
+</code></pre>
+<p>也可依硬件选择其他标签（如 1.5b、14b）。模型越大，效果通常越好，但 RAM/VRAM 需求更高。</p>
+<p>测试对话：</p>
+<pre><code class="language-bash">ollama run deepseek-r1:7b
+</code></pre>
+<h2>中文输出检查</h2>
+<p>本地模型可在 Prompt 开头加入：</p>
+<pre><code>请使用简体中文回答。若原文为英文，保留专有名词英文。
+</code></pre>
+<p>若回答质量不稳定，可换用较新的模型版本，或在 Prompt 中给出输出示例（Few-Shot）。</p>
+<h2>常见问题</h2>
+<h3>OOM（内存不足）</h3>
+<ul>
+<li>改用更小模型（如 7b → 1.5b）</li>
+<li>关闭其他占用 GPU 的程序</li>
+<li>Windows 上确认使用的是 GPU 版 Ollama</li>
+</ul>
+<h3>速度很慢</h3>
+<ul>
+<li>确认是否在使用 GPU</li>
+<li>减少上下文长度</li>
+<li>批量任务改用 API 而非本地推理</li>
+</ul>
+<h2>何时该用本地，何时该用 API</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>敏感内部文件</td>
+<td>本地</td>
+</tr>
+<tr>
+<td>高并发线上服务</td>
+<td>API</td>
+</tr>
+<tr>
+<td>快速验证 Prompt</td>
+<td>本地小模型</td>
+</tr>
+<tr>
+<td>最强推理能力</td>
+<td>云端大模型 API</td>
+</tr>
+</tbody>
+</table>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;">延伸阅读</h3>
+    <ul>
+      <li>上一篇：
+        
+          <a href="/posts/deepseek-api-retry-guide/">DeepSeek API 503/429 错误的重试与熔断策略</a>
+        
+      </li>
+      <li>下一篇：
+        
+          <a href="/posts/deepseek-prompt-basics/">DeepSeek 提示词入门：减少空泛回答与幻觉</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/">返回文章列表 &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"使用 Ollama 在本地运行 DeepSeek 模型","description":"在 Windows 与 macOS 上通过 Ollama 拉取 DeepSeek 模型、检查输出质量，并排查常见的内存不足问题。","datePublished":"2026-06-27","dateModified":"2026-06-27","author":{"@type":"Organization","name":"DeepSeek 使用指南"},"publisher":{"@type":"Organization","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/posts/deepseek-ollama-local-setup/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"name":"技术文章","item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"使用 Ollama 在本地运行 DeepSeek 模型","item":"https://deepseek-chat.com/posts/deepseek-ollama-local-setup/"}]}
+</script>
+
+  </main>
+
+  <footer>
+    <div class="friend-links">
+      <strong>相关站点：</strong>
+      
+        <a href="https://hk-deepseek.com" target="_blank" rel="noopener">DeepSeek 香港资料</a>
+      
+        <a href="https://deepseek-in.com" target="_blank" rel="noopener">DeepSeek 国际版说明</a>
+      
+        <a href="https://deepseek-1.com" target="_blank" rel="noopener">DeepSeek 技术文章</a>
+      
+        <a href="https://deepseek-my.com" target="_blank" rel="noopener">DeepSeek 马来西亚资料</a>
+      
+    </div>
+    <p>&copy; 2026 DeepSeek 使用指南 · 本站为第三方使用说明整理，非 DeepSeek 官方网站。</p>
+  </footer>
+
+  
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+  
+
+</body>
+</html>

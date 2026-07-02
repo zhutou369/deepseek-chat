@@ -9,6 +9,7 @@ translationKey: deepseek-chat-export-share
 tags: ["隐私"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-export-share/index.html"
+coverImage: "/static/posts/chat-export-cover.svg"
 ---
 
 对话里常会输入客户资料、内部数据或未公开文案。导出与分享前，先做一次**脱敏检查**。
@@ -21,6 +22,8 @@ permalink: "/posts/deepseek-chat-export-share/index.html"
 
 目前 DeepSeek 网页版功能会随版本更新，若界面提供「导出」或「分享链接」，优先使用官方入口，并确认链接是否公开可访问。
 
+![DeepSeek 对话导出与脱敏检查示意](/static/posts/chat-generic-step.svg)
+
 ## 分享前的脱敏清单
 
 - [ ] 删除手机号、邮箱、身份证号
@@ -31,7 +34,7 @@ permalink: "/posts/deepseek-chat-export-share/index.html"
 ## 浏览器与账号隐私
 
 - 公共电脑使用后退出登录并清除 `chat.deepseek.com` 的 Cookie
-- 勿在对话中粘贴生产环境密钥；开发相关请用 [deepseek-1.com](https://deepseek-1.com) 的 API 教程
+- 勿在对话中粘贴生产环境密钥；开发相关请用 [platform.deepseek.com](https://platform.deepseek.com/docs)
 - 公司网络可能审计 HTTPS 流量，敏感内容优先本地处理
 
 ## 清除本地痕迹

@@ -10,7 +10,6 @@ tags: ["templates"]
 layout: "post.njk"
 permalink: "/en/posts/deepseek-chat-scenario-library/index.html"
 ---
-
 This site focuses on **chat scenarios**, not API integration. Paste the templates below into DeepSeek web chat and replace bracketed placeholders.
 
 ## Writing & content
@@ -85,3 +84,8 @@ For API keys, rate limits, and developer setup, use dedicated API documentation;
 - [Web chat basics](/en/posts/deepseek-chat-web-basics/)
 - [Multi-turn context](/en/posts/deepseek-multi-turn-memory/)
 - [Mobile chat tips](/en/posts/deepseek-mobile-app-chat/)
+
+## 延伸阅读
+
+- [手机端对话技巧](/en/posts/deepseek-mobile-app-chat/)
+- [网页对话入门](/en/posts/deepseek-chat-web-basics/)

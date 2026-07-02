@@ -10,7 +10,6 @@ tags: ["チャット入門"]
 layout: "post.njk"
 permalink: "/ja/posts/deepseek-chat-web-basics/index.html"
 ---
-
 `chat.deepseek.com` を開いて「記事を書いて」とだけ送ると、長くて一般的な回答になりがちです。ウェブチャットのコツは量ではなく、**最初のメッセージでタスクを明確にすること**です。
 
 ## 開始前の3つの確認
@@ -45,3 +44,8 @@ permalink: "/ja/posts/deepseek-chat-web-basics/index.html"
 - [モバイルのコツ](/ja/posts/deepseek-mobile-app-chat/)
 - [シナリオ集](/ja/posts/deepseek-chat-scenario-library/)
 - [エクスポートとプライバシー](/ja/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [手机端对话技巧](/ja/posts/deepseek-mobile-app-chat/)
+- [多轮上下文管理](/ja/posts/deepseek-multi-turn-memory/)

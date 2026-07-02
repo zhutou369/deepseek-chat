@@ -10,7 +10,6 @@ tags: ["asas sembang"]
 layout: "post.njk"
 permalink: "/ms/posts/deepseek-chat-web-basics/index.html"
 ---
-
 Ramai pengguna membuka `chat.deepseek.com` dan terus bertanya "tulis artikel untuk saya", lalu mendapat jawapan panjang yang umum. Kunci sembang web bukan bertanya banyak, tetapi **menjelaskan tugas dalam mesej pertama**.
 
 ## Tiga perkara sebelum bermula
@@ -47,3 +46,8 @@ Teruskan ke [pengurusan konteks berbilang giliran](/ms/posts/deepseek-multi-turn
 - [Tip sembang mudah alih](/ms/posts/deepseek-mobile-app-chat/)
 - [Perpustakaan templat](/ms/posts/deepseek-chat-scenario-library/)
 - [Eksport & privasi](/ms/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [手机端对话技巧](/ms/posts/deepseek-mobile-app-chat/)
+- [多轮上下文管理](/ms/posts/deepseek-multi-turn-memory/)

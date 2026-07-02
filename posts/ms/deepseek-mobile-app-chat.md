@@ -10,7 +10,6 @@ tags: ["mudah alih"]
 layout: "post.njk"
 permalink: "/ms/posts/deepseek-mobile-app-chat/index.html"
 ---
-
 Sembang mudah alih sering bermaksud "edit salinan dalam perjalanan". Skrin kecil memerlukan prompt **lebih pendek dan berstruktur**.
 
 ## Pintu masuk mudah alih
@@ -50,3 +49,8 @@ Sembang mudah alih sering bermaksud "edit salinan dalam perjalanan". Skrin kecil
 - [Asas sembang web](/ms/posts/deepseek-chat-web-basics/)
 - [Konteks berbilang giliran](/ms/posts/deepseek-multi-turn-memory/)
 - [Eksport & privasi](/ms/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/ms/posts/deepseek-chat-web-basics/)
+- [场景模板库](/ms/posts/deepseek-chat-scenario-library/)

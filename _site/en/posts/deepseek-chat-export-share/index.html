@@ -89,25 +89,27 @@
 
   <style>
 
-    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
 
-    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 0; }
-
-    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
-
-    .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-
-    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
-
-    nav a:last-child { margin-right: 0; }
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
 
     .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
-
     .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
 
-    main { padding: 20px 0; }
-
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
 
   </style>
 
@@ -115,66 +117,42 @@
 
 </head>
 
-<body>
+<body class="site-page">
 
 
 
-  <header>
+  <header class="site-header">
 
-    <div class="header-top">
+    <div class="site-header-inner">
 
-      <div>
+      
+      <a href="/en/" class="site-brand">DeepSeek Chat Guide</a>
+      
 
+      <nav class="site-nav" aria-label="Main">
         
+        <a href="/en/">Home</a>
+        <a href="/en/posts/">Articles</a>
+      </nav>
 
-          <a href="/en/" class="site-logo">DeepSeek Chat Guide</a>
-
-        
-
-        <nav style="margin-top:10px;">
-
-          <a href="/en/">Home</a>
-
-          <a href="/en/posts/">Articles</a>
-
-        </nav>
-
-      </div>
-
-      <div class="header-actions">
-
+      <div class="header-right">
         <div class="lang-switch">
-
           <label for="lang-select">Language</label>
-
           <select id="lang-select" aria-label="Language" onchange="if(this.value){window.location.href=this.value;}">
-
             
-
             <option value="/" >🇨🇳 简体中文</option>
-
             
-
             <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
-
             
-
             <option value="/en/" selected>🇺🇸 English</option>
-
             
-
             <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
-
             
-
             <option value="/ja/" >🇯🇵 日本語</option>
-
             
-
           </select>
-
         </div>
-
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">Try now</a>
       </div>
 
     </div>
@@ -183,7 +161,7 @@
 
 
 
-  <main>
+  <main class="site-main-inner">
 
     
 <article>
@@ -200,6 +178,10 @@
       <span> · </span>
     </div>
   </header>
+
+  
+
+  
 
   <div class="post-content">
     <p>Chats often contain customer data, internal notes, or unreleased copy. <strong>Redact before you export or share.</strong></p>
@@ -240,6 +222,11 @@
 <li><a href="/en/posts/deepseek-multi-turn-memory/">Multi-turn context</a></li>
 <li><a href="/en/posts/deepseek-chat-scenario-library/">Scenario library</a></li>
 </ul>
+<h2>延伸阅读</h2>
+<ul>
+<li><a href="/en/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+<li><a href="/en/posts/deepseek-mobile-app-chat/">手机端对话技巧</a></li>
+</ul>
 
   </div>
 
@@ -263,7 +250,7 @@
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Exporting, Sharing & Privacy for DeepSeek Chats","description":"How to back up DeepSeek conversations, share snippets safely, and clear local data to reduce privacy risk.","datePublished":"2026-07-02","dateModified":"2026-07-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/en/posts/deepseek-chat-export-share/"}
+{"@context":"https://schema.org","@type":"Article","headline":"Exporting, Sharing & Privacy for DeepSeek Chats","description":"How to back up DeepSeek conversations, share snippets safely, and clear local data to reduce privacy risk.","datePublished":"2026-07-02","dateModified":"2026-07-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/og-default.png?v=2","mainEntityOfPage":"https://deepseek-chat.com/en/posts/deepseek-chat-export-share/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/en/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/en/posts/"},{"@type":"ListItem","position":3,"name":"Exporting, Sharing & Privacy for DeepSeek Chats","item":"https://deepseek-chat.com/en/posts/deepseek-chat-export-share/"}]}
@@ -274,7 +261,7 @@
 
 
 
-  <footer>
+  <footer class="site-footer">
 
     <p>&copy; 2026 DeepSeek Chat Guide · Independent DeepSeek usage guide — not an official DeepSeek site. · <a href="/privacy/" style="color:#888;">Privacy</a></p>
 

@@ -10,7 +10,6 @@ tags: ["マルチターン"]
 layout: "post.njk"
 permalink: "/ja/posts/deepseek-multi-turn-memory/index.html"
 ---
-
 マルチターンは DeepSeek ウェブ版で最もよく使う機能ですが、脱線もしやすい。**1ウィンドウ1本のタスク**が原則です。
 
 ## 新規チャットを開くタイミング
@@ -54,3 +53,8 @@ permalink: "/ja/posts/deepseek-multi-turn-memory/index.html"
 - [ウェブチャット入門](/ja/posts/deepseek-chat-web-basics/)
 - [シナリオ集](/ja/posts/deepseek-chat-scenario-library/)
 - [エクスポートとプライバシー](/ja/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/ja/posts/deepseek-chat-web-basics/)
+- [手机端对话技巧](/ja/posts/deepseek-mobile-app-chat/)

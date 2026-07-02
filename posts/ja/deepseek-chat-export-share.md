@@ -10,7 +10,6 @@ tags: ["プライバシー"]
 layout: "post.njk"
 permalink: "/ja/posts/deepseek-chat-export-share/index.html"
 ---
-
 チャットには顧客情報や未公開文案が含まれることがあります。**エクスポート・共有前にマスキング**を。
 
 ## バックアップ方法
@@ -45,3 +44,8 @@ permalink: "/ja/posts/deepseek-chat-export-share/index.html"
 - [ウェブチャット入門](/ja/posts/deepseek-chat-web-basics/)
 - [マルチターン文脈](/ja/posts/deepseek-multi-turn-memory/)
 - [シナリオ集](/ja/posts/deepseek-chat-scenario-library/)
+
+## 延伸阅读
+
+- [网页对话入门](/ja/posts/deepseek-chat-web-basics/)
+- [多轮上下文管理](/ja/posts/deepseek-multi-turn-memory/)

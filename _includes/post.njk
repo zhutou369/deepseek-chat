@@ -18,6 +18,18 @@ isPost: true
     </div>
   </header>
 
+  {% if coverImage %}
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="{{ coverImage | assetUrl }}" alt="{{ title }}" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  {% endif %}
+
+  {% if videoBvid %}
+  <div class="video-embed" style="position:relative;padding-bottom:56.25%;height:0;margin:0 0 28px;border-radius:12px;overflow:hidden;background:#0f172a;">
+    <iframe src="https://player.bilibili.com/player.html?bvid={{ videoBvid }}&high_quality=1&autoplay=0" title="{{ title }}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
+  </div>
+  {% endif %}
+
   <div class="post-content">
     {{ content | safe }}
   </div>
@@ -70,6 +82,7 @@ isPost: true
     "name": t.brand,
     "url": site.url
   },
+  "image": site.url + ((coverImage or ogImage or site.ogImage or "/static/og-default.png") | assetUrl),
   "mainEntityOfPage": site.url + page.url
 } | dump | safe }}
 </script>

@@ -10,7 +10,6 @@ tags: ["multi-turn"]
 layout: "post.njk"
 permalink: "/en/posts/deepseek-multi-turn-memory/index.html"
 ---
-
 Multi-turn chat is the most common way to use DeepSeek on the web — and the easiest way to drift off-topic. The core rule: **one chat window, one main task**.
 
 ## When to start a new chat
@@ -58,3 +57,8 @@ Further reading: [web chat basics](/en/posts/deepseek-chat-web-basics/) · [scen
 - [Web chat basics](/en/posts/deepseek-chat-web-basics/)
 - [Scenario prompt library](/en/posts/deepseek-chat-scenario-library/)
 - [Export & privacy](/en/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [场景模板库](/en/posts/deepseek-chat-scenario-library/)
+- [网页对话入门](/en/posts/deepseek-chat-web-basics/)

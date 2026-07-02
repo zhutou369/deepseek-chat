@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  
+  <title>DeepSeek 提示词入门：减少空泛回答与幻觉 | DeepSeek 使用指南</title>
+  <meta name="description" content="用角色、任务、输出格式三要素撰写 DeepSeek 提示词，并通过 Few-Shot 与约束条件降低幻觉与格式错误。">
+  <meta name="keywords" content="DeepSeek,DeepSeek API,DeepSeek 登录,DeepSeek 提示词,DeepSeek 教程,深度求索">
+  
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  <link rel="canonical" href="https://deepseek-chat.com/posts/deepseek-prompt-basics/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DeepSeek 提示词入门：减少空泛回答与幻觉">
+  <meta property="og:description" content="用角色、任务、输出格式三要素撰写 DeepSeek 提示词，并通过 Few-Shot 与约束条件降低幻觉与格式错误。">
+  <meta property="og:url" content="https://deepseek-chat.com/posts/deepseek-prompt-basics/">
+  <meta property="og:site_name" content="DeepSeek 使用指南">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com","description":"整理 DeepSeek 网页版登录、API 密钥申请、提示词技巧、503/429 错误排查与本地 Ollama 部署的简体中文实操说明。"}
+  </script>
+  <style>
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+    header { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+    nav { margin-top: 10px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    main { padding: 20px 0; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+    .friend-links a { margin-right: 15px; color: #666; text-decoration: none; }
+    .friend-links a:hover { text-decoration: underline; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 15px; }
+    .post-meta { color: #888; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-hd">
+      
+        <a href="/" class="site-logo">DeepSeek 使用指南</a>
+      
+    </div>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/posts/">技术文章</a>
+    </nav>
+  </header>
+
+  <main>
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;">首页</a> &gt;
+    <a href="/posts/" style="color: #666;">技术文章</a> &gt;
+    <span>正文</span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 提示词入门：减少空泛回答与幻觉</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>发布日期: 2026-06-27</span> · 更新于 2026-06-27
+      <span> · DeepSeek 使用指南</span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>提示词写得好不好，差别往往在于模型是否清楚知道「要做什么、按什么格式输出、哪些内容不能编造」。</p>
+<h2>三要素模板</h2>
+<p>每次写 Prompt 至少包含：</p>
+<ol>
+<li><strong>角色</strong>：你希望模型扮演什么身份（例如：资深 Python 工程师）</li>
+<li><strong>任务</strong>：具体要完成什么（例如：把以下 JSON 转成 Markdown 表格）</li>
+<li><strong>输出格式</strong>：列点、表格、JSON、字数上限等</li>
+</ol>
+<p>示例：</p>
+<pre><code>你是资深技术文档编辑。请把以下 API 错误说明改写为简体中文 FAQ。
+要求：
+- 使用 ## 作为每题标题
+- 每题回答不超过 80 字
+- 不确定的内容标注「需官方确认」
+</code></pre>
+<h2>减少幻觉的约束</h2>
+<ul>
+<li>要求「仅根据提供的材料回答，材料不足时明确说不知道」</li>
+<li>需要引用时，指定「逐条对应原文段落」</li>
+<li>对数字、日期、法规类内容，要求标注来源或写「待核实」</li>
+</ul>
+<h2>Few-Shot 示例</h2>
+<p>给 1–2 个输入输出示例，比长篇描述更有效。例如做分类任务：</p>
+<pre><code>输入：登录时出现 503
+输出：{&quot;type&quot;:&quot;server&quot;,&quot;action&quot;:&quot;retry_later&quot;}
+
+输入：API 返回 401
+输出：{&quot;type&quot;:&quot;auth&quot;,&quot;action&quot;:&quot;check_api_key&quot;}
+</code></pre>
+<h2>常见问题与修正</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>修正</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回答太长</td>
+<td>未限制字数</td>
+<td>加入「不超过 N 字」</td>
+</tr>
+<tr>
+<td>格式混乱</td>
+<td>未指定格式</td>
+<td>要求 JSON / Markdown 模板</td>
+</tr>
+<tr>
+<td>自行补充不存在的功能</td>
+<td>缺少边界</td>
+<td>加入「不得臆测未提供的信息」</td>
+</tr>
+</tbody>
+</table>
+<h2>迭代方式</h2>
+<ol>
+<li>先用短 Prompt 测试能否完成任务</li>
+<li>看输出差异，再补充约束</li>
+<li>固定可用的 Prompt 存成模板，避免每次从零写起</li>
+</ol>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;">延伸阅读</h3>
+    <ul>
+      <li>上一篇：
+        
+          <a href="/posts/deepseek-ollama-local-setup/">使用 Ollama 在本地运行 DeepSeek 模型</a>
+        
+      </li>
+      <li>下一篇：
+        
+          <a href="/posts/deepseek-web-login-troubleshoot/">DeepSeek 网页版登录失败与常见错误排查</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/">返回文章列表 &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 提示词入门：减少空泛回答与幻觉","description":"用角色、任务、输出格式三要素撰写 DeepSeek 提示词，并通过 Few-Shot 与约束条件降低幻觉与格式错误。","datePublished":"2026-06-27","dateModified":"2026-06-27","author":{"@type":"Organization","name":"DeepSeek 使用指南"},"publisher":{"@type":"Organization","name":"DeepSeek 使用指南","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/posts/deepseek-prompt-basics/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"name":"技术文章","item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 提示词入门：减少空泛回答与幻觉","item":"https://deepseek-chat.com/posts/deepseek-prompt-basics/"}]}
+</script>
+
+  </main>
+
+  <footer>
+    <div class="friend-links">
+      <strong>相关站点：</strong>
+      
+        <a href="https://hk-deepseek.com" target="_blank" rel="noopener">DeepSeek 香港资料</a>
+      
+        <a href="https://deepseek-in.com" target="_blank" rel="noopener">DeepSeek 国际版说明</a>
+      
+        <a href="https://deepseek-1.com" target="_blank" rel="noopener">DeepSeek 技术文章</a>
+      
+        <a href="https://deepseek-my.com" target="_blank" rel="noopener">DeepSeek 马来西亚资料</a>
+      
+    </div>
+    <p>&copy; 2026 DeepSeek 使用指南 · 本站为第三方使用说明整理，非 DeepSeek 官方网站。</p>
+  </footer>
+
+  
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+  
+
+</body>
+</html>

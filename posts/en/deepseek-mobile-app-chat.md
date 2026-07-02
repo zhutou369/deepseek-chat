@@ -10,7 +10,6 @@ tags: ["mobile"]
 layout: "post.njk"
 permalink: "/en/posts/deepseek-mobile-app-chat/index.html"
 ---
-
 Mobile chat often means “edit copy on the go” or “look something up while waiting.” Small screens and keyboard switching mean prompts should be **shorter and more structured**.
 
 ## Choosing a mobile entry point
@@ -57,3 +56,8 @@ Rewrite this headline in 5 versions, max 18 characters each, practical tone:
 - [Web chat basics](/en/posts/deepseek-chat-web-basics/)
 - [Multi-turn context](/en/posts/deepseek-multi-turn-memory/)
 - [Export & privacy](/en/posts/deepseek-chat-export-share/)
+
+## 延伸阅读
+
+- [网页对话入门](/en/posts/deepseek-chat-web-basics/)
+- [场景模板库](/en/posts/deepseek-chat-scenario-library/)

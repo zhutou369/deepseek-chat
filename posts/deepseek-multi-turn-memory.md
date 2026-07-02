@@ -9,6 +9,7 @@ translationKey: deepseek-multi-turn-memory
 tags: ["多轮对话"]
 layout: "post.njk"
 permalink: "/posts/deepseek-multi-turn-memory/index.html"
+coverImage: "/static/posts/chat-memory-cover.svg"
 ---
 
 多轮对话是 DeepSeek 网页版最常用的能力，但也是最容易「聊着聊着就跑题」的地方。核心原则是：**一个对话窗口只做一个主线任务**。
@@ -50,6 +51,8 @@ permalink: "/posts/deepseek-multi-turn-memory/index.html"
 - [ ] 关键格式要求会周期性重申
 - [ ] 超长对话会先做摘要再续聊
 - [ ] 话题切换时考虑新开窗口
+
+![DeepSeek 多轮对话拆分任务示意](/static/posts/chat-generic-step.svg)
 
 延伸阅读：[网页对话入门](/posts/deepseek-chat-web-basics/) · [场景模板库](/posts/deepseek-chat-scenario-library/)
 

@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+
+  <title>DeepSeek 新开对话 vs 续聊：什么时候该换窗口 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="用决策表判断该在同一窗口迭代还是新开对话，减少跑题和上下文污染。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="noindex,follow">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="DeepSeek 新开对话 vs 续聊：什么时候该换窗口">
+
+  <meta property="og:description" content="用决策表判断该在同一窗口迭代还是新开对话，减少跑题和上下文污染。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="DeepSeek 新开对话 vs 续聊：什么时候该换窗口">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;"></a> &gt;
+    <a href="/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek 新开对话 vs 续聊：什么时候该换窗口</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-04-09</span>
+      <span> · </span>
+    </div>
+  </header>
+
+  
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="/static/posts/chat-memory-cover.svg?v=2" alt="DeepSeek 新开对话 vs 续聊：什么时候该换窗口" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  
+
+  
+
+  <div class="post-content">
+    <p>续聊省事儿，但窗口里堆了太多无关轮次时，模型容易被带偏。换窗口不是失败，是正常操作。</p>
+<h2>决策表</h2>
+<p>| 场景 | 续聊 | 新开 |</p>
+<p>|------|:----:|:----:|</p>
+<p>| 同主题润色第 3 版 | ✓ | |</p>
+<p>| 从写邮件转写 SQL | | ✓ |</p>
+<p>| 角色从客服变程序员 | | ✓ |</p>
+<p>| 长文档已做摘要 | | ✓（贴摘要） |</p>
+<p><img src="/static/posts/chat-generic-step.svg" alt="DeepSeek 新开对话与续聊选择示意"></p>
+<h2>新开时首条怎么写</h2>
+<pre><code>
+【背景摘要】（200 字内）
+
+【当前任务】
+
+【格式与约束】
+
+</code></pre>
+<p>参考 <a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a>。</p>
+<h2>延伸阅读</h2>
+<ul>
+<li><a href="/posts/deepseek-multi-turn-memory/">多轮上下文管理</a></li>
+<li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+<li><a href="/posts/deepseek-chat-scenario-library/">场景模板库</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          
+        
+      </li>
+      <li>：
+        
+          
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek 新开对话 vs 续聊：什么时候该换窗口","description":"用决策表判断该在同一窗口迭代还是新开对话，减少跑题和上下文污染。","datePublished":"2026-04-09","dateModified":"2026-04-09","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek 新开对话 vs 续聊：什么时候该换窗口","item":"https://deepseek-chat.com/posts/2026-04-09-deepseek-new-chat-vs-continue/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

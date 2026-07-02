@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek 对话指南" href="/feed.xml">
+
+  
+
+  <title>企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析 | DeepSeek 对话指南</title>
+
+  <meta name="description" content="为你带来针对企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta name="keywords" content="DeepSeek 对话,DeepSeek 聊天,DeepSeek 多轮对话,DeepSeek 网页版,深度求索">
+
+  
+
+  <meta name="robots" content="noindex,follow">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/posts/2026-05-22-enterprise-deepseek-on-premise-data-privacy-compliance/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析">
+
+  <meta property="og:description" content="为你带来针对企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/posts/2026-05-22-enterprise-deepseek-on-premise-data-privacy-compliance/">
+
+  <meta property="og:site_name" content="DeepSeek 对话指南">
+
+  <meta property="og:locale" content="zh_CN">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek 对话指南","url":"https://deepseek-chat.com/","description":"专注 DeepSeek 网页对话入门、多轮上下文、手机端聊天、场景 Prompt 模板与对话隐私设置的简体中文教程。","inLanguage":"zh-CN"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    body.site-page { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+    .site-header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .site-brand { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0f172a; letter-spacing: -0.02em; }
+    .site-brand span { color: #0066cc; }
+    .site-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { text-decoration: none; color: #475569; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { color: #0066cc; background: #f1f5f9; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-cta { display: inline-flex; padding: 9px 20px; border-radius: 999px; background: linear-gradient(135deg, #0066cc, #1e40af); color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .header-cta:hover { opacity: .92; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main.site-main { padding: 0; }
+    main.site-main-inner { padding: 20px 0; }
+    footer.site-footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid #eee; font-size: 14px; color: #64748b; }
+    body.site-page footer.site-footer { max-width: none; margin-top: 40px; padding-top: 20px; }
+
+  </style>
+
+  
+
+</head>
+
+<body class="site-page">
+
+
+
+  <header class="site-header">
+
+    <div class="site-header-inner">
+
+      
+      <a href="/" class="site-brand">DeepSeek 对话指南</a>
+      
+
+      <nav class="site-nav" aria-label="Main">
+        
+        <a href="/">首页</a>
+        <a href="/posts/">技术文章</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <label for="lang-select">语言</label>
+          <select id="lang-select" aria-label="语言" onchange="if(this.value){window.location.href=this.value;}">
+            
+            <option value="/" selected>🇨🇳 简体中文</option>
+            
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+            
+            <option value="/en/" >🇺🇸 English</option>
+            
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+            
+            <option value="/ja/" >🇯🇵 日本語</option>
+            
+          </select>
+        </div>
+        <a href="https://chat.deepseek.com/" class="header-cta" target="_blank" rel="noopener noreferrer">立即体验</a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="site-main-inner">
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/" style="color: #666;"></a> &gt;
+    <a href="/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-05-22</span>
+      <span> · </span>
+    </div>
+  </header>
+
+  
+  <figure class="post-cover" style="margin: 0 0 28px;">
+    <img src="/static/posts/chat-export-cover.svg?v=2" alt="企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+  </figure>
+  
+
+  
+
+  <div class="post-content">
+    <p>在数字化浪潮的推动下，人工智能已成为企业创新和竞争力的核心驱动力。大型语言模型（LLM）的兴起，尤其是像 DeepSeek 这样性能卓越、开放透明的模型，正为企业带来前所未有的机遇。然而，对于多数企业而言，将核心业务数据托管于第三方云服务商的公有云LLM接口，往往伴随着复杂的数据隐私、安全以及合规性挑战。正是基于这些深层次的考量，越来越多的企业，特别是那些身处受严格监管行业或处理敏感数据的企业，正战略性地选择本地部署（On-Premise Deployment）DeepSeek，而非单纯依赖云API调用。</p>
+<p>本文将作为一份深度技术实操指南，剖析企业为何偏爱本地部署 DeepSeek，并从数据隐私、安全、合规性、性能优化及实际操作等多个维度进行深入分析。我们将手把手地探讨从零基础架构规划到企业级高并发商业实操的全流程技术要点，旨在帮助技术运维团队和业务决策者全面理解并成功实施这一战略性决策。</p>
+<h2>数据隐私与安全的核心保障</h2>
+<p>数据是企业的生命线，尤其在AI时代，数据的价值被无限放大。选择本地部署 DeepSeek，企业能够对其最宝贵的资产——数据——拥有绝对的控制权和安全保障。</p>
+<h3>数据隔离与控制</h3>
+<p>本地部署 DeepSeek 的最直接优势在于其提供的数据隔离性。所有训练数据、推理数据以及模型本身都驻留在企业内部的数据中心。这意味着：</p>
+<ul>
+<li><strong>无第三方数据暴露风险</strong>：数据不会流出企业防火墙之外，杜绝了数据在传输或处理过程中被第三方服务商访问、存储甚至滥用的可能性。这对于处理客户个人身份信息（PII）、商业机密、专利技术等敏感数据的企业至关重要。</li>
+<li><strong>完全的数据主权</strong>：企业对数据的存储、处理、访问和销毁拥有完全的控制权。可以根据自身需求，而非云服务商的策略，制定精细化的数据生命周期管理方案。</li>
+<li><strong>物理和逻辑隔离</strong>：通过企业内部的数据中心安全措施，如物理访问控制、网络分段、VLAN隔离等，可以实现DeepSeek实例及其数据的物理和逻辑隔离，进一步增强安全性。</li>
+</ul>
+<h3>内部安全策略集成</h3>
+<p>企业通常已建立一套成熟且经过审计的内部安全策略、流程和技术栈。本地部署 DeepSeek 使得将AI模型无缝集成到现有安全框架中成为可能：</p>
+<ul>
+<li><strong>统一身份认证与访问管理（IAM）</strong>：可以直接对接企业现有的LDAP、Active Directory、OAuth等认证系统，实现对DeepSeek的访问权限进行精细化控制，确保只有授权人员和服务才能访问和操作模型。</li>
+<li><strong>集成威胁检测与响应</strong>：利用企业内部的SIEM（安全信息和事件管理）、DLP（数据防泄漏）、IDS/IPS（入侵检测/防御系统）等安全工具，对DeepSeek的运行环境和数据流进行实时监控和威胁分析，及时发现并响应潜在的安全事件。</li>
+<li><strong>端点安全与补丁管理</strong>：对承载DeepSeek的服务器和操作系统进行统一的补丁管理和安全加固，确保所有组件都处于最新、最安全的状态，避免已知的漏洞被利用。</li>
+</ul>
+<h3>威胁面最小化</h3>
+<p>在公有云环境中，即使云服务商提供了高水平的安全保障，企业仍然面临着共享基础设施带来的潜在风险。本地部署 DeepSeek 可以有效缩小攻击面：</p>
+<ul>
+<li><strong>减少外部依赖</strong>：降低对第三方云服务的依赖，从而减少因第三方服务漏洞或配置错误导致的安全风险。</li>
+<li><strong>简化网络边界</strong>：DeepSeek实例仅在企业内网暴露，对外仅通过企业网关进行受控访问，简化了网络安全边界，易于管理和防御。</li>
+<li><strong>控制软件供应链</strong>：企业可以更严格地控制DeepSeek运行环境中的所有软件组件（操作系统、库、依赖等），对其进行安全审计和漏洞扫描，确保供应链安全。</li>
+</ul>
+<p><img src="/static/posts/chat-generic-step.svg" alt="Secure data center infrastructure">
+<em>图示：安全的数据中心基础设施，为本地部署提供坚实物理保障。</em></p>
+<h2>严格的合规性要求</h2>
+<p>在许多行业，数据合规性是企业生存和发展的基石。本地部署 DeepSeek 为满足这些严格的合规性要求提供了独特的优势。</p>
+<h3>行业特定法规</h3>
+<p>全球各地的行业法规对数据处理有着明确而严格的要求，例如：</p>
+<ul>
+<li><strong>GDPR (General Data Protection Regulation)</strong>：对于处理欧盟公民个人数据的企业，GDPR要求数据处理者对数据安全和隐私负有明确责任，本地部署有助于企业证明其对数据传输和存储的控制力，尤其是在数据出境方面。</li>
+<li><strong>HIPAA (Health Insurance Portability and Accountability Act)</strong>：医疗保健行业对患者健康信息（PHI）的保护有着极其严格的要求。本地部署能确保PHI永不离开受HIPAA监管的内部网络。</li>
+<li><strong>PCI DSS (Payment Card Industry Data Security Standard)</strong>：支付卡行业的数据安全标准，要求保护持卡人数据。本地部署允许企业在受PCI DSS认证的环境中处理相关数据，避免将敏感支付信息暴露给外部系统。</li>
+<li><strong>CCPA/CPRA (California Consumer Privacy Act/California Privacy Rights Act)</strong>：美国加州的消费者隐私法案，赋予消费者对其个人数据更大的控制权。本地部署让企业更容易满足消费者数据删除和访问请求，并证明数据处理的透明性。</li>
+<li><strong>中国《数据安全法》与《个人信息保护法》</strong>：国内法律对重要数据和个人信息的跨境传输、存储和处理有着明确规定。本地部署是避免数据出境风险、满足境内存储要求的有效途径。</li>
+</ul>
+<h3>地缘政治与数据主权</h3>
+<p>在全球地缘政治日益复杂的背景下，数据主权和数据本地化（Data Localization）成为国家层面的重要议题。</p>
+<ul>
+<li><strong>避免跨境数据传输风险</strong>：在一些国家，法律强制要求某些类型的数据必须存储在境内。本地部署 DeepSeek可以完全避免数据跨境传输的合规性风险，确保数据始终位于指定国家或地区的管辖范围内。</li>
+<li><strong>应对外国政府审查和调取</strong>：将数据部署在云服务商的国家，可能会面临该国政府依据自身法律（如美国《云法案》CLOUD Act）进行数据调取的风险。本地部署将数据置于本国法律管辖之下，增强了数据主权。</li>
+</ul>
+<h3>审计与可追溯性</h3>
+<p>合规性往往需要详尽的审计和可追溯性记录。本地部署为企业提供了无与伦比的审计能力：</p>
+<ul>
+<li><strong>完整的审计日志</strong>：企业可以全面记录DeepSeek模型的所有访问、操作、训练和推理活动，并将其与现有审计系统集成，确保审计日志的完整性、不可篡改性和可追溯性。</li>
+<li><strong>定制化审计策略</strong>：根据具体的合规性要求，企业可以定制DeepSeek的审计粒度和日志保留策略，以满足不同法规的严格规定。</li>
+<li><strong>内部审计流程</strong>：通过本地部署，企业可以完全控制审计流程，按照既定的内部或外部审计标准，定期对DeepSeek的部署环境、数据流和安全配置进行审计，确保合规性持续有效。</li>
+</ul>
+<h2>性能优化与成本效益</h2>
+<p>除了安全和合规，本地部署 DeepSeek 在性能和成本方面也能为企业带来显著优势，尤其是在长期运行和特定场景下。</p>
+<h3>低延迟与高吞吐</h3>
+<p>对于需要实时响应或处理大量数据的应用场景，网络延迟是瓶颈。本地部署 DeepSeek可以显著提升性能：</p>
+<ul>
+<li><strong>近乎零网络延迟</strong>：模型部署在企业内网，应用与模型之间的通信无需经过公网，可实现毫秒级的超低延迟，对于金融交易、实时客服、工业自动化等对响应速度有极高要求的应用至关重要。</li>
+<li><strong>高吞吐量</strong>：企业可以根据自身需求，配置高性能的GPU集群和网络带宽，确保DeepSeek能够以最大效率处理高并发请求，不受公有云API限速或排队的影响。</li>
+<li><strong>本地计算资源的充分利用</strong>：可以充分利用企业已有的高性能计算（HPC）基础设施，减少资源闲置。</li>
+</ul>
+<h3>定制化与模型微调</h3>
+<p>DeepSeek的开源特性使其成为模型定制和微调的理想选择。本地部署提供了无与伦比的灵活性：</p>
+<ul>
+<li><strong>深度模型改造</strong>：企业可以根据特定的业务场景，对DeepSeek的底层架构进行修改，或者加载企业独有的私有数据集进行增量预训练或微调，以提升模型在特定领域的表现。</li>
+<li><strong>私有数据优势</strong>：通过企业内部的敏感或专有数据集进行模型微调，可以训练出高度专业化、具备竞争力的AI模型，而无需担心数据外泄风险。</li>
+<li><strong>版本控制与迭代</strong>：企业可以完全控制DeepSeek模型的版本管理、迭代更新和回滚策略，确保模型演进与业务发展同步。</li>
+</ul>
+<h3>长期总拥有成本（TCO）</h3>
+<p>虽然本地部署初期投入较高，但从长远来看，尤其对于高用量的企业，其总拥有成本可能低于云服务。</p>
+<ul>
+<li><strong>避免按量计费的不可预测性</strong>：云API通常采用按Token或按请求量计费，当使用量激增时，成本可能迅速膨胀且难以预测。本地部署投资一次性硬件，后续成本主要是电力、运维和折旧，更具可预测性。</li>
+<li><strong>规模效应</strong>：对于需要处理海量数据或频繁调用AI模型的企业，当使用量达到一定阈值时，自建和维护DeepSeek的成本效益会逐渐显现。</li>
+<li><strong>资源利用率最大化</strong>：企业可以根据业务峰谷进行资源调度，提高GPU等昂贵硬件的利用率。</li>
+</ul>
+<p><img src="/static/posts/chat-generic-step.svg" alt="Complex network architecture for enterprise deployment">
+<em>图示：企业内部复杂的网络架构，支撑高性能AI部署和数据流。</em></p>
+<h2>企业级部署的实操考量</h2>
+<p>成功本地部署 DeepSeek需要周密的规划和严谨的执行。以下是关键的实操考量：</p>
+<h3>基础设施规划与资源配置</h3>
+<ul>
+<li><strong>硬件选型</strong>：DeepSeek这类大型模型对计算资源要求极高，通常需要高性能GPU（如NVIDIA A100/H100）、大容量高速内存、以及NVMe SSD。需根据模型的规模、并发请求量和预算进行合理配置。例如，DeepSeek-V2 80B模型可能需要数张H100 GPU。</li>
+<li><strong>网络架构</strong>：确保内部网络具备足够的带宽（如InfiniBand或100GbE）来支持GPU集群内的数据传输和模型加载。</li>
+<li><strong>存储解决方案</strong>：选择高IOPS、低延迟的存储方案，如NFS、Lustre或Ceph，用于存储模型权重、训练数据集和推理日志。</li>
+</ul>
+<h3>环境搭建与依赖管理</h3>
+<ul>
+<li><strong>操作系统</strong>：通常选择Linux发行版，如Ubuntu Server或CentOS/RHEL，并确保内核版本和驱动兼容性。</li>
+<li><strong>软件栈</strong>：安装CUDA Toolkit、cuDNN、PyTorch/TensorFlow、Hugging Face Transformers库等必要的AI框架和依赖。建议使用Docker或Kubernetes进行容器化部署，简化环境管理和模型隔离。</li>
+<li><strong>DeepSeek模型下载与准备</strong>：从Hugging Face等官方渠道下载DeepSeek模型权重，并进行必要的格式转换或优化（如量化）。</li>
+</ul>
+<h3>高可用与灾备策略</h3>
+<ul>
+<li><strong>集群化部署</strong>：采用Kubernetes等容器编排工具进行DeepSeek服务的集群化部署，实现负载均衡、自动伸缩和故障转移。</li>
+<li><strong>数据备份与恢复</strong>：制定模型权重、微调数据和配置文件的定期备份策略，并演练灾难恢复流程。</li>
+<li><strong>多区域或多数据中心部署</strong>：对于极高可用性要求的场景，可考虑在不同的物理区域或数据中心部署DeepSeek实例，实现异地容灾。</li>
+</ul>
+<h3>监控与运维</h3>
+<ul>
+<li><strong>性能监控</strong>：部署GPU监控工具（如NVIDIA SMI、Prometheus + Grafana）实时追踪GPU利用率、内存使用、温度等关键指标。同时监控API响应时间、吞吐量和错误率。</li>
+<li><strong>日志管理</strong>：集中收集DeepSeek运行日志、推理日志和系统日志，利用ELK Stack（Elasticsearch, Logstash, Kibana）或类似工具进行日志分析和可视化。</li>
+<li><strong>自动化运维</strong>：利用Ansible、Terraform等自动化工具进行环境部署、配置管理和日常运维，减少人工干预，提高效率和一致性。</li>
+<li><strong>安全更新</strong>：定期对操作系统、依赖库和DeepSeek模型进行安全补丁更新和漏洞扫描。</li>
+</ul>
+<h2>结论</h2>
+<p>企业选择本地部署 DeepSeek 并非易事，它涉及到显著的前期投入和复杂的技术挑战。然而，对于那些对数据隐私、安全和合规性有着不可妥协要求的企业，以及追求极致性能优化和深度定制化能力的组织而言，本地部署DeepSeek无疑是一个具有战略意义的决策。它不仅能够提供坚不可摧的数据防线，满足全球最严格的行业法规，还能在长期维度上实现更高的性能和可预测的成本效益。</p>
+<p>从基础架构的精心规划，到核心环境的严谨配置，再到企业级高并发场景的商业实操，本地部署DeepSeek是一个系统性的工程。通过本文的深入解析，我们希望为企业提供了全面的技术指引，助您攻克全流程技术难点，从而在数据安全与合规的基石上，全面释放DeepSeek作为强大AI引擎的潜力，驱动业务创新与增长。</p>
+<h2>延伸阅读</h2>
+<ul>
+<li><a href="/posts/deepseek-chat-export-share/">导出与隐私</a></li>
+<li><a href="/posts/deepseek-chat-web-basics/">网页对话入门</a></li>
+<li><a href="/posts/deepseek-chat-scenario-library/">场景模板库</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          
+        
+      </li>
+      <li>：
+        
+          
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析","description":"为你带来针对企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-22","dateModified":"2026-05-22","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-export-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-22-enterprise-deepseek-on-premise-data-privacy-compliance/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"企业为什么选择本地部署 DeepSeek？数据隐私安全与合规性分析","item":"https://deepseek-chat.com/posts/2026-05-22-enterprise-deepseek-on-premise-data-privacy-compliance/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <p>&copy; 2026 DeepSeek 对话指南 · 本站为第三方对话使用说明，非 DeepSeek 官方网站。 · <a href="/privacy/" style="color:#888;">隐私政策</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

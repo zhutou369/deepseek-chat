@@ -9,6 +9,7 @@ translationKey: deepseek-chat-web-basics
 tags: ["对话入门"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-web-basics/index.html"
+coverImage: "/static/posts/chat-web-basics-cover.svg"
 ---
 
 很多人打开 `chat.deepseek.com` 后第一句就问「帮我写一篇文章」，结果得到泛泛而谈的长文。网页对话的关键不是问得多，而是**首条消息就把任务说清楚**。
@@ -18,6 +19,8 @@ permalink: "/posts/deepseek-chat-web-basics/index.html"
 1. **确认官方入口**：使用 `chat.deepseek.com`，避免第三方仿站。
 2. **选择合适模型**：日常写作可用通用对话模型；需要推理链时可切换 R1 系列（若入口提供）。
 3. **新开对话 vs 续聊**：新任务建议新开对话，避免旧上下文干扰。
+
+![DeepSeek 网页对话首条消息设置步骤](/static/posts/chat-generic-step.svg)
 
 ## 首条消息怎么写
 
