@@ -47,6 +47,17 @@ module.exports = function (eleventyConfig) {
     return item ? item.path : "/";
   });
 
+  eleventyConfig.addFilter("postPath", function (localeId, slug) {
+    const locale = localeId || "zh-CN";
+    if (!slug) return locale === "zh-CN" ? "/posts/" : `/${locale}/posts/`;
+    return locale === "zh-CN" ? `/posts/${slug}/` : `/${locale}/posts/${slug}/`;
+  });
+
+  eleventyConfig.addFilter("forLocale", function (arr, locale) {
+    if (!Array.isArray(arr)) return [];
+    return arr.filter((item) => (item.data.locale || "zh-CN") === locale);
+  });
+
   eleventyConfig.addGlobalData("eleventyComputed", {
     locale: (data) => data.locale || "zh-CN",
     noindex: (data) => {
@@ -78,6 +89,22 @@ module.exports = function (eleventyConfig) {
         return isPostIndexable(item.data);
       })
       .sort((a, b) => b.date - a.date);
+  });
+
+  eleventyConfig.addCollection("pillarPosts", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("posts/**/*.md")
+      .filter((item) => item.data.translationKey && item.data.featured === true)
+      .sort((a, b) => {
+        const order = [
+          "deepseek-chat-web-basics",
+          "deepseek-multi-turn-memory",
+          "deepseek-mobile-app-chat",
+          "deepseek-chat-scenario-library",
+          "deepseek-chat-export-share"
+        ];
+        return order.indexOf(a.data.translationKey) - order.indexOf(b.data.translationKey);
+      });
   });
 
   eleventyConfig.addCollection("homepagePosts", function (collectionApi) {

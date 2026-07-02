@@ -4,6 +4,8 @@ description: "从选择模型、写好首条消息到控制回答长度，帮你
 date: 2026-07-02
 updated: 2026-07-02
 featured: true
+locale: zh-CN
+translationKey: deepseek-chat-web-basics
 tags: ["对话入门"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-web-basics/index.html"

@@ -10,9 +10,9 @@
         <p>{{ card.desc }}</p>
         <p class="card-link">
           {% if card.all %}
-            <a href="/posts/">{{ t.viewAll }}</a>
+            <a href="{{ locale | postPath }}">{{ t.viewAll }}</a>
           {% else %}
-            <a href="/posts/{{ card.slug }}/">{{ t.readMore }}</a>
+            <a href="{{ locale | postPath(card.slug) }}">{{ t.readMore }}</a>
           {% endif %}
         </p>
       </div>
@@ -26,7 +26,12 @@
     <h2 class="section-title">{{ t.latestTitle }}</h2>
     <p class="posts-locale-note">{{ t.postsNote }}</p>
     <ul class="post-list">
-      {% for post in collections.homepagePosts | limit(5) %}
+      {% if locale == 'zh-CN' %}
+      {% set latestPosts = collections.homepagePosts | limit(5) %}
+      {% else %}
+      {% set latestPosts = collections.pillarPosts | forLocale(locale) | limit(5) %}
+      {% endif %}
+      {% for post in latestPosts %}
         <li class="post-card">
           <div class="post-meta">
             <span class="post-date">{{ post.date | dateFilter }}</span>
@@ -42,7 +47,7 @@
       {% endfor %}
     </ul>
     <p class="more-archive-box">
-      <a href="/posts/" class="archive-btn">{{ t.archiveBtn }}</a>
+      <a href="{{ locale | postPath }}" class="archive-btn">{{ t.archiveBtn }}</a>
     </p>
   </main>
 

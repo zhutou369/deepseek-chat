@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html lang="ms-MY">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="Panduan Sembang DeepSeek" href="/feed.xml">
+
+  
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="zh-Hant" href="https://deepseek-chat.com/zh-Hant/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="en" href="https://deepseek-chat.com/en/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ms" href="https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ja" href="https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+
+  <title>Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks | Panduan Sembang DeepSeek</title>
+
+  <meta name="description" content="Cara memecahkan topik, mengawal panjang konteks, mengelak percanggahan, dan mengekalkan konsistensi dalam perbualan panjang.">
+
+  <meta name="keywords" content="DeepSeek sembang,DeepSeek dialog,DeepSeek prompt,DeepSeek web,panduan AI">
+
+  
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks">
+
+  <meta property="og:description" content="Cara memecahkan topik, mengawal panjang konteks, mengelak percanggahan, dan mengekalkan konsistensi dalam perbualan panjang.">
+
+  <meta property="og:url" content="https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:site_name" content="Panduan Sembang DeepSeek">
+
+  <meta property="og:locale" content="ms_MY">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"Panduan Sembang DeepSeek","url":"https://deepseek-chat.com/ms/","description":"Panduan praktikal untuk sembang web DeepSeek, pengurusan konteks, sembang mudah alih, templat prompt, dan tetapan privasi.","inLanguage":"ms-MY"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+
+    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 0; }
+
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+
+    .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+
+    nav a:last-child { margin-right: 0; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main { padding: 20px 0; }
+
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+
+  </style>
+
+  
+
+</head>
+
+<body>
+
+
+
+  <header>
+
+    <div class="header-top">
+
+      <div>
+
+        
+
+          <a href="/ms/" class="site-logo">Panduan Sembang DeepSeek</a>
+
+        
+
+        <nav style="margin-top:10px;">
+
+          <a href="/ms/">Laman Utama</a>
+
+          <a href="/ms/posts/">Artikel</a>
+
+        </nav>
+
+      </div>
+
+      <div class="header-actions">
+
+        <div class="lang-switch">
+
+          <label for="lang-select">Bahasa</label>
+
+          <select id="lang-select" aria-label="Bahasa" onchange="if(this.value){window.location.href=this.value;}">
+
+            
+
+            <option value="/" >🇨🇳 简体中文</option>
+
+            
+
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+
+            
+
+            <option value="/en/" >🇺🇸 English</option>
+
+            
+
+            <option value="/ms/" selected>🇲🇾 Bahasa Melayu</option>
+
+            
+
+            <option value="/ja/" >🇯🇵 日本語</option>
+
+            
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/ms/" style="color: #666;"></a> &gt;
+    <a href="/ms/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">Sembang Berbilang Giliran DeepSeek &amp; Pengurusan Konteks</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-07-02</span> ·  2026-07-02
+      <span> · </span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>Sembang berbilang giliran adalah cara paling biasa menggunakan DeepSeek — dan paling mudah melencong topik. Peraturan utama: <strong>satu tetingkap, satu tugas utama</strong>.</p>
+<h2>Bila perlu sembang baharu</h2>
+<ul>
+<li>Bertukar daripada &quot;tulis e-mel&quot; ke &quot;tulis skrip Python&quot;</li>
+<li>Model merujuk kesimpulan yang anda sudah tolak</li>
+<li>Peranan berbeza diperlukan (sokongan vs programmer)</li>
+<li>Konteks terlalu panjang, jawapan perlahan atau terlepas butiran</li>
+</ul>
+<h2>Memecahkan tugas panjang</h2>
+<p>Contoh: &quot;Klasifikasikan 30 maklum balas pengguna&quot;</p>
+<ol>
+<li>Giliran 1: 10 item + sistem tag</li>
+<li>Giliran 2: sahkan tag, proses 10 seterusnya</li>
+<li>Giliran 3: ringkasan dalam jadual</li>
+</ol>
+<h2>Kurangkan percanggahan</h2>
+<ul>
+<li>Ulang kekangan setiap 3–5 giliran</li>
+<li>Rujuk secara jelas: &quot;Berdasarkan poin 2 di atas…&quot;</li>
+<li>Jika bercanggah: &quot;Ikut peraturan 4; tulis semula perenggan sebelumnya&quot;</li>
+</ul>
+<h2>Konteks terlalu panjang</h2>
+<ul>
+<li>Minta &quot;ringkasan kesimpulan semasa&quot; (≤200 patah)</li>
+<li>Sembang baharu dengan ringkasan sebagai mesej pertama</li>
+<li>Jangan tampal semula teks panjang berulang kali</li>
+</ul>
+<h2>Senarai semak</h2>
+<ul>
+<li>[ ] Satu tetingkap, satu tugas utama</li>
+<li>[ ] Format kekunci diulang secara berkala</li>
+<li>[ ] Perbualan panjang diringkaskan dahulu</li>
+<li>[ ] Tukar topik → pertimbangkan tetingkap baharu</li>
+</ul>
+<h2>Tutorial berkaitan</h2>
+<ul>
+<li><a href="/ms/posts/deepseek-chat-web-basics/">Asas sembang web</a></li>
+<li><a href="/ms/posts/deepseek-chat-scenario-library/">Perpustakaan templat</a></li>
+<li><a href="/ms/posts/deepseek-chat-export-share/">Eksport &amp; privasi</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          <a href="/ms/posts/deepseek-chat-web-basics/">Asas Sembang Web DeepSeek: Dapatkan Jawapan Berguna pada Percubaan Pertama</a>
+        
+      </li>
+      <li>：
+        
+          <a href="/ms/posts/deepseek-mobile-app-chat/">Tip Sembang Mudah Alih &amp; App DeepSeek</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/ms/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Sembang Berbilang Giliran DeepSeek & Pengurusan Konteks","description":"Cara memecahkan topik, mengawal panjang konteks, mengelak percanggahan, dan mengekalkan konsistensi dalam perbualan panjang.","datePublished":"2026-07-02","dateModified":"2026-07-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/ms/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/ms/posts/"},{"@type":"ListItem","position":3,"name":"Sembang Berbilang Giliran DeepSeek & Pengurusan Konteks","item":"https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer>
+
+    <p>&copy; 2026 Panduan Sembang DeepSeek · Laman panduan pihak ketiga — bukan laman rasmi DeepSeek. · <a href="/privacy/" style="color:#888;">Privasi</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

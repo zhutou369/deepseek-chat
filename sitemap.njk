@@ -21,10 +21,18 @@ eleventyExcludeFromCollections: true
   <url>
     <loc>{{ site.url }}/privacy/</loc>
   </url>
-{% for post in collections.indexablePosts %}
+{% for post in collections.pillarPosts %}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
     <lastmod>{{ post.date | htmlDate }}</lastmod>
   </url>
+{% endfor %}
+{% for post in collections.indexablePosts %}
+{% if not post.data.translationKey %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    <lastmod>{{ post.date | htmlDate }}</lastmod>
+  </url>
+{% endif %}
 {% endfor %}
 </urlset>

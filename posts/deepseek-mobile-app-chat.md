@@ -4,6 +4,8 @@ description: "在手机浏览器、微信内置页或官方 App 中使用 DeepSe
 date: 2026-07-02
 updated: 2026-07-02
 featured: true
+locale: zh-CN
+translationKey: deepseek-mobile-app-chat
 tags: ["移动端"]
 layout: "post.njk"
 permalink: "/posts/deepseek-mobile-app-chat/index.html"

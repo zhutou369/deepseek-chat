@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="baidu-site-verification" content="codeva-9ioStHo0EJ">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <link rel="icon" href="/static/favicon.png" type="image/png">
+
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="DeepSeek チャットガイド" href="/feed.xml">
+
+  
+  
+  <link rel="alternate" hreflang="zh-Hans" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="zh-Hant" href="https://deepseek-chat.com/zh-Hant/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="en" href="https://deepseek-chat.com/en/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ms" href="https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="ja" href="https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/">
+  
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-chat.com/posts/deepseek-multi-turn-memory/">
+  
+
+  <title>DeepSeek マルチターン対話と文脈管理 | DeepSeek チャットガイド</title>
+
+  <meta name="description" content="話題の分割、文脈長の制御、矛盾の回避、長いタスクでの一貫した出力を保つ方法。">
+
+  <meta name="keywords" content="DeepSeek チャット,DeepSeek 対話,DeepSeek プロンプト,DeepSeek ウェブ,AIガイド">
+
+  
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  
+
+  <link rel="canonical" href="https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:title" content="DeepSeek マルチターン対話と文脈管理">
+
+  <meta property="og:description" content="話題の分割、文脈長の制御、矛盾の回避、長いタスクでの一貫した出力を保つ方法。">
+
+  <meta property="og:url" content="https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/">
+
+  <meta property="og:site_name" content="DeepSeek チャットガイド">
+
+  <meta property="og:locale" content="ja_JP">
+
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <meta property="og:image:alt" content="DeepSeek マルチターン対話と文脈管理">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+
+  <script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"WebSite","name":"DeepSeek チャットガイド","url":"https://deepseek-chat.com/ja/","description":"DeepSeek ウェブチャットの基礎、文脈管理、モバイル利用、シナリオ別プロンプト、プライバシー設定の実践ガイド。","inLanguage":"ja"}
+
+  </script>
+
+  <style>
+
+    body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+
+    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 0; }
+
+    .site-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+
+    .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+    nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+
+    nav a:last-child { margin-right: 0; }
+
+    .lang-switch label { font-size: 12px; color: #64748b; margin-right: 6px; }
+
+    .lang-switch select { appearance: none; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 32px 8px 12px; font-size: 14px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center; cursor: pointer; }
+
+    main { padding: 20px 0; }
+
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; }
+
+  </style>
+
+  
+
+</head>
+
+<body>
+
+
+
+  <header>
+
+    <div class="header-top">
+
+      <div>
+
+        
+
+          <a href="/ja/" class="site-logo">DeepSeek チャットガイド</a>
+
+        
+
+        <nav style="margin-top:10px;">
+
+          <a href="/ja/">ホーム</a>
+
+          <a href="/ja/posts/">記事一覧</a>
+
+        </nav>
+
+      </div>
+
+      <div class="header-actions">
+
+        <div class="lang-switch">
+
+          <label for="lang-select">言語</label>
+
+          <select id="lang-select" aria-label="言語" onchange="if(this.value){window.location.href=this.value;}">
+
+            
+
+            <option value="/" >🇨🇳 简体中文</option>
+
+            
+
+            <option value="/zh-Hant/" >🇭🇰 繁體中文</option>
+
+            
+
+            <option value="/en/" >🇺🇸 English</option>
+
+            
+
+            <option value="/ms/" >🇲🇾 Bahasa Melayu</option>
+
+            
+
+            <option value="/ja/" selected>🇯🇵 日本語</option>
+
+            
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+    
+<article>
+  <nav class="breadcrumb" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+    <a href="/ja/" style="color: #666;"></a> &gt;
+    <a href="/ja/posts/" style="color: #666;"></a> &gt;
+    <span></span>
+  </nav>
+
+  <header class="post-header">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">DeepSeek マルチターン対話と文脈管理</h1>
+    <div class="post-meta" style="margin-bottom: 20px;">
+      <span>: 2026-07-02</span> ·  2026-07-02
+      <span> · </span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>マルチターンは DeepSeek ウェブ版で最もよく使う機能ですが、脱線もしやすい。<strong>1ウィンドウ1本のタスク</strong>が原則です。</p>
+<h2>新規チャットを開くタイミング</h2>
+<ul>
+<li>「メール作成」から「Python スクリプト」へ切り替え</li>
+<li>既に否定した結論を再度引用される</li>
+<li>役割が大きく変わる（サポート vs 開発者）</li>
+<li>文脈が長く、回答が遅い・抜けが出る</li>
+</ul>
+<h2>長いタスクの分割</h2>
+<p>例：「ユーザー反馈30件を分類」</p>
+<ol>
+<li>1ターン目：10件＋タグ体系</li>
+<li>2ターン目：タグ確定後、次の10件</li>
+<li>3ターン目：表で集計</li>
+</ol>
+<p>各ターン末に「タグ A/B/C を維持して次も同じ基準で」と伝える。</p>
+<h2>矛盾を減らす</h2>
+<ul>
+<li>3〜5ターンごとに制約を再掲</li>
+<li>「上記2点に基づき」と明示参照</li>
+<li>矛盾時は「ルール4に従い前段落を書き直し」</li>
+</ul>
+<h2>文脈が長すぎるとき</h2>
+<ul>
+<li>「現時点の結論要約」（200字以内）を出力させる</li>
+<li>新規チャットに要約を貼って継続</li>
+<li>長文の再貼付は避け、要点番号で参照</li>
+</ul>
+<h2>チェックリスト</h2>
+<ul>
+<li>[ ] 1ウィンドウ1タスク</li>
+<li>[ ] 形式要件を定期的に再掲</li>
+<li>[ ] 超長会話は要約してから継続</li>
+<li>[ ] 話題変更時は新規ウィンドウを検討</li>
+</ul>
+<h2>関連ガイド</h2>
+<ul>
+<li><a href="/ja/posts/deepseek-chat-web-basics/">ウェブチャット入門</a></li>
+<li><a href="/ja/posts/deepseek-chat-scenario-library/">シナリオ集</a></li>
+<li><a href="/ja/posts/deepseek-chat-export-share/">エクスポートとプライバシー</a></li>
+</ul>
+
+  </div>
+
+  <div class="post-footer-nav" style="margin-top: 40px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+    <h3 style="margin-top: 0; font-size: 16px;"></h3>
+    <ul>
+      
+      <li>：
+        
+          <a href="/ja/posts/deepseek-chat-web-basics/">DeepSeek ウェブチャット入門：初回から使える回答を得る</a>
+        
+      </li>
+      <li>：
+        
+          <a href="/ja/posts/deepseek-mobile-app-chat/">DeepSeek モバイル・アプリでのチャットのコツ</a>
+        
+      </li>
+    </ul>
+    <p style="text-align: right; margin-bottom: 0;"><a href="/ja/posts/"> &rarr;</a></p>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek マルチターン対話と文脈管理","description":"話題の分割、文脈長の制御、矛盾の回避、長いタスクでの一貫した出力を保つ方法。","datePublished":"2026-07-02","dateModified":"2026-07-02","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"mainEntityOfPage":"https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/ja/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/ja/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek マルチターン対話と文脈管理","item":"https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/"}]}
+</script>
+
+
+  </main>
+
+
+
+  <footer>
+
+    <p>&copy; 2026 DeepSeek チャットガイド · 非公式の DeepSeek 利用ガイドです。 · <a href="/privacy/" style="color:#888;">プライバシー</a></p>
+
+  </footer>
+
+
+
+  
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js" defer></script>
+
+  <script>window.addEventListener("load",function(){if(window.LA){LA.init({id:"3J1YhDAqDpTgZdod",ck:"3J1YhDAqDpTgZdod"})}})</script>
+
+  
+
+
+
+</body>
+
+</html>
+
+

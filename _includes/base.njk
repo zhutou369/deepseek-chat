@@ -36,13 +36,17 @@
 
   <link rel="alternate" type="application/rss+xml" title="{{ t.brand }}" href="/feed.xml">
 
+  {% if translationKey and pillarTranslations[translationKey] %}
   {% for loc in locales %}
-
-  <link rel="alternate" hreflang="{{ loc.hreflang }}" href="{{ site.url }}{{ loc.path }}">
-
+  <link rel="alternate" hreflang="{{ loc.hreflang }}" href="{{ site.url }}{{ pillarTranslations[translationKey][loc.id] }}">
   {% endfor %}
-
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ pillarTranslations[translationKey]['zh-CN'] }}">
+  {% elif isHome %}
+  {% for loc in locales %}
+  <link rel="alternate" hreflang="{{ loc.hreflang }}" href="{{ site.url }}{{ loc.path }}">
+  {% endfor %}
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+  {% endif %}
 
   <title>{% if isHome %}{{ t.title }}{% else %}{{ docTitle }} | {{ t.brand }}{% endif %}</title>
 
@@ -170,7 +174,7 @@
 
           <a href="{{ locale | localePath(locales) }}">{{ t.navHome }}</a>
 
-          <a href="/posts/">{{ t.navPosts }}</a>
+          <a href="{{ locale | postPath }}">{{ t.navPosts }}</a>
 
         </nav>
 

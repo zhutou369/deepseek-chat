@@ -47,22 +47,27 @@
   </url>
 
   <url>
-    <loc>https://deepseek-chat.com/posts/deepseek-chat-export-share/</loc>
-    <lastmod>2026-07-02</lastmod>
-  </url>
-
-  <url>
-    <loc>https://deepseek-chat.com/posts/deepseek-chat-scenario-library/</loc>
-    <lastmod>2026-07-02</lastmod>
-  </url>
-
-  <url>
     <loc>https://deepseek-chat.com/posts/deepseek-chat-web-basics/</loc>
     <lastmod>2026-07-02</lastmod>
   </url>
 
   <url>
-    <loc>https://deepseek-chat.com/posts/deepseek-mobile-app-chat/</loc>
+    <loc>https://deepseek-chat.com/en/posts/deepseek-chat-web-basics/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ja/posts/deepseek-chat-web-basics/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ms/posts/deepseek-chat-web-basics/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/zh-Hant/posts/deepseek-chat-web-basics/</loc>
     <lastmod>2026-07-02</lastmod>
   </url>
 
@@ -72,18 +77,130 @@
   </url>
 
   <url>
+    <loc>https://deepseek-chat.com/en/posts/deepseek-multi-turn-memory/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ja/posts/deepseek-multi-turn-memory/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ms/posts/deepseek-multi-turn-memory/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/zh-Hant/posts/deepseek-multi-turn-memory/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/posts/deepseek-mobile-app-chat/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/en/posts/deepseek-mobile-app-chat/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ja/posts/deepseek-mobile-app-chat/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ms/posts/deepseek-mobile-app-chat/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/zh-Hant/posts/deepseek-mobile-app-chat/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/posts/deepseek-chat-scenario-library/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/en/posts/deepseek-chat-scenario-library/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ja/posts/deepseek-chat-scenario-library/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ms/posts/deepseek-chat-scenario-library/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/zh-Hant/posts/deepseek-chat-scenario-library/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/posts/deepseek-chat-export-share/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/en/posts/deepseek-chat-export-share/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ja/posts/deepseek-chat-export-share/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/ms/posts/deepseek-chat-export-share/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://deepseek-chat.com/zh-Hant/posts/deepseek-chat-export-share/</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <url>
     <loc>https://deepseek-chat.com/posts/2026-06-27-post-247-0/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
+
+
 
   <url>
     <loc>https://deepseek-chat.com/posts/2026-06-27-deepseek-pandas-dataframe-code-analyst-527/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
 
+
+
   <url>
     <loc>https://deepseek-chat.com/posts/2026-06-27-post-967-0/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
+
 
 </urlset>

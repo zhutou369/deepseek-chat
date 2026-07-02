@@ -28,7 +28,17 @@ module.exports = {
     archiveBtn: "查看全部文章 →",
     aboutTitle: "关于本站",
     aboutText: "deepseek-chat.com 专注对话与聊天场景，提供多语言首页与简体中文深度教程。",
-    postsNote: "教程文章目前以简体中文发布，更多语言版本持续补充中。"
+    postsNote: "以下支柱教程支持简中/繁中/英/马/日多语言，可点右上角切换。",
+    postBreadcrumbHome: "首页",
+    postBreadcrumbPosts: "技术文章",
+    postBreadcrumbBody: "正文",
+    postPublished: "发布日期",
+    postUpdated: "更新于",
+    postReadMore: "延伸阅读",
+    postPrev: "上一篇",
+    postNext: "下一篇",
+    postNone: "暂无",
+    postBackList: "返回文章列表"
   },
   "zh-Hant": {
     htmlLang: "zh-HK",
@@ -59,7 +69,17 @@ module.exports = {
     archiveBtn: "查看全部文章 →",
     aboutTitle: "關於本站",
     aboutText: "deepseek-chat.com 專注對話與聊天場景，提供多語言首頁與繁體中文介面。",
-    postsNote: "教程文章目前以簡體中文發布，繁體版本持續補充中。"
+    postsNote: "以下為繁體中文支柱教程；更多文章仍以簡體中文發布。",
+    postBreadcrumbHome: "首頁",
+    postBreadcrumbPosts: "技術文章",
+    postBreadcrumbBody: "正文",
+    postPublished: "發布日期",
+    postUpdated: "更新於",
+    postReadMore: "延伸閱讀",
+    postPrev: "上一篇",
+    postNext: "下一篇",
+    postNone: "暫無",
+    postBackList: "返回文章列表"
   },
   en: {
     htmlLang: "en",
@@ -90,7 +110,17 @@ module.exports = {
     archiveBtn: "Browse all articles →",
     aboutTitle: "About this site",
     aboutText: "deepseek-chat.com focuses on everyday DeepSeek chat workflows with multilingual landing pages.",
-    postsNote: "In-depth tutorials are currently published in Simplified Chinese; more locales coming soon."
+    postsNote: "Featured guides below are available in English. Additional articles remain in Simplified Chinese.",
+    postBreadcrumbHome: "Home",
+    postBreadcrumbPosts: "Articles",
+    postBreadcrumbBody: "Article",
+    postPublished: "Published",
+    postUpdated: "Updated",
+    postReadMore: "Further reading",
+    postPrev: "Previous",
+    postNext: "Next",
+    postNone: "None",
+    postBackList: "Back to article list"
   },
   ms: {
     htmlLang: "ms-MY",
@@ -121,7 +151,17 @@ module.exports = {
     archiveBtn: "Lihat semua artikel →",
     aboutTitle: "Tentang laman ini",
     aboutText: "deepseek-chat.com memberi tumpuan kepada aliran kerja sembang DeepSeek harian dengan halaman utama berbilang bahasa.",
-    postsNote: "Tutorial mendalam kini diterbitkan dalam Bahasa Cina Ringkas; lebih banyak bahasa akan ditambah."
+    postsNote: "Panduan utama di bawah tersedia dalam Bahasa Melayu. Artikel tambahan kekal dalam Bahasa Cina Ringkas.",
+    postBreadcrumbHome: "Laman Utama",
+    postBreadcrumbPosts: "Artikel",
+    postBreadcrumbBody: "Artikel",
+    postPublished: "Diterbitkan",
+    postUpdated: "Dikemas kini",
+    postReadMore: "Bacaan lanjutan",
+    postPrev: "Sebelumnya",
+    postNext: "Seterusnya",
+    postNone: "Tiada",
+    postBackList: "Kembali ke senarai artikel"
   },
   ja: {
     htmlLang: "ja",
@@ -152,6 +192,16 @@ module.exports = {
     archiveBtn: "記事一覧へ →",
     aboutTitle: "このサイトについて",
     aboutText: "deepseek-chat.com は DeepSeek の日常チャット利用に特化した多言語ランディングページです。",
-    postsNote: "詳細チュートリアルは現在簡体字中国語で公開中。他言語は順次追加予定です。"
+    postsNote: "以下のガイドは日本語版です。その他の記事は簡体字中国語のままです。",
+    postBreadcrumbHome: "ホーム",
+    postBreadcrumbPosts: "記事一覧",
+    postBreadcrumbBody: "本文",
+    postPublished: "公開日",
+    postUpdated: "更新日",
+    postReadMore: "関連記事",
+    postPrev: "前の記事",
+    postNext: "次の記事",
+    postNone: "なし",
+    postBackList: "記事一覧に戻る"
   }
 };

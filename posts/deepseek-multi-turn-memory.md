@@ -4,6 +4,8 @@ description: "讲解 DeepSeek 多轮聊天时如何拆分话题、控制上下�
 date: 2026-07-02
 updated: 2026-07-02
 featured: true
+locale: zh-CN
+translationKey: deepseek-multi-turn-memory
 tags: ["多轮对话"]
 layout: "post.njk"
 permalink: "/posts/deepseek-multi-turn-memory/index.html"

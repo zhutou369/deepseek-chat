@@ -4,6 +4,8 @@ description: "收录可直接复制的 DeepSeek 对话 Prompt 模板，覆盖文
 date: 2026-07-02
 updated: 2026-07-02
 featured: true
+locale: zh-CN
+translationKey: deepseek-chat-scenario-library
 tags: ["场景模板"]
 layout: "post.njk"
 permalink: "/posts/deepseek-chat-scenario-library/index.html"
