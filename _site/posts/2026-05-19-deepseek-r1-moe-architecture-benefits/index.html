@@ -60,13 +60,13 @@
 
   <meta property="og:locale" content="zh_CN">
 
-  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <meta property="og:image:alt" content="DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里">
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <script type="application/ld+json">
 
@@ -168,7 +168,7 @@
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/chat-scenario-cover.svg?v=2" alt="DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/chat-scenario-cover.svg?v=3" alt="DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -193,7 +193,7 @@
 <li><strong>门控网络（Gating Network / Router）：</strong> 这是 MoE 架构的“大脑”。它是一个小型的前馈神经网络，负责接收输入，并根据输入内容的特性，学习如何为每个输入 token 分配权重，决定应该激活哪些“专家”来处理当前任务。门控网络的目标是确保最相关的专家被选中，从而高效地处理信息。</li>
 <li><strong>专家网络（Expert Networks）：</strong> 这是一组独立的前馈神经网络（通常是小型 Transformer 块或 MLP）。每个专家网络都专注于学习输入数据的不同方面或模式。例如，一个专家可能擅长处理代码生成任务，而另一个可能更精通自然语言理解或特定领域知识。在 MoE 模型中，通常会有数十、数百甚至数千个专家。</li>
 </ol>
-<p><img src="/static/posts/chat-generic-step.svg" alt="Advanced server racks in a data center">
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="Advanced server racks in a data center">
 <em>图示：数据中心中先进的服务器机架，象征着运行大规模MoE模型所需的强大计算基础设施。</em></p>
 <h3>MoE 如何工作？</h3>
 <p>当一个输入 token 进入 MoE 层时：</p>
@@ -240,7 +240,7 @@
 <li><strong>细粒度知识表示：</strong> 相比于密集模型将所有知识混杂在一个巨大的网络中，MoE 将知识分解到不同的专家中，有助于形成更清晰、更细粒度的知识表示，从而提升模型的准确性和鲁棒性。</li>
 <li><strong>领域适应性强：</strong> 未来 DeepSeek-R1 甚至可以通过引入或微调特定领域的专家，来快速适应新的应用场景或行业，而无需重新训练整个巨型模型。</li>
 </ul>
-<p><img src="/static/posts/chat-generic-step.svg" alt="Intricate network of glowing lines on a dark background, representing interconnected AI systems and data flow">
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="Intricate network of glowing lines on a dark background, representing interconnected AI systems and data flow">
 <em>图示：黑暗背景下复杂的发光线条网络，象征着DeepSeek-R1 MoE架构中专家网络的互联与数据流转。</em></p>
 <h3>5. 持续学习与模型演进的潜力</h3>
 <p>MoE 架构为 DeepSeek-R1 的未来发展提供了更大的灵活性。</p>
@@ -288,7 +288,7 @@
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里","description":"针对DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里的专业技术解析与实操指南。","datePublished":"2026-05-19","dateModified":"2026-05-19","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-scenario-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-19-deepseek-r1-moe-architecture-benefits/"}
+{"@context":"https://schema.org","@type":"Article","headline":"DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里","description":"针对DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里的专业技术解析与实操指南。","datePublished":"2026-05-19","dateModified":"2026-05-19","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-scenario-cover.svg?v=3","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-19-deepseek-r1-moe-architecture-benefits/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"DeepSeek-R1 核心架构解析：混合专家模型（MoE）的优势在哪里","item":"https://deepseek-chat.com/posts/2026-05-19-deepseek-r1-moe-architecture-benefits/"}]}

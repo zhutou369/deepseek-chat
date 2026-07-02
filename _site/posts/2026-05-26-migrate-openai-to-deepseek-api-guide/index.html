@@ -60,13 +60,13 @@
 
   <meta property="og:locale" content="zh_CN">
 
-  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <meta property="og:image:alt" content="如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南">
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <script type="application/ld+json">
 
@@ -168,7 +168,7 @@
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/chat-memory-cover.svg?v=2" alt="如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/chat-memory-cover.svg?v=3" alt="如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -281,7 +281,7 @@ response = deepseek_client.chat.completions.create(
 
 print(&quot;DeepSeek Response:&quot;, response.choices[0].message.content)
 </code></pre>
-<p><img src="/static/posts/chat-generic-step.svg" alt="Server room with network cables and server lights">
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="Server room with network cables and server lights">
 <em>图片来源：网络服务器与数据中心。这象征着后端基础设施的迁移与改造，确保数据流向新的API端点。</em></p>
 <h3>步骤 3: 请求 Payload 转换</h3>
 <p>OpenAI和DeepSeek在 <code>chat.completions</code> 接口的请求体（payload）上高度兼容。主要的区别通常在于 <code>model</code> 参数的值。</p>
@@ -354,7 +354,7 @@ async def get_deepseek_response(user_query: str):
 <li><strong>性能指标</strong>: 监控API的延迟、成功率、错误率和吞吐量。</li>
 <li><strong>成本跟踪</strong>: 结合API返回的token用量信息，实时估算和跟踪 DeepSeek API 的消费情况。</li>
 </ul>
-<p><img src="/static/posts/chat-generic-step.svg" alt="Abstract circuit board pattern background">
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="Abstract circuit board pattern background">
 <em>图片来源：抽象电路板图案。这象征着软件架构的深层调整，以及通过日志和监控追踪每个API调用的精密过程。</em></p>
 <h3>5. 安全最佳实践</h3>
 <ul>
@@ -411,7 +411,7 @@ async def get_deepseek_response(user_query: str):
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南","description":"为你带来针对如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-26","dateModified":"2026-05-26","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-26-migrate-openai-to-deepseek-api-guide/"}
+{"@context":"https://schema.org","@type":"Article","headline":"如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南","description":"为你带来针对如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-26","dateModified":"2026-05-26","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=3","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-26-migrate-openai-to-deepseek-api-guide/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"如何用 DeepSeek API 替换现有的 OpenAI 接口？迁移改造指南","item":"https://deepseek-chat.com/posts/2026-05-26-migrate-openai-to-deepseek-api-guide/"}]}

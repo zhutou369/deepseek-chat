@@ -7,7 +7,7 @@ module.exports = {
   author: "DeepSeek 对话指南",
   locale: "zh_CN",
   ogImage: "/static/og-default.png",
-  assetVersion: "2",
+  assetVersion: "3",
   googleSiteVerification: "",
   gaId: "",
   friendLinks: [

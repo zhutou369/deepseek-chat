@@ -42,6 +42,14 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("assetUrl", cacheBustStaticUrl);
 
+  eleventyConfig.addTransform("static-asset-urls", function (content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html")) return content;
+    return content.replace(/src="(\/static\/[^"?]+)"/g, (match, urlPath) => {
+      if (match.includes("?v=")) return match;
+      return `src="${cacheBustStaticUrl(urlPath)}"`;
+    });
+  });
+
   eleventyConfig.addFilter("localePath", function (localeId, localesList) {
     const item = (localesList || []).find((l) => l.id === localeId);
     return item ? item.path : "/";

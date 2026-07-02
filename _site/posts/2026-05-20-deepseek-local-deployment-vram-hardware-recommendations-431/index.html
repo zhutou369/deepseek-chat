@@ -60,13 +60,13 @@
 
   <meta property="og:locale" content="zh_CN">
 
-  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta property="og:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <meta property="og:image:alt" content="本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表">
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=2">
+  <meta name="twitter:image" content="https://deepseek-chat.com/static/og-default.png?v=3">
 
   <script type="application/ld+json">
 
@@ -168,7 +168,7 @@
 
   
   <figure class="post-cover" style="margin: 0 0 28px;">
-    <img src="/static/posts/chat-memory-cover.svg?v=2" alt="本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
+    <img src="/static/posts/chat-memory-cover.svg?v=3" alt="本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表" width="800" height="450" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;display:block;">
   </figure>
   
 
@@ -220,7 +220,7 @@
 </li>
 </ul>
 <p>KV Cache 的占用是一个动态值，它会根据您的上下文长度 (context length) 显著变化。通常，一个 7B 模型在 2048 上下文长度下，KV Cache 可能额外占用 1-2GB 显存，而对于 67B 模型，这个数字会更高。</p>
-<p><img src="/static/posts/chat-generic-step.svg" alt="High Performance GPU Server Infrastructure"></p>
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="High Performance GPU Server Infrastructure"></p>
 <h2>DeepSeek 各参数版本显存需求与硬件推荐</h2>
 <p>现在，我们来具体分析 DeepSeek 各模型版本的显存需求，并给出相应的硬件配置建议。以下推荐均基于模型推理场景，并考虑了不同量化级别的优化。</p>
 <h3>DeepSeek-7B 系列 (例如 DeepSeek-Coder-7B, DeepSeek-Math-7B)</h3>
@@ -370,7 +370,7 @@
 </li>
 </ul>
 <p><strong>KV Cache 额外说明</strong>: 上述显存推荐均是基于模型权重和中等上下文（例如 2048-4096 tokens）的估算。如果需要支持超长上下文（例如 8K, 16K, 32K 甚至 128K tokens），KV Cache 的占用会大幅增加，这可能需要额外预留数 GB 甚至数十 GB 的显存。</p>
-<p><img src="/static/posts/chat-generic-step.svg" alt="Detailed Technical System Configuration"></p>
+<p><img src="/static/posts/chat-generic-step.svg?v=3" alt="Detailed Technical System Configuration"></p>
 <h2>优化策略：在有限硬件下发挥最大效能</h2>
 <p>即使硬件配置不尽如人意，也有多种方法可以优化显存使用，提升运行效率。</p>
 <h3>模型量化 (Model Quantization)</h3>
@@ -481,7 +481,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 </article>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表","description":"为你带来针对本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-20","dateModified":"2026-05-20","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=2","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-20-deepseek-local-deployment-vram-hardware-recommendations-431/"}
+{"@context":"https://schema.org","@type":"Article","headline":"本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表","description":"为你带来针对本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表的深度专业技术解析。本文将从零基础架构、核心环境配置到企业级高并发商业实操指南，手把手带你攻克全流程技术难点，全面提升你的技术运维与全场景业务实战效能。","datePublished":"2026-05-20","dateModified":"2026-05-20","author":{"@type":"Organization"},"publisher":{"@type":"Organization","url":"https://deepseek-chat.com"},"image":"https://deepseek-chat.com/static/posts/chat-memory-cover.svg?v=3","mainEntityOfPage":"https://deepseek-chat.com/posts/2026-05-20-deepseek-local-deployment-vram-hardware-recommendations-431/"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://deepseek-chat.com/"},{"@type":"ListItem","position":2,"item":"https://deepseek-chat.com/posts/"},{"@type":"ListItem","position":3,"name":"本地部署 DeepSeek 需要多大显存？各参数版本硬件配置推荐表","item":"https://deepseek-chat.com/posts/2026-05-20-deepseek-local-deployment-vram-hardware-recommendations-431/"}]}
