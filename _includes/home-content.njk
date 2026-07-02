@@ -1,0 +1,83 @@
+<header class="hero-section">
+  <div class="hero-container">
+    <h2 class="site-main-title">{{ t.heroTitle }}</h2>
+    <p class="site-tagline">{{ t.heroText }}</p>
+
+    <div class="site-intro-grid">
+      {% for card in t.cards %}
+      <div class="intro-card">
+        <h4>{{ card.title }}</h4>
+        <p>{{ card.desc }}</p>
+        <p class="card-link">
+          {% if card.all %}
+            <a href="/posts/">{{ t.viewAll }}</a>
+          {% else %}
+            <a href="/posts/{{ card.slug }}/">{{ t.readMore }}</a>
+          {% endif %}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+<div class="main-layout hero-container">
+  <main class="posts-area">
+    <h2 class="section-title">{{ t.latestTitle }}</h2>
+    <p class="posts-locale-note">{{ t.postsNote }}</p>
+    <ul class="post-list">
+      {% for post in collections.homepagePosts | limit(5) %}
+        <li class="post-card">
+          <div class="post-meta">
+            <span class="post-date">{{ post.date | dateFilter }}</span>
+          </div>
+          <h3 class="post-title">
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h3>
+          <p class="post-excerpt">{{ post.data.description }}</p>
+          <div class="post-card-footer">
+            <a href="{{ post.url }}" class="read-more-btn">{{ t.readFull }}</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="more-archive-box">
+      <a href="/posts/" class="archive-btn">{{ t.archiveBtn }}</a>
+    </p>
+  </main>
+
+  <aside class="sidebar-area">
+    <div class="sidebar-widget about-widget">
+      <h3 class="widget-title">{{ t.aboutTitle }}</h3>
+      <p>{{ t.aboutText }}</p>
+    </div>
+  </aside>
+</div>
+
+<style>
+  :root { --primary-color: #0066cc; --text-main: #222; --text-muted: #666; --bg-light: #f8fafc; --border-color: #e2e8f0; }
+  .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+  .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 50px 0; margin-bottom: 35px; text-align: center; }
+  .site-main-title { font-size: 2.2rem; margin: 0 0 15px; font-weight: 700; }
+  .site-tagline { color: #94a3b8; font-size: 1.05rem; max-width: 720px; margin: 0 auto 35px; line-height: 1.7; }
+  .site-intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
+  .intro-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 8px; }
+  .intro-card h4 { color: #38bdf8; font-size: 1.05rem; margin: 0 0 10px; }
+  .intro-card p { color: #cbd5e1; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+  .card-link { margin-top: 12px !important; }
+  .card-link a { color: #7dd3fc; font-weight: 600; text-decoration: none; }
+  .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 50px; }
+  @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
+  .posts-locale-note { color: #64748b; font-size: 0.9rem; margin: -8px 0 16px; }
+  .post-list { list-style: none; padding: 0; margin: 0; }
+  .post-card { background: #fff; border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin-bottom: 20px; }
+  .post-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+  .post-title { font-size: 1.35rem; margin: 0 0 10px; }
+  .post-title a { color: var(--text-main); text-decoration: none; }
+  .post-excerpt { color: #475569; font-size: 0.95rem; margin: 0 0 15px; }
+  .read-more-btn { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+  .archive-btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary-color); color: var(--primary-color); text-decoration: none; border-radius: 6px; font-weight: bold; }
+  .section-title { font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+  .sidebar-widget { background: var(--bg-light); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 24px; }
+  .widget-title { font-size: 1.1rem; border-left: 4px solid var(--primary-color); padding-left: 10px; margin: 0 0 15px; }
+</style>

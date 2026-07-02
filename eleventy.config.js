@@ -42,7 +42,13 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("assetUrl", cacheBustStaticUrl);
 
+  eleventyConfig.addFilter("localePath", function (localeId, localesList) {
+    const item = (localesList || []).find((l) => l.id === localeId);
+    return item ? item.path : "/";
+  });
+
   eleventyConfig.addGlobalData("eleventyComputed", {
+    locale: (data) => data.locale || "zh-CN",
     noindex: (data) => {
       if (data.noindex === true) return true;
       const inputPath = data.page?.inputPath || "";

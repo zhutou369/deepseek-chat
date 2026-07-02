@@ -1,0 +1,10 @@
+---
+layout: base.njk
+isHome: true
+locale: zh-Hant
+permalink: /zh-Hant/
+eleventyExcludeFromCollections: false
+---
+
+{% set t = i18n[locale] %}
+{% include "home-content.njk" %}
