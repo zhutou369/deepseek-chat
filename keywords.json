@@ -1,5 +1,4 @@
 [
-  "火山引擎（字节跳动）接入 DeepSeek 评测：并发能力能否扛住高压",
   "微调（Fine-tuning）基础：如何用行业特定数据微调本地 DeepSeek",
   "DeepSeek 蒸馏模型（Distill）是什么？小参数模型为何也如此强悍",
   "如何将开源的 DeepSeek-R1-Distill-Qwen 部署在树莓派或边缘设备上",
